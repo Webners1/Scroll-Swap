@@ -1,24 +1,17 @@
 import { SmartRouter } from '@pancakeswap/smart-router/evm'
+import { Box } from '@pancakeswap/uikit'
 import throttle from 'lodash/throttle'
 import { useMemo } from 'react'
-import { Box } from '@pancakeswap/uikit'
 
-import { shouldShowMMLiquidityError } from 'views/Swap/MMLinkPools/utils/exchange'
 import { MMLiquidityWarning } from 'views/Swap/MMLinkPools/components/MMLiquidityWarning'
+import { shouldShowMMLiquidityError } from 'views/Swap/MMLinkPools/utils/exchange'
 
 import { useDerivedBestTradeWithMM } from '../MMLinkPools/hooks/useDerivedSwapInfoWithMM'
-import { useCheckInsufficientError } from './hooks/useCheckSufficient'
-import {
-  FormHeader,
-  FormMain,
-  MMTradeDetail,
-  PricingAndSlippage,
-  SwapCommitButton,
-  TradeDetails,
-  BuyCryptoLink,
-} from './containers'
+import { FormHeader, FormMain, MMTradeDetail, PricingAndSlippage, SwapCommitButton, TradeDetails } from './containers'
 import { MMCommitButton } from './containers/MMCommitButton'
 import { useSwapBestTrade } from './hooks'
+import { useCheckInsufficientError } from './hooks/useCheckSufficient'
+import { StyledButtonWrapper } from './styles'
 
 export function V3SwapForm() {
   const { isLoading, trade, refresh, syncing, isStale, error } = useSwapBestTrade()
@@ -47,15 +40,17 @@ export function V3SwapForm() {
         inputAmount={finalTrade?.inputAmount}
         outputAmount={finalTrade?.outputAmount}
         swapCommitButton={
-          mm?.isMMBetter ? (
-            <MMCommitButton {...mm} />
-          ) : (
-            <SwapCommitButton trade={trade} tradeError={error} tradeLoading={!tradeLoaded} />
-          )
+          <StyledButtonWrapper>
+            {mm?.isMMBetter ? (
+              <MMCommitButton {...mm} />
+            ) : (
+              <SwapCommitButton trade={trade} tradeError={error} tradeLoading={!tradeLoaded} />
+            )}
+          </StyledButtonWrapper>
         }
       />
 
-      <BuyCryptoLink currency={insufficientFundCurrency} />
+      {/* <BuyCryptoLink currency={insufficientFundCurrency} /> */}
 
       {mm.isMMBetter ? (
         <MMTradeDetail loaded={!mm.mmOrderBookTrade.isLoading} mmTrade={mm.mmTradeInfo} />
