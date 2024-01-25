@@ -1,42 +1,23 @@
 import { useTranslation } from '@pancakeswap/localization'
-import {
-  ChartDisableIcon,
-  ChartIcon,
-  Flex,
-  HistoryIcon,
-  HotDisableIcon,
-  HotIcon,
-  IconButton,
-  NotificationDot,
-  Text,
-  TooltipText,
-  useModal,
-  useTooltip,
-} from '@pancakeswap/uikit'
-import { Swap } from '@pancakeswap/widgets-internal'
-import RefreshIcon from 'components/Svg/RefreshIcon'
-import { CHAIN_REFRESH_TIME } from 'config/constants/exchange'
+import { Flex, HistoryIcon, IconButton, NotificationDot, Text, useModal, useTooltip } from '@pancakeswap/uikit'
 import { useExpertMode } from '@pancakeswap/utils/user'
+import { Swap } from '@pancakeswap/widgets-internal'
 import TransactionsModal from 'components/App/Transactions/TransactionsModal'
 import GlobalSettings from 'components/Menu/GlobalSettings'
-import { useSwapHotTokenDisplay } from 'hooks/useSwapHotTokenDisplay'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { useRoutingSettingChanged } from 'state/user/smartRouter'
+import { useSwapHotTokenDisplay } from 'hooks/useSwapHotTokenDisplay'
 import { useAtom } from 'jotai'
-import { ReactElement, useCallback, useContext, useEffect, useState, memo } from 'react'
+import { ReactElement, memo, useCallback, useContext, useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
+import { useRoutingSettingChanged } from 'state/user/smartRouter'
 import { styled } from 'styled-components'
 import atomWithStorageWithErrorCatch from 'utils/atomWithStorageWithErrorCatch'
-import InternalLink from 'components/Links'
-import Image from 'next/image'
-import { SUPPORT_BUY_CRYPTO } from 'config/constants/supportChains'
 import { SettingsMode } from '../../../components/Menu/GlobalSettings/types'
 import { SwapFeaturesContext } from '../SwapFeaturesContext'
-import BuyCryptoIcon from '../../../../public/images/moneyBangs.svg'
 
 interface Props {
   title: string | ReactElement
-  subtitle: string
+  subtitle?: string
   noConfig?: boolean
   setIsChartDisplayed?: React.Dispatch<React.SetStateAction<boolean>>
   isChartDisplayed?: boolean
@@ -111,7 +92,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
           <Swap.CurrencyInputHeaderSubTitle>{subtitle}</Swap.CurrencyInputHeaderSubTitle>
         </Flex>
         <Flex width="100%" justifyContent="end">
-          {SUPPORT_BUY_CRYPTO.includes(chainId) ? (
+          {/* {SUPPORT_BUY_CRYPTO.includes(chainId) ? (
             <Flex alignItems="center" justifyContent="center" px="4px" mt="5px">
               <TooltipText
                 ref={buyCryptoTargetRef}
@@ -125,8 +106,8 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
               </TooltipText>
               {buyCryptoTooltipVisible && (!isMobile || mobileTooltipShow) && buyCryptoTooltip}
             </Flex>
-          ) : null}
-          {isChartSupported && setIsChartDisplayed && (
+          ) : null} */}
+          {/* {isChartSupported && setIsChartDisplayed && (
             <ColoredIconButton
               onClick={() => {
                 if (!isChartDisplayed && isSwapHotTokenDisplay) {
@@ -143,8 +124,8 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
                 <ChartIcon width="24px" color="textSubtle" />
               )}
             </ColoredIconButton>
-          )}
-          {isHotTokenSupported && (
+          )} */}
+          {/* {isHotTokenSupported && (
             <ColoredIconButton
               variant="text"
               scale="sm"
@@ -171,21 +152,21 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
                 </>
               )}
             </ColoredIconButton>
-          )}
+          )} */}
           <NotificationDot show={expertMode || isRoutingSettingChange}>
-            <GlobalSettings color="textSubtle" mr="0" mode={SettingsMode.SWAP_LIQUIDITY} />
+            <GlobalSettings color="#f3c00d" mr="0" mode={SettingsMode.SWAP_LIQUIDITY} />
           </NotificationDot>
           <IconButton onClick={onPresentTransactionsModal} variant="text" scale="sm">
-            <HistoryIcon color="textSubtle" width="24px" />
+            <HistoryIcon color="#f3c00d" width="24px" />
           </IconButton>
-          <IconButton variant="text" scale="sm" onClick={onRefreshPrice}>
+          {/* <IconButton variant="text" scale="sm" onClick={onRefreshPrice}>
             <RefreshIcon
               disabled={!hasAmount}
               color="textSubtle"
               width="27px"
               duration={CHAIN_REFRESH_TIME[chainId] ? CHAIN_REFRESH_TIME[chainId] / 1000 : undefined}
             />
-          </IconButton>
+          </IconButton> */}
         </Flex>
       </Flex>
     )

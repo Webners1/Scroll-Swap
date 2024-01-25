@@ -1,5 +1,5 @@
+import { AtomBox, Heading, Text } from "@pancakeswap/uikit";
 import { ReactNode, memo } from "react";
-import { Heading, AtomBox, Text } from "@pancakeswap/uikit";
 
 interface Props {
   title: ReactNode;
@@ -8,12 +8,17 @@ interface Props {
 
 export const CurrencyInputHeader = memo(({ title, subtitle }: Props) => {
   return (
-    <AtomBox width="100%" alignItems="center" flexDirection="column" padding="24px" borderBottom="1">
-      <AtomBox display="flex" width="100%" alignItems="center" justifyContent="space-between">
-        {title}
+    <>
+      <AtomBox width="100%" alignItems="center" flexDirection="column" padding="32px">
+        <AtomBox display="flex" width="100%" alignItems="center" justifyContent="space-between">
+          {title}
+        </AtomBox>
+        {subtitle}
       </AtomBox>
-      {subtitle}
-    </AtomBox>
+      <AtomBox width="100%" alignItems="center" flexDirection="column" paddingX="32px">
+        <AtomBox borderBottom="1" width="100%" className="form-header-border-color" />
+      </AtomBox>
+    </>
   );
 });
 

@@ -6,3 +6,8 @@ export const StyledButtonWrapper = styled(Box)`
     background-color: #f3c00d;
   }
 `
+export const StyledFormWrapper = styled.div`
+  .form-header-border-color {
+    border-color: #333;
+  }
+`

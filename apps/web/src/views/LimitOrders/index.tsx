@@ -1,9 +1,10 @@
 import { useTranslation } from '@pancakeswap/localization'
 import { Currency, CurrencyAmount, Percent, Token, Trade, TradeType } from '@pancakeswap/sdk'
-import { BottomDrawer, Box, Button, Flex, Link, useMatchBreakpoints, useModal, AutoColumn } from '@pancakeswap/uikit'
+import { AutoColumn, BottomDrawer, Box, Button, Flex, Link, useMatchBreakpoints, useModal } from '@pancakeswap/uikit'
 import { Swap as SwapUI } from '@pancakeswap/widgets-internal'
 
 import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
+import AccessRisk from 'components/AccessRisk'
 import { AppBody } from 'components/App'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import CurrencyInputPanel from 'components/CurrencyInputPanel'
@@ -20,16 +21,15 @@ import { useDefaultsFromURLSearch } from 'state/limitOrders/hooks'
 import { Field } from 'state/limitOrders/types'
 import { useExchangeChartManager } from 'state/user/hooks'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
-import AccessRisk from 'components/AccessRisk'
 import PriceChartContainer from 'views/Swap/components/Chart/PriceChartContainer'
 
 import { CommonBasesType } from 'components/SearchModal/types'
 import { useAllTokens, useCurrency } from 'hooks/Tokens'
-import { currencyId } from 'utils/currencyId'
 import useAccountActiveChain from 'hooks/useAccountActiveChain'
+import { currencyId } from 'utils/currencyId'
 import ImportTokenWarningModal from '../../components/ImportTokenWarningModal'
-import ClaimWarning from './components/ClaimWarning'
 import Page from '../Page'
+import ClaimWarning from './components/ClaimWarning'
 import { ConfirmLimitOrderModal } from './components/ConfirmLimitOrderModal'
 import CurrencyInputHeader from './components/CurrencyInputHeader'
 import LimitOrderPrice from './components/LimitOrderPrice'
@@ -360,7 +360,7 @@ const LimitOrders = () => {
             </Box>
           </Flex>
         )}
-        <Flex flexDirection="column" alignItems="center">
+        <Flex flexDirection="column" alignItems="center" width="100%">
           <StyledSwapContainer $isChartExpanded={false}>
             <StyledInputCurrencyWrapper>
               <AppBody>

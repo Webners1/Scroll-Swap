@@ -104,7 +104,6 @@ export function FormMain({ pricingAndSlippage, inputAmount, outputAmount, tradeL
   )
   const inputLoading = typedValue ? !isTypingInput && tradeLoading : false
   const outputLoading = typedValue ? isTypingInput && tradeLoading : false
-
   return (
     <FormContainer>
       <CurrencyInputPanel
@@ -125,6 +124,7 @@ export function FormMain({ pricingAndSlippage, inputAmount, outputAmount, tradeL
         onCurrencySelect={handleInputSelect}
         otherCurrency={outputCurrency}
         commonBasesType={CommonBasesType.SWAP_LIMITORDER}
+        labelTopText="From"
       />
       <RiskCheck currency={inputCurrency} />
       {/* <FlipButton /> */}
@@ -143,6 +143,7 @@ export function FormMain({ pricingAndSlippage, inputAmount, outputAmount, tradeL
         onCurrencySelect={handleOutputSelect}
         otherCurrency={outputCurrency}
         commonBasesType={CommonBasesType.SWAP_LIMITORDER}
+        labelTopText="To"
       />
       <RiskCheck currency={outputCurrency} />
       <Recipient />
