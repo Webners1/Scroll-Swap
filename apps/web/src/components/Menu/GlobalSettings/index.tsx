@@ -1,4 +1,4 @@
-import { Flex, IconButton, CogIcon, useModal } from '@pancakeswap/uikit'
+import { CogIcon, Flex, IconButton, useModal } from '@pancakeswap/uikit'
 
 import SettingsModal from './SettingsModal'
 

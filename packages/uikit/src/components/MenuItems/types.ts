@@ -12,10 +12,12 @@ export type MenuItemsType = {
   disabled?: boolean;
   showOnMobile?: boolean;
   showItemsOnMobile?: boolean;
+  flexDirection?: string;
 };
 
 export interface MenuItemsProps extends BoxProps {
   items: MenuItemsType[];
   activeItem?: string;
   activeSubItem?: string;
+  flexDirection?: string;
 }

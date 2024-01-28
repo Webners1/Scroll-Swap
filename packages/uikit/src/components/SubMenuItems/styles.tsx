@@ -1,5 +1,5 @@
-import { styled, css } from "styled-components";
-import { Flex, Box } from "../Box";
+import { css, styled } from "styled-components";
+import { Box, Flex } from "../Box";
 
 export const SubMenuItemWrapper = styled(Flex)<{ $isMobileOnly: boolean }>`
   ${({ theme }) => theme.mediaQueries.sm} {
@@ -8,6 +8,8 @@ export const SubMenuItemWrapper = styled(Flex)<{ $isMobileOnly: boolean }>`
   width: 100%;
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
 `;
 const StyledSubMenuItems = styled(Flex)`
   position: relative;
@@ -25,6 +27,7 @@ const StyledSubMenuItems = styled(Flex)`
   box-shadow: inset 0px -2px 0px -8px rgba(133, 133, 133, 0.1);
   overflow-x: scroll;
   scrollbar-width: none;
+  flex-direction: column;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
     display: none;

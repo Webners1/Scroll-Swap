@@ -2,17 +2,19 @@ import { AtomBox, Heading, Text } from "@pancakeswap/uikit";
 import { ReactNode, memo } from "react";
 
 interface Props {
-  title: ReactNode;
+  title?: ReactNode;
   subtitle: ReactNode;
 }
 
 export const CurrencyInputHeader = memo(({ title, subtitle }: Props) => {
   return (
     <>
-      <AtomBox width="100%" alignItems="center" flexDirection="column" padding="32px">
-        <AtomBox display="flex" width="100%" alignItems="center" justifyContent="space-between">
-          {title}
-        </AtomBox>
+      <AtomBox width="100%" className="abasdasd" alignItems="center" flexDirection="column" padding="32px">
+        {title && (
+          <AtomBox display="flex" width="100%" alignItems="center" justifyContent="space-between">
+            {title}
+          </AtomBox>
+        )}
         {subtitle}
       </AtomBox>
       <AtomBox width="100%" alignItems="center" flexDirection="column" paddingX="32px">

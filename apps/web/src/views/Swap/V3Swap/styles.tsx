@@ -11,3 +11,19 @@ export const StyledFormWrapper = styled.div`
     border-color: #333;
   }
 `
+export const StyledTabWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  button {
+    background-color: #4b4b4b;
+    box-shadow: none;
+    border: 2px solid #f3c00d;
+    color: #f3c00d;
+  }
+  .active {
+    background-color: #f3c00d;
+    color: #fff;
+  }
+`

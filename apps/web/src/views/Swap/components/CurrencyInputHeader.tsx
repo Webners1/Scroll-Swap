@@ -1,5 +1,5 @@
 import { useTranslation } from '@pancakeswap/localization'
-import { Flex, HistoryIcon, IconButton, NotificationDot, Text, useModal, useTooltip } from '@pancakeswap/uikit'
+import { Button, Flex, HistoryIcon, IconButton, NotificationDot, Text, useModal, useTooltip } from '@pancakeswap/uikit'
 import { useExpertMode } from '@pancakeswap/utils/user'
 import { Swap } from '@pancakeswap/widgets-internal'
 import TransactionsModal from 'components/App/Transactions/TransactionsModal'
@@ -7,6 +7,7 @@ import GlobalSettings from 'components/Menu/GlobalSettings'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useSwapHotTokenDisplay } from 'hooks/useSwapHotTokenDisplay'
 import { useAtom } from 'jotai'
+import { useRouter } from 'next/router'
 import { ReactElement, memo, useCallback, useContext, useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { useRoutingSettingChanged } from 'state/user/smartRouter'
@@ -14,9 +15,11 @@ import { styled } from 'styled-components'
 import atomWithStorageWithErrorCatch from 'utils/atomWithStorageWithErrorCatch'
 import { SettingsMode } from '../../../components/Menu/GlobalSettings/types'
 import { SwapFeaturesContext } from '../SwapFeaturesContext'
+import { StyledTabWrapper } from '../V3Swap/styles'
+import { StyledFormButtons } from './styleds'
 
 interface Props {
-  title: string | ReactElement
+  title?: string | ReactElement
   subtitle?: string
   noConfig?: boolean
   setIsChartDisplayed?: React.Dispatch<React.SetStateAction<boolean>>
@@ -40,6 +43,13 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
     const [mobileTooltipShowOnce, setMobileTooltipShowOnce] = useAtom(mobileShowOnceTokenHighlightAtom)
     const [mobileTooltipShow, setMobileTooltipShow] = useState(false)
 
+    // ---- TABS -- -- //
+    const router = useRouter()
+    const activeTab = router.query.tab || 'swap'
+    const handleTabChange = (tab: string) => {
+      router.push({ pathname: '/swap', query: { tab } }, undefined, { shallow: true })
+    }
+    // ---- TABS -- -- //
     const { tooltip, tooltipVisible, targetRef } = useTooltip(<Text>{t('Check out the top traded tokens')}</Text>, {
       placement: isMobile ? 'top' : 'bottom',
       trigger: isMobile ? 'focus' : 'hover',
@@ -85,13 +95,17 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
 
     const titleContent = (
       <Flex width="100%" alignItems="center" justifyContent="space-between" flexDirection="column">
-        <Flex flexDirection="column" alignItems="flex-start" width="100%" marginBottom={15}>
-          <Swap.CurrencyInputHeaderTitle>{title}</Swap.CurrencyInputHeaderTitle>
-        </Flex>
-        <Flex justifyContent="start" width="100%" height="17px" alignItems="center" mb="14px">
-          <Swap.CurrencyInputHeaderSubTitle>{subtitle}</Swap.CurrencyInputHeaderSubTitle>
-        </Flex>
-        <Flex width="100%" justifyContent="end">
+        {title && (
+          <Flex flexDirection="column" alignItems="flex-start" width="100%" marginBottom={15}>
+            <Swap.CurrencyInputHeaderTitle>{title}</Swap.CurrencyInputHeaderTitle>
+          </Flex>
+        )}
+        {subtitle && (
+          <Flex justifyContent="start" width="100%" height="17px" alignItems="center" mb="14px">
+            <Swap.CurrencyInputHeaderSubTitle>{subtitle}</Swap.CurrencyInputHeaderSubTitle>
+          </Flex>
+        )}
+        <Flex width="100%" justifyContent="space-between" alignItems="center">
           {/* {SUPPORT_BUY_CRYPTO.includes(chainId) ? (
             <Flex alignItems="center" justifyContent="center" px="4px" mt="5px">
               <TooltipText
@@ -153,12 +167,22 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
               )}
             </ColoredIconButton>
           )} */}
-          <NotificationDot show={expertMode || isRoutingSettingChange}>
-            <GlobalSettings color="#f3c00d" mr="0" mode={SettingsMode.SWAP_LIQUIDITY} />
-          </NotificationDot>
-          <IconButton onClick={onPresentTransactionsModal} variant="text" scale="sm">
-            <HistoryIcon color="#f3c00d" width="24px" />
-          </IconButton>
+          <StyledTabWrapper>
+            <Button className={activeTab === 'swap' ? 'active' : ''} onClick={() => handleTabChange('swap')}>
+              Swap
+            </Button>
+            <Button className={activeTab === 'liquidity' ? 'active' : ''} onClick={() => handleTabChange('liquidity')}>
+              Liquidity
+            </Button>
+          </StyledTabWrapper>
+          <StyledFormButtons>
+            <NotificationDot show={expertMode || isRoutingSettingChange}>
+              <GlobalSettings color="#f3c00d" mr="0" mode={SettingsMode.SWAP_LIQUIDITY} />
+            </NotificationDot>
+            <IconButton onClick={onPresentTransactionsModal} variant="text" scale="sm">
+              <HistoryIcon color="#f3c00d" width="24px" />
+            </IconButton>
+          </StyledFormButtons>
           {/* <IconButton variant="text" scale="sm" onClick={onRefreshPrice}>
             <RefreshIcon
               disabled={!hasAmount}

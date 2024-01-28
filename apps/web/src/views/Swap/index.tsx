@@ -143,7 +143,7 @@ export default function Swap() {
         <Flex flexDirection="column" width="100%">
           <StyledSwapContainer $isChartExpanded={isChartExpanded}>
             <StyledInputCurrencyWrapper mt={isChartExpanded ? '24px' : '0'}>
-              <AppBody className="abc">
+              <AppBody>
                 <StyledFormWrapper>
                   <V3SwapForm />
                 </StyledFormWrapper>

@@ -1,20 +1,18 @@
 import { useIsMounted } from "@pancakeswap/hooks";
 import throttle from "lodash/throttle";
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import React, { createElement, useEffect, useMemo, useRef, useState } from "react";
 import { styled } from "styled-components";
+import { AtomBox } from "../../components/AtomBox";
 import BottomNav from "../../components/BottomNav";
 import { Box } from "../../components/Box";
-import Flex from "../../components/Box/Flex";
-import { AtomBox } from "../../components/AtomBox";
-import CakePrice from "../../components/CakePrice/CakePrice";
+import { DropdownMenu } from "../../components/DropdownMenu";
 import Footer from "../../components/Footer";
-import LangSelector from "../../components/LangSelector/LangSelector";
-import MenuItems from "../../components/MenuItems/MenuItems";
-import { SubMenuItems } from "../../components/SubMenuItems";
+import MenuItem from "../../components/MenuItem/MenuItem";
 import { useMatchBreakpoints } from "../../contexts";
-import Logo from "./components/Logo";
+import isTouchDevice from "../../util/isTouchDevice";
 import { MENU_HEIGHT, MOBILE_MENU_HEIGHT, TOP_BANNER_HEIGHT, TOP_BANNER_HEIGHT_MOBILE } from "./config";
 import { MenuContext } from "./context";
+import { CustomHeaderWrapperStyled, StyledSidebar } from "./styled";
 import { NavProps } from "./types";
 
 const Wrapper = styled.div`
@@ -26,6 +24,7 @@ const Wrapper = styled.div`
 
 const StyledNav = styled.nav`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -46,7 +45,7 @@ const FixedContainer = styled("div").withConfig({
   left: 0;
   transition: top 0.2s;
   height: ${({ height }) => `${height}px`};
-  width: 100%;
+  width: fit-content;
   z-index: 20;
 `;
 
@@ -61,6 +60,7 @@ const BodyWrapper = styled(Box)`
   position: relative;
   display: flex;
   max-width: 100vw;
+  width: 100%;
 `;
 
 const Inner = styled.div`
@@ -144,56 +144,33 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
         }}
       >
         <Wrapper>
-          <FixedContainer showMenu={showMenu} height={totalTopMenuHeight}>
-            {banner && isMounted && <TopBannerContainer height={topBannerHeight}>{banner}</TopBannerContainer>}
-            <StyledNav>
-              <Flex>
-                <Logo href={homeLink?.href ?? "/"} />
-                <AtomBox display={{ xs: "none", md: "block" }}>
-                  <MenuItems items={links} activeItem={activeItem} activeSubItem={activeSubItem} ml="24px" />
-                </AtomBox>
-              </Flex>
-              <Flex alignItems="center" height="100%">
-                <AtomBox mr="12px" display={{ xs: "none", lg: "block" }}>
-                  <CakePrice chainId={chainId} showSkeleton={false} cakePriceUsd={cakePriceUsd} />
-                </AtomBox>
-                <Box mt="4px">
-                  <LangSelector
-                    currentLang={currentLang}
-                    langs={langs}
-                    setLang={setLang}
-                    buttonScale="xs"
-                    color="textSubtle"
-                    hideLanguage
-                  />
-                </Box>
-                {rightSide}
-              </Flex>
-            </StyledNav>
-          </FixedContainer>
-          {subLinks ? (
-            <Flex justifyContent="space-around" overflow="hidden">
-              <SubMenuItems
-                items={subLinksWithoutMobile}
-                mt={`${totalTopMenuHeight + 1}px`}
-                activeItem={activeSubItem}
-              />
-
-              {subLinksMobileOnly && subLinksMobileOnly?.length > 0 && (
-                <SubMenuItems
-                  items={subLinksMobileOnly}
-                  mt={`${totalTopMenuHeight + 1}px`}
-                  activeItem={activeSubItem}
-                  isMobileOnly
-                />
-              )}
-            </Flex>
-          ) : (
-            <div />
-          )}
-          <BodyWrapper mt={!subLinks ? `${totalTopMenuHeight + 1}px` : "0"}>
-            <Inner>{children}</Inner>
-          </BodyWrapper>
+          <CustomHeaderWrapperStyled>
+            <StyledSidebar>
+              {/* Default header here (code below) */}
+              {links.map(({ label, items: menuItems = [], href, icon, disabled }) => {
+                const statusColor = menuItems?.find((menuItem) => menuItem.status !== undefined)?.status?.color;
+                const isActive = activeItem === href;
+                const linkProps = isTouchDevice() && menuItems && menuItems.length > 0 ? {} : { href };
+                const Icon = icon;
+                return (
+                  <DropdownMenu
+                    key={`${label}#${href}`}
+                    items={menuItems}
+                    py={1}
+                    activeItem={activeSubItem}
+                    isDisabled={disabled}
+                  >
+                    <MenuItem {...linkProps} isActive={isActive} statusColor={statusColor} isDisabled={disabled}>
+                      {label || (icon && createElement(Icon as any, { color: isActive ? "secondary" : "textSubtle" }))}
+                    </MenuItem>
+                  </DropdownMenu>
+                );
+              })}
+            </StyledSidebar>
+            <BodyWrapper mt={!subLinks ? `${totalTopMenuHeight + 1}px` : "0"}>
+              <Inner>{children}</Inner>
+            </BodyWrapper>
+          </CustomHeaderWrapperStyled>
         </Wrapper>
       </AtomBox>
       <Footer
@@ -217,3 +194,58 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
 };
 
 export default Menu;
+
+// <FixedContainer showMenu={showMenu} height={totalTopMenuHeight}>
+//   {banner && isMounted && <TopBannerContainer height={topBannerHeight}>{banner}</TopBannerContainer>}
+//   <StyledNav>
+//     <Flex flexDirection="column">
+//       <Logo href={homeLink?.href ?? "/"} />
+//       <AtomBox display={{ xs: "none", md: "flex" }} flexDirection="column">
+// <MenuItems
+//           items={links}
+//           activeItem={activeItem}
+//           activeSubItem={activeSubItem}
+//           ml="24px"
+//           display="flex"
+//           flexDirection="column"
+//         />
+//       </AtomBox>
+//     </Flex>
+//     <Flex flexDirection="column" alignItems="center" height="100%">
+//       <AtomBox mr="12px" display={{ xs: "none", lg: "block" }}>
+//         <CakePrice chainId={chainId} showSkeleton={false} cakePriceUsd={cakePriceUsd} />
+//       </AtomBox>
+//       <Box mt="4px">
+//         <LangSelector
+//           currentLang={currentLang}
+//           langs={langs}
+//           setLang={setLang}
+//           buttonScale="xs"
+//           color="textSubtle"
+//           hideLanguage
+//         />
+//       </Box>
+//       {rightSide}
+//     </Flex>
+//   </StyledNav>
+// </FixedContainer>
+// {subLinks ? (
+//   <Flex justifyContent="space-around" overflow="hidden" flexDirection="column">
+//     <SubMenuItems
+//       items={subLinksWithoutMobile}
+//       mt={`${totalTopMenuHeight + 1}px`}
+//       activeItem={activeSubItem}
+//     />
+
+//     {subLinksMobileOnly && subLinksMobileOnly?.length > 0 && (
+//       <SubMenuItems
+//         items={subLinksMobileOnly}
+//         mt={`${totalTopMenuHeight + 1}px`}
+//         activeItem={activeSubItem}
+//         isMobileOnly
+//       />
+//     )}
+//   </Flex>
+// ) : (
+//   <div />
+// )}
