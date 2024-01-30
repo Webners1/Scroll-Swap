@@ -25,10 +25,8 @@ export function V3SwapForm() {
   )
 
   const finalTrade = mm.isMMBetter ? mm?.mmTradeInfo?.trade : trade
-
   const tradeLoaded = !isLoading
   const price = useMemo(() => trade && SmartRouter.getExecutionPrice(trade), [trade])
-
   const insufficientFundCurrency = useCheckInsufficientError(trade)
 
   return (

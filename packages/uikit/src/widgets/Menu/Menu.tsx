@@ -1,16 +1,14 @@
 import { useIsMounted } from "@pancakeswap/hooks";
 import throttle from "lodash/throttle";
-import React, { createElement, useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { styled } from "styled-components";
 import { AtomBox } from "../../components/AtomBox";
 import BottomNav from "../../components/BottomNav";
 import { Box } from "../../components/Box";
-import { DropdownMenu } from "../../components/DropdownMenu";
-import Footer from "../../components/Footer";
-import MenuItem from "../../components/MenuItem/MenuItem";
+import { Link } from "../../components/Link";
 import { useMatchBreakpoints } from "../../contexts";
-import isTouchDevice from "../../util/isTouchDevice";
-import { MENU_HEIGHT, MOBILE_MENU_HEIGHT, TOP_BANNER_HEIGHT, TOP_BANNER_HEIGHT_MOBILE } from "./config";
+import DropdownMenu from "./DropdownMenu";
+import { MENU_HEIGHT, TOP_BANNER_HEIGHT, TOP_BANNER_HEIGHT_MOBILE } from "./config";
 import { MenuContext } from "./context";
 import { CustomHeaderWrapperStyled, StyledSidebar } from "./styled";
 import { NavProps } from "./types";
@@ -61,6 +59,7 @@ const BodyWrapper = styled(Box)`
   display: flex;
   max-width: 100vw;
   width: 100%;
+  min-height: 100vh;
 `;
 
 const Inner = styled.div`
@@ -68,6 +67,79 @@ const Inner = styled.div`
   transition: margin-top 0.2s, margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translate3d(0, 0, 0);
   max-width: 100%;
+  > div {
+    background: #272727;
+  }
+`;
+
+const MainLinkContainerStyled = styled.ul`
+  list-style: none;
+  > li:first-child {
+    padding-left: 50px;
+  }
+`;
+const MainLinkStyled = styled.li`
+  font-size: 16px;
+  padding: 12px 20px 12px 30px;
+  position: relative;
+
+  a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-weight: 400;
+    :hover {
+      text-decoration: none;
+    }
+  }
+  &.active {
+    background-color: rgb(39, 39, 39);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+    .label {
+      color: #fff;
+    }
+
+    .top-curve {
+      position: absolute;
+      top: -20px;
+      height: 20px;
+      right: 0px;
+      width: 20px;
+      display: block;
+      background: rgb(39, 39, 39);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 20px;
+        background: rgba(120, 120, 120, 0.6);
+        border-bottom-right-radius: 20px;
+      }
+    }
+    .bottom-curve {
+      position: absolute;
+      bottom: -20px;
+      height: 20px;
+      right: 0px;
+      width: 20px;
+      display: block;
+      background: rgb(39, 39, 39);
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 100%;
+        width: 20px;
+        background: rgba(120, 120, 120, 0.6);
+        border-top-right-radius: 20px;
+      }
+    }
+  }
 `;
 
 const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
@@ -134,6 +206,8 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   const subLinksWithoutMobile = useMemo(() => subLinks?.filter((subLink) => !subLink.isMobileOnly), [subLinks]);
   const subLinksMobileOnly = useMemo(() => subLinks?.filter((subLink) => subLink.isMobileOnly), [subLinks]);
   const providerValue = useMemo(() => ({ linkComponent }), [linkComponent]);
+
+  console.log(links, "linkss", activeItem);
   return (
     <MenuContext.Provider value={providerValue}>
       <AtomBox
@@ -147,25 +221,22 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
           <CustomHeaderWrapperStyled>
             <StyledSidebar>
               {/* Default header here (code below) */}
-              {links.map(({ label, items: menuItems = [], href, icon, disabled }) => {
-                const statusColor = menuItems?.find((menuItem) => menuItem.status !== undefined)?.status?.color;
-                const isActive = activeItem === href;
-                const linkProps = isTouchDevice() && menuItems && menuItems.length > 0 ? {} : { href };
-                const Icon = icon;
-                return (
-                  <DropdownMenu
-                    key={`${label}#${href}`}
-                    items={menuItems}
-                    py={1}
-                    activeItem={activeSubItem}
-                    isDisabled={disabled}
-                  >
-                    <MenuItem {...linkProps} isActive={isActive} statusColor={statusColor} isDisabled={disabled}>
-                      {label || (icon && createElement(Icon as any, { color: isActive ? "secondary" : "textSubtle" }))}
-                    </MenuItem>
-                  </DropdownMenu>
-                );
-              })}
+              <MainLinkContainerStyled>
+                <MainLinkStyled>
+                  <Link href="/">Home</Link>
+                </MainLinkStyled>
+                {links.map(({ label, href, items }) => (
+                  <MainLinkStyled key={href} className={activeItem === href ? "active" : ""}>
+                    <b className="top-curve" />
+                    {items ? (
+                      <DropdownMenu items={items} label={label} activeItem={activeItem} />
+                    ) : (
+                      <Link href={href}>{label}</Link>
+                    )}
+                    <b className="bottom-curve" />
+                  </MainLinkStyled>
+                ))}
+              </MainLinkContainerStyled>
             </StyledSidebar>
             <BodyWrapper mt={!subLinks ? `${totalTopMenuHeight + 1}px` : "0"}>
               <Inner>{children}</Inner>
@@ -173,19 +244,6 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
           </CustomHeaderWrapperStyled>
         </Wrapper>
       </AtomBox>
-      <Footer
-        chainId={chainId}
-        items={footerLinks}
-        isDark={isDark}
-        toggleTheme={toggleTheme}
-        langs={langs}
-        setLang={setLang}
-        currentLang={currentLang}
-        cakePriceUsd={cakePriceUsd}
-        buyCakeLabel={buyCakeLabel}
-        buyCakeLink={buyCakeLink}
-        mb={[`${MOBILE_MENU_HEIGHT}px`, null, "0px"]}
-      />
       <AtomBox display={{ xs: "block", md: "none" }}>
         <BottomNav items={links} activeItem={activeItem} activeSubItem={activeSubItem} />
       </AtomBox>
@@ -194,6 +252,26 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
 };
 
 export default Menu;
+
+// {links.map(({ label, items: menuItems = [], href, icon, disabled }) => {
+//   const statusColor = menuItems?.find((menuItem) => menuItem.status !== undefined)?.status?.color;
+//   const isActive = activeItem === href;
+//   const linkProps = isTouchDevice() && menuItems && menuItems.length > 0 ? {} : { href };
+//   const Icon = icon;
+//   return (
+//     <DropdownMenu
+//       key={`${label}#${href}`}
+//       items={menuItems}
+//       py={1}
+//       activeItem={activeSubItem}
+//       isDisabled={disabled}
+//     >
+//       <MenuItem {...linkProps} isActive={isActive} statusColor={statusColor} isDisabled={disabled}>
+//         {label || (icon && createElement(Icon as any, { color: isActive ? "secondary" : "textSubtle" }))}
+//       </MenuItem>
+//     </DropdownMenu>
+//   );
+// })}
 
 // <FixedContainer showMenu={showMenu} height={totalTopMenuHeight}>
 //   {banner && isMounted && <TopBannerContainer height={topBannerHeight}>{banner}</TopBannerContainer>}

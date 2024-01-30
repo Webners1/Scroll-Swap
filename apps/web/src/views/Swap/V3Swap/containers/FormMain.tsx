@@ -15,13 +15,12 @@ import { useCurrencyBalances } from 'state/wallet/hooks'
 import { currencyId } from 'utils/currencyId'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 
-import { ArrowDownIcon } from '@pancakeswap/uikit'
 import { useAccount } from 'wagmi'
 import useWarningImport from '../../hooks/useWarningImport'
 import { FormContainer } from '../components'
 import { useIsWrapping } from '../hooks'
+import { FlipButton } from './FlipButton'
 import { Recipient } from './Recipient'
-import { RiskCheck } from './RiskCheck'
 
 interface Props {
   inputAmount?: CurrencyAmount<Currency>
@@ -126,9 +125,8 @@ export function FormMain({ pricingAndSlippage, inputAmount, outputAmount, tradeL
         commonBasesType={CommonBasesType.SWAP_LIMITORDER}
         labelTopText="From"
       />
-      <RiskCheck currency={inputCurrency} />
-      {/* <FlipButton /> */}
-      <ArrowDownIcon color="#fff" />
+      {/* <RiskCheck currency={inputCurrency} /> */}
+      <FlipButton />
       <CurrencyInputPanel
         id="swap-currency-output"
         showUSDPrice
@@ -145,9 +143,9 @@ export function FormMain({ pricingAndSlippage, inputAmount, outputAmount, tradeL
         commonBasesType={CommonBasesType.SWAP_LIMITORDER}
         labelTopText="To"
       />
-      <RiskCheck currency={outputCurrency} />
+      {/* <RiskCheck currency={outputCurrency} /> */}
       <Recipient />
-      {/* {pricingAndSlippage} */}
+      {pricingAndSlippage}
       {swapCommitButton}
     </FormContainer>
   )

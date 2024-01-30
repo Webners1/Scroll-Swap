@@ -1,47 +1,35 @@
 import { styled } from "styled-components";
 
-import { ButtonProps, IconButton, ArrowUpDownIcon, ArrowDownIcon } from "@pancakeswap/uikit";
-import { CurrencyInputPanel } from "./CurrencyInputPanel";
+import { ArrowDownIcon, ButtonProps, IconButton } from "@pancakeswap/uikit";
 import { CurrencyInputHeader, CurrencyInputHeaderSubTitle, CurrencyInputHeaderTitle } from "./CurrencyInputHeader";
-import { SwapPage as Page } from "./Page";
+import { CurrencyInputPanel } from "./CurrencyInputPanel";
 import { SwapFooter as Footer } from "./Footer";
+import { SwapPage as Page } from "./Page";
 import { SwapInfo as Info, SwapInfoLabel as InfoLabel } from "./SwapInfo";
 import { TradePrice } from "./TradePrice";
 
 const SwitchIconButton = styled(IconButton)`
-  box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
   .icon-up-down {
     display: none;
-  }
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.primary};
-    .icon-down {
-      display: none;
-      fill: white;
-    }
-    .icon-up-down {
-      display: block;
-      fill: white;
-    }
   }
 `;
 
 const SwitchButton = (props: ButtonProps) => (
   <SwitchIconButton variant="light" scale="sm" {...props}>
-    <ArrowDownIcon className="icon-down" color="primary" />
-    <ArrowUpDownIcon className="icon-up-down" color="primary" />
+    <ArrowDownIcon className="icon-down" color="#fff" />
   </SwitchIconButton>
 );
 
 export {
-  SwitchButton,
-  CurrencyInputHeaderTitle,
-  CurrencyInputHeaderSubTitle,
   CurrencyInputHeader,
+  CurrencyInputHeaderSubTitle,
+  CurrencyInputHeaderTitle,
   CurrencyInputPanel,
-  Page,
   Footer,
   Info,
   InfoLabel,
+  Page,
+  SwitchButton,
   TradePrice,
 };

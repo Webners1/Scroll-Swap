@@ -2,7 +2,7 @@ import { useModal } from '@pancakeswap/uikit'
 import { Swap as SwapUI } from '@pancakeswap/widgets-internal'
 
 import { useTranslation } from '@pancakeswap/localization'
-import { Price, Currency } from '@pancakeswap/sdk'
+import { Currency, Price } from '@pancakeswap/sdk'
 import { useUserSlippage } from '@pancakeswap/utils/user'
 import { memo } from 'react'
 
@@ -29,7 +29,6 @@ export const PricingAndSlippage = memo(function PricingAndSlippage({
   if (isWrapping) {
     return null
   }
-
   const priceNode = price ? (
     <>
       <SwapUI.InfoLabel>{t('Price')}</SwapUI.InfoLabel>

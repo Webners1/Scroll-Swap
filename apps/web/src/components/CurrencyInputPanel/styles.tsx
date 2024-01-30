@@ -19,7 +19,7 @@ export const InputStyled = styled.div`
     max-width: 300px;
   }
   label:has(input:focus) {
-    box-shadow: 0px 0px 0px 1px #f3c00d, 0px 0px 0px 4px #f3c10dd8;
+    box-shadow: none;
   }
   div:has(> input) {
     background-color: #787878;
