@@ -5,7 +5,7 @@ import { styled } from "styled-components";
 import { AtomBox } from "../../components/AtomBox";
 import BottomNav from "../../components/BottomNav";
 import { Box } from "../../components/Box";
-import { Link } from "../../components/Link";
+import MenuItem from "../../components/MenuItem/MenuItem";
 import { useMatchBreakpoints } from "../../contexts";
 import DropdownMenu from "./DropdownMenu";
 import { MENU_HEIGHT, TOP_BANNER_HEIGHT, TOP_BANNER_HEIGHT_MOBILE } from "./config";
@@ -74,6 +74,15 @@ const Inner = styled.div`
 
 const MainLinkContainerStyled = styled.ul`
   list-style: none;
+
+  li:has(a:empty) {
+    display: none;
+  }
+
+  li:has(div:empty) {
+    display: none;
+  }
+
   > li:first-child {
     padding-left: 50px;
   }
@@ -85,8 +94,10 @@ const MainLinkStyled = styled.li`
 
   a {
     color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
+    text-decoration: none !important;
     font-weight: 400;
+    padding: 0px;
+    height: fit-content;
     :hover {
       text-decoration: none;
     }
@@ -140,6 +151,10 @@ const MainLinkStyled = styled.li`
       }
     }
   }
+`;
+
+const SingleLinkWrapperStyled = styled.div`
+  padding-left: 20px;
 `;
 
 const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
@@ -207,7 +222,25 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   const subLinksMobileOnly = useMemo(() => subLinks?.filter((subLink) => subLink.isMobileOnly), [subLinks]);
   const providerValue = useMemo(() => ({ linkComponent }), [linkComponent]);
 
-  console.log(links, "linkss", activeItem);
+  const topLevelLinks: any = [];
+  const nestedLinks: any = [];
+
+  links
+    .filter((i) => i.label !== "Trade")
+    .forEach((item) => {
+      // Separate top-level objects
+      const topLevelObject = { href: item.href, label: item.label };
+      topLevelLinks.push(topLevelObject);
+
+      // Separate nested objects
+      if (item.items && item.items.length > 0) {
+        item.items.forEach((nestedItem) => {
+          nestedLinks.push(nestedItem);
+        });
+      }
+    });
+
+  console.log(topLevelLinks, "linkss", nestedLinks);
   return (
     <MenuContext.Provider value={providerValue}>
       <AtomBox
@@ -222,20 +255,70 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
             <StyledSidebar>
               {/* Default header here (code below) */}
               <MainLinkContainerStyled>
-                <MainLinkStyled>
-                  <Link href="/">Home</Link>
+                <MainLinkStyled className={activeItem === "/" ? "active" : ""}>
+                  <b className="top-curve" />
+                  <MenuItem {...{ href: "/" }} isActive={activeItem === "/"}>
+                    Home
+                  </MenuItem>
+                  <b className="bottom-curve" />
                 </MainLinkStyled>
-                {links.map(({ label, href, items }) => (
-                  <MainLinkStyled key={href} className={activeItem === href ? "active" : ""}>
-                    <b className="top-curve" />
-                    {items ? (
-                      <DropdownMenu items={items} label={label} activeItem={activeItem} />
-                    ) : (
-                      <Link href={href}>{label}</Link>
-                    )}
-                    <b className="bottom-curve" />
-                  </MainLinkStyled>
-                ))}
+                {links
+                  .filter((i) => i.label === "Trade")
+                  .map(({ label, href, items }) => (
+                    <MainLinkStyled key={href} className={activeItem === href ? "active" : ""}>
+                      <b className="top-curve" />
+                      {items ? (
+                        <DropdownMenu
+                          items={items.filter((i) => i.label === "Swap" || i.label === "Liquidity")}
+                          label={label}
+                          active={activeItem === href}
+                        />
+                      ) : (
+                        <MenuItem {...{ href }} isActive={activeItem === href}>
+                          {label}
+                        </MenuItem>
+                      )}
+                      <b className="bottom-curve" />
+                    </MainLinkStyled>
+                  ))}
+                {topLevelLinks
+                  .filter((i: any) => i.label !== "Earn")
+                  .map((item: any) => {
+                    const linkProps = { href: item.href };
+                    return (
+                      <MainLinkStyled
+                        key={`${item.href}${item.label}`}
+                        className={activeItem === item.href ? "active" : ""}
+                      >
+                        <b className="top-curve" />
+                        <SingleLinkWrapperStyled>
+                          <MenuItem {...linkProps} isActive={activeItem === item.href}>
+                            {item.label}
+                          </MenuItem>
+                        </SingleLinkWrapperStyled>
+                        <b className="bottom-curve" />
+                      </MainLinkStyled>
+                    );
+                  })}
+                {nestedLinks
+                  .filter((i: any) => i.label !== "Overview")
+                  .map(
+                    (item: any) =>
+                      item.href && (
+                        <MainLinkStyled
+                          key={`${item.href}${item.label}`}
+                          className={activeItem === item.href ? "active" : ""}
+                        >
+                          <b className="top-curve" />
+                          <SingleLinkWrapperStyled>
+                            <MenuItem {...{ href: item.href }} isActive={activeItem === item.href}>
+                              {item.label}
+                            </MenuItem>
+                          </SingleLinkWrapperStyled>
+                          <b className="bottom-curve" />
+                        </MainLinkStyled>
+                      )
+                  )}
               </MainLinkContainerStyled>
             </StyledSidebar>
             <BodyWrapper mt={!subLinks ? `${totalTopMenuHeight + 1}px` : "0"}>
@@ -316,12 +399,12 @@ export default Menu;
 //     />
 
 //     {subLinksMobileOnly && subLinksMobileOnly?.length > 0 && (
-//       <SubMenuItems
-//         items={subLinksMobileOnly}
-//         mt={`${totalTopMenuHeight + 1}px`}
-//         activeItem={activeSubItem}
-//         isMobileOnly
-//       />
+// <SubMenuItems
+//   items={subLinksMobileOnly}
+//   mt={`${totalTopMenuHeight + 1}px`}
+//   activeItem={activeSubItem}
+//   isMobileOnly
+// />
 //     )}
 //   </Flex>
 // ) : (

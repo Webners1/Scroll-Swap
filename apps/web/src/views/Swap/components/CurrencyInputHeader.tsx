@@ -7,6 +7,7 @@ import GlobalSettings from 'components/Menu/GlobalSettings'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useSwapHotTokenDisplay } from 'hooks/useSwapHotTokenDisplay'
 import { useAtom } from 'jotai'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ReactElement, memo, useCallback, useContext, useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
@@ -168,12 +169,12 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
             </ColoredIconButton>
           )} */}
           <StyledTabWrapper>
-            <Button className={activeTab === 'swap' ? 'active' : ''} onClick={() => handleTabChange('swap')}>
-              Swap
-            </Button>
-            <Button className={activeTab === 'liquidity' ? 'active' : ''} onClick={() => handleTabChange('liquidity')}>
-              Liquidity
-            </Button>
+            <Link href="/swap">
+              <Button className={activeTab === 'swap' ? 'active' : ''}>Swap</Button>
+            </Link>
+            <Link href="/liquidity">
+              <Button className={activeTab === 'liquidity' ? 'active' : ''}>Liquidity</Button>
+            </Link>
           </StyledTabWrapper>
           <StyledFormButtons>
             <NotificationDot show={expertMode || isRoutingSettingChange}>

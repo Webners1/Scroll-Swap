@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
-import { Link } from "../../components/Link";
+import MenuItem from "../../components/MenuItem/MenuItem";
 
 const NestedNavStyled = styled.div`
   display: flex;
@@ -15,7 +15,6 @@ const NestedNavLabelStyled = styled.div`
   justify-content: space-between;
   gap: 70px;
   cursor: pointer;
-  margin-bottom: 8px;
   padding-left: 20px;
 `;
 
@@ -33,18 +32,19 @@ const IconStyled = styled.i<IconProps>`
 `;
 
 type VisibilityProps = {
-  height?: number;
+  height: number;
 };
 
 const SubLinkContainerStyled = styled.ul<VisibilityProps>`
   list-style: none;
+  margin-top: ${(p) => (p?.height > 0 ? "8px" : "0px")};
   height: ${(p) => p.height}px;
   overflow-y: hidden;
   transition: 0.3s all;
 `;
 const SubLinkStyled = styled.li`
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 8px 20px;
+  padding: 10px 20px;
   a {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.6);
@@ -52,7 +52,7 @@ const SubLinkStyled = styled.li`
     text-decoration: none !important;
   }
   &.active {
-    > a {
+    a {
       color: rgb(255, 255, 255);
     }
   }
@@ -70,31 +70,42 @@ const ArrowIcon = () => (
 type DropdownProps = {
   label?: string;
   items?: any;
-  activeItem?: string;
+  active?: boolean;
 };
 
-const DropdownMenu: React.FC<DropdownProps> = ({ items, label, activeItem }) => {
+const DropdownMenu: React.FC<DropdownProps> = ({ items, label, active = false }) => {
   const ref = useRef<any>();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(active);
+  const [activeLink, setActiveLink] = useState("");
 
   const handleOpen = () => {
     setOpen(!open);
   };
 
+  useEffect(() => {
+    setActiveLink(window?.location?.pathname);
+  }, [window?.location?.pathname]);
+
+  console.log(activeLink, "linkss");
+
   return (
     <NestedNavStyled>
-      <NestedNavLabelStyled>
+      <NestedNavLabelStyled onClick={handleOpen}>
         <p className="label">{label}</p>
-        <IconStyled onClick={handleOpen} isOpen={open}>
+        <IconStyled isOpen={open}>
           <ArrowIcon />
         </IconStyled>
       </NestedNavLabelStyled>
       <SubLinkContainerStyled ref={ref} height={!open ? 0 : ref?.current?.scrollHeight}>
-        {items.map(({ href, label: text }: any, j: number) => (
-          <SubLinkStyled key={href} className={activeItem === href ? "active" : ""}>
-            <Link href={href}>{text}</Link>
-          </SubLinkStyled>
-        ))}
+        {items.map(({ href, label: text }: any, j: number) => {
+          return (
+            <SubLinkStyled key={href} className={activeLink === href ? "active" : ""}>
+              <MenuItem {...{ href }} isActive={activeLink === href}>
+                {text}
+              </MenuItem>
+            </SubLinkStyled>
+          );
+        })}
       </SubLinkContainerStyled>
     </NestedNavStyled>
   );

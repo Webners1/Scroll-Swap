@@ -1,21 +1,21 @@
-import { styled, css } from 'styled-components'
 import {
-  Text,
+  ArrowBackIcon,
+  AutoRow,
   Flex,
   Heading,
   IconButton,
-  ArrowBackIcon,
   NotificationDot,
   QuestionHelper,
-  AutoRow,
+  Text,
 } from '@pancakeswap/uikit'
 import { useExpertMode } from '@pancakeswap/utils/user'
 import GlobalSettings from 'components/Menu/GlobalSettings'
 import Link from 'next/link'
+import { css, styled } from 'styled-components'
 import { SettingsMode } from '../Menu/GlobalSettings/types'
 
 interface Props {
-  title: string | React.ReactNode
+  title?: string | React.ReactNode
   subtitle?: string
   helper?: string
   backTo?: string | (() => void)
@@ -30,7 +30,7 @@ interface Props {
 const AppHeaderContainer = styled(Flex)<{ borderHidden?: boolean }>`
   align-items: center;
   justify-content: space-between;
-  padding: 24px;
+  padding: 32px;
   width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
 
@@ -84,10 +84,10 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
             </Flex>
             {!noConfig && (
               <Flex alignItems="flex-end">
-                {IconSlot}
                 <NotificationDot show={expertMode}>
                   <GlobalSettings mode={SettingsMode.SWAP_LIQUIDITY} />
                 </NotificationDot>
+                {IconSlot}
               </Flex>
             )}
             {noConfig && buttons && (

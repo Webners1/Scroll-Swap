@@ -56,7 +56,7 @@ export const StyledCardInner = styled(Box)<{ background?: string; hasCustomBorde
   width: 100%;
   height: 100%;
   overflow: ${({ hasCustomBorder }) => (hasCustomBorder ? "initial" : "inherit")};
-  background: ${({ theme, background }) => background ?? theme.card.background};
+  background-color: #4b4b4b;
   border-radius: ${({ theme }) => theme.radii.card};
 `;
 
