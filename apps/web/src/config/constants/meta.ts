@@ -1,7 +1,7 @@
-import memoize from 'lodash/memoize'
 import { ContextApi } from '@pancakeswap/localization'
-import { PageMeta } from './types'
+import memoize from 'lodash/memoize'
 import { ASSET_CDN } from './endpoints'
+import { PageMeta } from './types'
 
 export const DEFAULT_META: PageMeta = {
   title: 'PancakeSwap',
@@ -39,17 +39,17 @@ const getPathList = (t: ContextApi['t']): PathList => {
       '/voting/proposal/create': { title: t('Make a Proposal'), image: `${ASSET_CDN}/web/og/voting.jpg` },
       '/info': {
         title: `${t('Overview')} - ${t('Info')}`,
-        description: 'View statistics for DSwap exchanges.',
+        description: 'View statistics for LolPad Finance exchanges.',
         image: `${ASSET_CDN}/web/og/info.jpg`,
       },
       '/info/pairs': {
         title: `${t('Pairs')} - ${t('Info')}`,
-        description: 'View statistics for DSwap exchanges.',
+        description: 'View statistics for LolPad Finance exchanges.',
         image: `${ASSET_CDN}/web/og/info.jpg`,
       },
       '/info/tokens': {
         title: `${t('Tokens')} - ${t('Info')}`,
-        description: 'View statistics for DSwap exchanges.',
+        description: 'View statistics for LolPad Finance exchanges.',
         image: `${ASSET_CDN}/web/og/info.jpg`,
       },
       '/nfts': { title: t('NFT Marketplace'), image: `${ASSET_CDN}/web/og/nft.jpg` },

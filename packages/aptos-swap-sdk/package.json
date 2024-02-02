@@ -2,7 +2,7 @@
   "name": "@pancakeswap/aptos-swap-sdk",
   "license": "MIT",
   "version": "1.0.1",
-  "description": "🛠 An SDK for building applications on top of DSwap Aptos.",
+  "description": "🛠 An SDK for building applications on top of LolPad Finance Aptos.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/index.mjs",

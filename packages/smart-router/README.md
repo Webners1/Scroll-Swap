@@ -1,6 +1,6 @@
-# DSwap Smart Router
+# LolPad Finance Smart Router
 
-`@pancakeswap/smart-router` is a SDK for getting best trade routes from DSwap AMM.
+`@pancakeswap/smart-router` is a SDK for getting best trade routes from LolPad Finance AMM.
 
 ## Install
 
