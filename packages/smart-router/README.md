@@ -1,6 +1,6 @@
-# Pancakeswap Smart Router
+# DSwap Smart Router
 
-`@pancakeswap/smart-router` is a SDK for getting best trade routes from Pancakeswap AMM.
+`@pancakeswap/smart-router` is a SDK for getting best trade routes from DSwap AMM.
 
 ## Install
 
