@@ -70,6 +70,7 @@ export const POOL_INIT_CODE_HASHES = {
   [ChainId.BASE]: POOL_INIT_CODE_HASH,
   [ChainId.BASE_TESTNET]: POOL_INIT_CODE_HASH,
   [ChainId.SCROLL_SEPOLIA]: POOL_INIT_CODE_HASH,
+  [ChainId.SCROLL]: POOL_INIT_CODE_HASH,
 } as const satisfies Record<ChainId, Hash>
 
 /**

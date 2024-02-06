@@ -19,6 +19,7 @@ export const V3_SUBGRAPHS = {
   [ChainId.OPBNB]: 'https://opbnb-mainnet-graph.nodereal.io/subgraphs/name/pancakeswap/exchange-v3',
   [ChainId.OPBNB_TESTNET]: null,
   [ChainId.SCROLL_SEPOLIA]: 'https://api.studio.thegraph.com/query/45376/exchange-v3-scroll-sepolia/version/latest',
+  [ChainId.SCROLL]: 'https://api.studio.thegraph.com/query/45376/exchange-v3-scroll-sepolia/version/latest',
 } satisfies Record<ChainId, string | null>
 
 export const V2_SUBGRAPHS = {

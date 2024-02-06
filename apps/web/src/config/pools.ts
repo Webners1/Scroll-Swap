@@ -60,4 +60,5 @@ export const POOLS_SLOW_REVALIDATE = {
   [ChainId.BASE]: 20_000,
   [ChainId.BASE_TESTNET]: 20_000,
   [ChainId.SCROLL_SEPOLIA]: 20_000,
+  [ChainId.SCROLL]: 20_000,
 } as const satisfies Record<ChainId, number>

@@ -378,4 +378,5 @@ export const STABLE_COIN = {
   [ChainId.BASE]: USDC[ChainId.BASE],
   [ChainId.BASE_TESTNET]: USDC[ChainId.BASE_TESTNET],
   [ChainId.SCROLL_SEPOLIA]: USDC[ChainId.SCROLL_SEPOLIA],
+  [ChainId.SCROLL]: USDC[ChainId.SCROLL_SEPOLIA],
 } satisfies Record<ChainId, ERC20Token>
