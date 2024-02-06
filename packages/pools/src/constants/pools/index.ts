@@ -8,6 +8,7 @@ import { livePools as zkSyncTestnetLivePools, pools as zkSyncTestnetPools } from
 import { livePools as zkSyncLivePools, pools as zkSyncPools } from './324'
 import { livePools as arbLivePools, pools as arbPools } from './42161'
 import { livePools as arbTestnetLivePools, pools as arbTestnetPools } from './421613'
+import { livePools as scrollLivePools, pools as scrollPools } from './534352'
 import { livePools as bscLivePools, pools as bscPools } from './56'
 import { livePools as lineaTestnetLivePools, pools as lineaTestnetPools } from './59140'
 import { livePools as lineaLivePools, pools as lineaPools } from './59144'
@@ -38,12 +39,14 @@ export const POOLS_CONFIG_BY_CHAIN = {
   [ChainId.POLYGON_ZKEVM]: polygonZkEvmPools,
   [ChainId.POLYGON_ZKEVM_TESTNET]: polygonZkEvmTestnetPools,
   [ChainId.OPBNB]: opBNBPools,
+  [ChainId.SCROLL]: scrollPools,
 } as PoolsConfigByChain<SupportedChainId>
 
 export const LIVE_POOLS_CONFIG_BY_CHAIN = {
   [ChainId.ETHEREUM]: ethLivePools,
   [ChainId.BSC]: bscLivePools,
   [ChainId.BSC_TESTNET]: bscTestnetLivePools,
+  [ChainId.SCROLL]: scrollLivePools,
   [ChainId.ARBITRUM_ONE]: arbLivePools,
   [ChainId.ARBITRUM_GOERLI]: arbTestnetLivePools,
   [ChainId.ZKSYNC]: zkSyncLivePools,
