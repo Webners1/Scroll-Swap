@@ -46,7 +46,11 @@ import useStableConfig, {
 } from 'views/Swap/hooks/useStableConfig'
 
 const Body = styled(CardBody)`
-  background-color: ${({ theme }) => theme.colors.dropdownDeep};
+  padding: 32px;
+`
+
+const FooterWrapper = styled.div`
+  padding: 24px;
 `
 
 export const StableContextProvider = (props: { pair: LPStablePair; account: string | undefined }) => {
@@ -353,13 +357,15 @@ export default function PoolListPage() {
             </Flex>
           )}
         </Body>
-        <CardFooter style={{ textAlign: 'center' }}>
-          <NextLink href="/add" passHref>
-            <Button id="join-pool-button" width="100%" startIcon={<AddIcon color="invertedContrast" />}>
-              {t('Add Liquidity')}
-            </Button>
-          </NextLink>
-        </CardFooter>
+        <FooterWrapper>
+          <CardFooter style={{ textAlign: 'center' }}>
+            <NextLink href="/add" passHref>
+              <Button id="join-pool-button" width="100%" startIcon={<AddIcon color="invertedContrast" />}>
+                {t('Add Liquidity')}
+              </Button>
+            </NextLink>
+          </CardFooter>
+        </FooterWrapper>
         <V3SubgraphHealthIndicator />
       </AppBody>
     </Page>

@@ -1,8 +1,6 @@
 import { AtomBox, AtomBoxProps, SwapCSS } from "@pancakeswap/uikit";
 import { ReactNode } from "react";
 
-import { SwapFooter } from "./Footer";
-
 type SwapPageProps = AtomBoxProps & {
   removePadding?: boolean;
   hideFooterOnDesktop?: boolean;
@@ -28,12 +26,12 @@ export const SwapPage = ({
     {children}
     <AtomBox display="flex" flexGrow={1} />
     <AtomBox display={["block", null, null, hideFooterOnDesktop ? "none" : "block"]} width="100%">
-      <SwapFooter
+      {/* <SwapFooter
         externalText={externalText}
         externalLinkUrl={externalLinkUrl}
         helpUrl={helpUrl}
         helpImage={helpImage}
-      />
+      /> */}
     </AtomBox>
   </AtomBox>
 );

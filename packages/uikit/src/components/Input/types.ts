@@ -5,6 +5,7 @@ export const scales = {
   SM: "sm",
   MD: "md",
   LG: "lg",
+  XL: "xl",
 } as const;
 
 export type Scales = (typeof scales)[keyof typeof scales];
@@ -13,6 +14,7 @@ export interface InputProps extends SpaceProps {
   scale?: Scales;
   isSuccess?: boolean;
   isWarning?: boolean;
+  height?: string;
 }
 
 export interface InputGroupProps extends SpaceProps {

@@ -47,9 +47,6 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
     // ---- TABS -- -- //
     const router = useRouter()
     const activeTab = router.query.tab || 'swap'
-    const handleTabChange = (tab: string) => {
-      router.push({ pathname: '/swap', query: { tab } }, undefined, { shallow: true })
-    }
     // ---- TABS -- -- //
     const { tooltip, tooltipVisible, targetRef } = useTooltip(<Text>{t('Check out the top traded tokens')}</Text>, {
       placement: isMobile ? 'top' : 'bottom',

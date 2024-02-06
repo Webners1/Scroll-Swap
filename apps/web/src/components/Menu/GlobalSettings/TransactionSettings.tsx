@@ -1,8 +1,8 @@
+import { useTranslation } from '@pancakeswap/localization'
+import { Box, Button, Flex, Input, QuestionHelper, Text } from '@pancakeswap/uikit'
+import { useUserSlippage } from '@pancakeswap/utils/user'
 import { useState } from 'react'
 import { escapeRegExp } from 'utils'
-import { Text, Button, Input, Flex, Box, QuestionHelper } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { useUserSlippage } from '@pancakeswap/utils/user'
 
 import { useUserTransactionTTL } from 'state/user/hooks'
 
@@ -83,11 +83,12 @@ const SlippageTabs = () => {
     <Flex flexDirection="column">
       <Flex flexDirection="column" mb="24px">
         <Flex mb="12px">
-          <Text>{t('Slippage Tolerance')}</Text>
+          <Text color="#FFF">{t('Slippage Tolerance')}</Text>
           <QuestionHelper
             text={t(
               'Setting a high slippage tolerance can help transactions succeed, but you may not get such a good price. Use with caution.',
             )}
+            color="#FFF"
             placement="top"
             ml="4px"
           />
@@ -96,6 +97,7 @@ const SlippageTabs = () => {
           <Button
             mt="4px"
             mr="4px"
+            height="40px"
             scale="sm"
             onClick={() => {
               setSlippageInput('')
@@ -108,6 +110,7 @@ const SlippageTabs = () => {
           <Button
             mt="4px"
             mr="4px"
+            height="40px"
             scale="sm"
             onClick={() => {
               setSlippageInput('')
@@ -120,6 +123,7 @@ const SlippageTabs = () => {
           <Button
             mr="4px"
             mt="4px"
+            height="40px"
             scale="sm"
             onClick={() => {
               setSlippageInput('')
@@ -130,9 +134,10 @@ const SlippageTabs = () => {
             1.0%
           </Button>
           <Flex alignItems="center">
-            <Box width="76px" mt="4px">
+            <Box width="76px" mt="4px" height="40px">
               <Input
                 scale="sm"
+                height="40px"
                 inputMode="decimal"
                 pattern="^[0-9]*[.,]?[0-9]{0,2}$"
                 placeholder={(userSlippageTolerance / 100).toFixed(2)}
@@ -166,17 +171,18 @@ const SlippageTabs = () => {
       </Flex>
       <Flex justifyContent="space-between" alignItems="center" mb="24px">
         <Flex alignItems="center">
-          <Text>{t('Tx deadline (mins)')}</Text>
+          <Text color="#fff">{t('Tx deadline (mins)')}</Text>
           <QuestionHelper
             text={t('Your transaction will revert if it is left confirming for longer than this time.')}
             placement="top"
             ml="4px"
+            color="#fff"
           />
         </Flex>
         <Flex>
           <Box width="52px" mt="4px">
             <Input
-              scale="sm"
+              scale="md"
               inputMode="numeric"
               pattern="^[0-9]+$"
               isWarning={!!deadlineError}

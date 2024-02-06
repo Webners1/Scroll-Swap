@@ -1,6 +1,8 @@
 import { ResetCSS, ScrollToTopButtonV2, ToastListener } from '@pancakeswap/uikit'
 import BigNumber from 'bignumber.js'
+import { SentryErrorBoundary } from 'components/ErrorBoundary'
 import GlobalCheckClaimStatus from 'components/GlobalCheckClaimStatus'
+import { PageMeta } from 'components/Layout/Page'
 import { NetworkModal } from 'components/NetworkModal'
 import { FixedSubgraphHealthIndicator } from 'components/SubgraphHealthIndicator/FixedSubgraphHealthIndicator'
 import TransactionsDetailModal from 'components/TransactionDetailModal'
@@ -12,14 +14,12 @@ import useSentryUser from 'hooks/useSentryUser'
 import useThemeCookie from 'hooks/useThemeCookie'
 import useUserAgent from 'hooks/useUserAgent'
 import { NextPage } from 'next'
+import { DefaultSeo } from 'next-seo'
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Script from 'next/script'
 import { Fragment } from 'react'
-import { DefaultSeo } from 'next-seo'
-import { PageMeta } from 'components/Layout/Page'
-import { SentryErrorBoundary } from 'components/ErrorBoundary'
 import { PersistGate } from 'redux-persist/integration/react'
 
 import { useDataDogRUM } from 'hooks/useDataDogRUM'
@@ -28,8 +28,8 @@ import { persistor, useStore } from 'state'
 import { usePollBlockNumber } from 'state/block/hooks'
 import { Blocklist, Updaters } from '..'
 import { SEO } from '../../next-seo.config'
-import Menu from '../components/Menu'
 import Providers from '../Providers'
+import Menu from '../components/Menu'
 import GlobalStyle from '../style/Global'
 
 const EasterEgg = dynamic(() => import('components/EasterEgg'), { ssr: false })
@@ -76,7 +76,7 @@ function MyApp(props: AppProps<{ initialReduxState: any; dehydratedState: any }>
         />
         <meta
           name="description"
-          content="Cheaper and faster than Uniswap? Discover PancakeSwap, the leading DEX on BNB Smart Chain (BSC) with the best farms in DeFi and a lottery for CAKE."
+          content="Cheaper and faster than Uniswap? Discover Lolpad finance, the leading DEX on BNB Smart Chain (BSC) with the best farms in DeFi and a lottery for CAKE."
         />
         <meta name="theme-color" content="#1FC7D4" />
         {(Component as NextPageWithLayout).mp && (

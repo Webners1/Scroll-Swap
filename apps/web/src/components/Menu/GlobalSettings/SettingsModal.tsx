@@ -238,11 +238,12 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
             </Flex>
             <Flex justifyContent="space-between" alignItems="center" mb="24px">
               <Flex alignItems="center">
-                <Text>{t('Expert Mode')}</Text>
+                <Text color="#fff">{t('Expert Mode')}</Text>
                 <QuestionHelper
                   text={t('Bypasses confirmation modals and allows high slippage trades. Use at your own risk.')}
                   placement="top"
                   ml="4px"
+                  color="#fff"
                 />
               </Flex>
               <Toggle
@@ -254,11 +255,12 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
             </Flex>
             <Flex justifyContent="space-between" alignItems="center" mb="24px">
               <Flex alignItems="center">
-                <Text>{t('Flippy sounds')}</Text>
+                <Text color="#fff">{t('Flippy sounds')}</Text>
                 <QuestionHelper
                   text={t('Fun sounds to make a truly immersive pancake-flipping trading experience')}
                   placement="top"
                   ml="4px"
+                  color="#fff"
                 />
               </Flex>
               <PancakeToggle checked={audioPlay} onChange={() => setAudioMode((s) => !s)} scale="md" />
