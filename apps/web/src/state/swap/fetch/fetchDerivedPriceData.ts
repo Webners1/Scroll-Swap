@@ -15,7 +15,7 @@ import { multiChainName } from 'state/info/constant'
 import { Block } from 'state/info/types'
 import { getBlocksFromTimestamps } from 'utils/getBlocksFromTimestamps'
 import { multiQuery } from 'views/Info/utils/infoQueryHelpers'
-import { getTVL, getDerivedPrices, getDerivedPricesQueryConstructor } from '../queries/getDerivedPrices'
+import { getDerivedPrices, getDerivedPricesQueryConstructor, getTVL } from '../queries/getDerivedPrices'
 import { PairDataTimeWindowEnum } from '../types'
 
 const PROTOCOL = ['v2', 'v3', 'stable'] as const
@@ -68,6 +68,9 @@ const SWAP_INFO_BY_CHAIN = {
   },
   [ChainId.SCROLL_SEPOLIA]: {
     v3: V3_SUBGRAPH_URLS[ChainId.SCROLL_SEPOLIA],
+  },
+  [ChainId.SCROLL]: {
+    v3: V3_SUBGRAPH_URLS[ChainId.SCROLL],
   },
 } satisfies Record<ChainId, Partial<ProtocolEndpoint>>
 
