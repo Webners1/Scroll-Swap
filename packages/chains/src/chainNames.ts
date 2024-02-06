@@ -46,6 +46,7 @@ export const defiLlamaChainNames: Record<ChainId, string> = {
   [ChainId.OPBNB]: 'op_bnb',
   [ChainId.OPBNB_TESTNET]: '',
   [ChainId.SCROLL_SEPOLIA]: '',
+  [ChainId.SCROLL]: '',
   [ChainId.LINEA]: 'linea',
   [ChainId.BASE]: 'base',
 }
