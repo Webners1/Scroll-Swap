@@ -14,7 +14,6 @@ export interface InputProps extends SpaceProps {
   scale?: Scales;
   isSuccess?: boolean;
   isWarning?: boolean;
-  height?: string;
 }
 
 export interface InputGroupProps extends SpaceProps {
