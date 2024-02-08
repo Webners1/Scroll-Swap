@@ -27,3 +27,10 @@ export const StyledTabWrapper = styled.div`
     color: #fff;
   }
 `
+
+export const DetailsContainerStyled = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 32px 32px;
+`

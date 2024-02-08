@@ -22,7 +22,14 @@ export function CurrencyInputPanel({
   showBridgeWarning,
 }: CurrencyInputPanelProps) {
   return (
-    <AtomBox position="relative" id={id} display="flex" gap="4px" justifyContent="space-between">
+    <AtomBox
+      position="relative"
+      id={id}
+      display="flex"
+      gap="4px"
+      justifyContent="space-between"
+      flexDirection={{ xs: "column", sm: "row" }}
+    >
       <AtomBox display="flex" alignItems="center" justifyContent="space-between">
         {top}
       </AtomBox>

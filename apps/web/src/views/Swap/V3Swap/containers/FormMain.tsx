@@ -150,8 +150,10 @@ export function FormMain({ pricingAndSlippage, inputAmount, outputAmount, tradeL
       />
       {/* <RiskCheck currency={outputCurrency} /> */}
       <Recipient />
-      {pricingAndSlippage}
-      <FooterWrapper>{swapCommitButton}</FooterWrapper>
+      <FooterWrapper>
+        {pricingAndSlippage}
+        {swapCommitButton}
+      </FooterWrapper>
     </FormContainer>
   )
 }

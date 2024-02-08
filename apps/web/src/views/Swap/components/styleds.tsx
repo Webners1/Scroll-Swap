@@ -5,7 +5,12 @@ export const Wrapper = styled(Flex)`
   position: relative;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1rem 1rem 0;
+
+  @media (min-width: 768px) {
+    padding: 2rem 2rem 0;
+  }
+
   div:empty {
     display: none;
   }
