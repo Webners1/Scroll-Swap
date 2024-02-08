@@ -1,10 +1,10 @@
-import { PancakeTheme, ResetCSS, dark, light, ModalProvider, UIKitProvider } from '@pancakeswap/uikit'
-import { useEffect, useState } from 'react'
-import { AppProps } from 'next/app'
-import Script from 'next/script'
-import { createGlobalStyle } from 'styled-components'
+import { ModalProvider, PancakeTheme, ResetCSS, UIKitProvider, dark, light } from '@pancakeswap/uikit'
 import { ThemeProvider as NextThemeProvider, useTheme as useNextTheme } from 'next-themes'
+import { AppProps } from 'next/app'
 import Head from 'next/head'
+import Script from 'next/script'
+import { useEffect, useState } from 'react'
+import { createGlobalStyle } from 'styled-components'
 import { Menu } from '../components/Menu'
 
 declare module 'styled-components' {
@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="🥞 PancakeSwap - A next evolution DeFi exchange on BNB Smart Chain (BSC)" />
-        <title>Bridge | PancakeSwap</title>
+        <title>Bridge | Lolpad Finance</title>
       </Head>
       <NextThemeProvider>
         <StyledThemeProvider>
