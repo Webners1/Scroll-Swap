@@ -9,10 +9,18 @@ interface InactiveButtonProps extends BaseButtonProps {
 }
 
 const InactiveButton: PolymorphicComponent<InactiveButtonProps, "button"> = styled(Button)<InactiveButtonProps>`
-  background-color: transparent;
+  background-color: #4b4b4b;
+  /* border: 2px solid #f3c00d; */
   color: ${({ theme, variant }) => (variant === variants.PRIMARY ? theme.colors.primary : theme.colors.textSubtle)};
   &:hover:not(:disabled):not(:active) {
     background-color: transparent;
+  }
+`;
+
+const ActiveBtnWrapper = styled.div`
+  button {
+    background-color: #f3c00d;
+    color: #fff;
   }
 `;
 
@@ -26,7 +34,11 @@ const ButtonMenuItem: PolymorphicComponent<ButtonMenuItemProps, "button"> = ({
     return <InactiveButton forwardedAs={as} variant={variant} {...props} />;
   }
 
-  return <Button as={as} variant={variant} {...props} />;
+  return (
+    <ActiveBtnWrapper>
+      <Button as={as} variant={variant} {...props} />
+    </ActiveBtnWrapper>
+  );
 };
 
 export default ButtonMenuItem;

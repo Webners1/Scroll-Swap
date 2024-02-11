@@ -30,7 +30,7 @@ export function CurrencyInputPanel({
       justifyContent="space-between"
       flexDirection={{ xs: "column", sm: "row" }}
     >
-      <AtomBox display="flex" alignItems="center" justifyContent="space-between">
+      <AtomBox display="flex" alignItems="center" justifyContent="space-between" className="coin-label">
         {top}
       </AtomBox>
       <AtomBox

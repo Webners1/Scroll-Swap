@@ -32,7 +32,7 @@ const extendedHeight = { "100vh": "100vh" };
 
 const responsiveProperties = defineProperties({
   conditions: {
-    xs: {},
+    xs: { "@media": `(min-width: ${breakpoints.xs}px)` },
     sm: { "@media": `(min-width: ${breakpoints.sm}px)` },
     md: { "@media": `(min-width: ${breakpoints.md}px)` },
     lg: { "@media": `(min-width: ${breakpoints.lg}px)` },

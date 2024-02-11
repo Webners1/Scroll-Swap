@@ -2,70 +2,71 @@ import { CommonBasesType } from 'components/SearchModal/types'
 
 import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
 import {
+  AtomBox,
   AutoColumn,
-  Button,
-  RowBetween,
-  Text,
   AutoRow,
   Box,
-  useModal,
+  Button,
+  DynamicSection,
+  Flex,
   Message,
   MessageText,
   PreTitle,
-  DynamicSection,
-  Flex,
+  RowBetween,
+  Text,
+  useModal,
 } from '@pancakeswap/uikit'
 import {
+  ConfirmationModalContent,
   LiquidityChartRangeInput,
+  NumericalInput,
   ZOOM_LEVELS,
   ZoomLevels,
-  ConfirmationModalContent,
-  NumericalInput,
 } from '@pancakeswap/widgets-internal'
 
-import { logGTMClickAddLiquidityEvent } from 'utils/customGTMEventTracking'
 import { tryParsePrice } from 'hooks/v3/utils'
+import { logGTMClickAddLiquidityEvent } from 'utils/customGTMEventTracking'
 
-import useV3DerivedInfo from 'hooks/v3/useV3DerivedInfo'
+import { useIsExpertMode, useUserSlippage } from '@pancakeswap/utils/user'
 import { FeeAmount, NonfungiblePositionManager } from '@pancakeswap/v3-sdk'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import useTransactionDeadline from 'hooks/useTransactionDeadline'
 import CurrencyInputPanel from 'components/CurrencyInputPanel'
-import { useUserSlippage, useIsExpertMode } from '@pancakeswap/utils/user'
+import useTransactionDeadline from 'hooks/useTransactionDeadline'
+import useV3DerivedInfo from 'hooks/v3/useV3DerivedInfo'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
-import { maxAmountSpend } from 'utils/maxAmountSpend'
-import { basisPointsToPercent } from 'utils/exchange'
-import { Field } from 'state/mint/actions'
 import { ApprovalState, useApproveCallback } from 'hooks/useApproveCallback'
+import { Field } from 'state/mint/actions'
+import { basisPointsToPercent } from 'utils/exchange'
+import { maxAmountSpend } from 'utils/maxAmountSpend'
 
-import { useTransactionAdder } from 'state/transactions/hooks'
-import { useV3NFTPositionManagerContract } from 'hooks/useContract'
-import { useRouter } from 'next/router'
-import { useIsTransactionUnsupported, useIsTransactionWarning } from 'hooks/Trades'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useTranslation } from '@pancakeswap/localization'
-import { useSendTransaction, useWalletClient } from 'wagmi'
-import { styled } from 'styled-components'
 import TransactionConfirmationModal from 'components/TransactionConfirmationModal'
 import { Bound } from 'config/constants/types'
-import { V3SubmitButton } from 'views/AddLiquidityV3/components/V3SubmitButton'
-import { formatCurrencyAmount, formatRawAmount } from 'utils/formatCurrencyAmount'
-import { QUICK_ACTION_CONFIGS } from 'views/AddLiquidityV3/types'
-import { isUserRejected } from 'utils/sentry'
-import { hexToBigInt } from 'viem'
-import { getViemClients } from 'utils/viem'
+import { useIsTransactionUnsupported, useIsTransactionWarning } from 'hooks/Trades'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useV3NFTPositionManagerContract } from 'hooks/useContract'
+import { useRouter } from 'next/router'
+import { useTransactionAdder } from 'state/transactions/hooks'
+import { styled } from 'styled-components'
 import { calculateGasMargin } from 'utils'
+import { formatCurrencyAmount, formatRawAmount } from 'utils/formatCurrencyAmount'
+import { isUserRejected } from 'utils/sentry'
+import { getViemClients } from 'utils/viem'
+import { hexToBigInt } from 'viem'
+import { V3SubmitButton } from 'views/AddLiquidityV3/components/V3SubmitButton'
+import { QUICK_ACTION_CONFIGS } from 'views/AddLiquidityV3/types'
+import { useSendTransaction, useWalletClient } from 'wagmi'
 
-import { useDensityChartData } from 'views/AddLiquidityV3/hooks/useDensityChartData'
 import { transactionErrorToUserReadableMessage } from 'utils/transactionErrorToUserReadableMessage'
-import RangeSelector from './components/RangeSelector'
-import { PositionPreview } from './components/PositionPreview'
-import RateToggle from './components/RateToggle'
+import { useDensityChartData } from 'views/AddLiquidityV3/hooks/useDensityChartData'
 import LockedDeposit from './components/LockedDeposit'
+import { PositionPreview } from './components/PositionPreview'
+import RangeSelector from './components/RangeSelector'
+import RateToggle from './components/RateToggle'
+import { useInitialRange } from './form/hooks/useInitialRange'
 import { useRangeHopCallbacks } from './form/hooks/useRangeHopCallbacks'
 import { useV3MintActionHandlers } from './form/hooks/useV3MintActionHandlers'
 import { useV3FormAddLiquidityCallback, useV3FormState } from './form/reducer'
-import { useInitialRange } from './form/hooks/useInitialRange'
 
 const StyledInput = styled(NumericalInput)`
   background-color: ${({ theme }) => theme.colors.input};
@@ -510,7 +511,9 @@ export default function V3FormView({
         }}
         disabled={!feeAmount || invalidPool || (noLiquidity && !startPriceTypedValue) || (!priceLower && !priceUpper)}
       >
-        <PreTitle mb="8px">{t('Deposit Amount')}</PreTitle>
+        <PreTitle mb="8px" color="#fff">
+          {t('Deposit Amount')}
+        </PreTitle>
 
         <LockedDeposit locked={depositADisabled} mb="8px">
           <Box mb="8px">
@@ -584,7 +587,7 @@ export default function V3FormView({
           )}
           <DynamicSection disabled={!feeAmount || invalidPool}>
             <RowBetween mb="8px">
-              <PreTitle>{t('Set Price Range')}</PreTitle>
+              <PreTitle color="#fff">{t('Set Price Range')}</PreTitle>
               <RateToggle
                 currencyA={baseCurrency}
                 handleRateToggle={() => {
@@ -620,13 +623,13 @@ export default function V3FormView({
                     justifyContent="center"
                     style={{ marginTop: '0.5rem' }}
                   >
-                    <Text fontWeight={500} textAlign="center" fontSize={12} color="text1">
+                    <Text fontWeight={500} textAlign="center" fontSize={12} color="#fff">
                       {t('Current Price')}:
                     </Text>
-                    <Text fontWeight={500} textAlign="center" fontSize={12} color="text1">
+                    <Text fontWeight={500} textAlign="center" fontSize={12} color="#fff">
                       {invertPrice ? price.invert().toSignificant(6) : price.toSignificant(6)}
                     </Text>
-                    <Text color="text2" fontSize={12}>
+                    <Text color="#fff" fontSize={12}>
                       {quoteCurrency?.symbol} per {baseCurrency.symbol}
                     </Text>
                   </AutoRow>
@@ -689,49 +692,60 @@ export default function V3FormView({
                 </Box>
               </Message>
             ) : (
-              <Flex justifyContent="space-between" width="100%" style={{ gap: '8px' }}>
+              <AtomBox
+                display="flex"
+                alignItems={{ xs: 'stretch', sm: 'center' }}
+                justifyContent="space-between"
+                flexDirection={{ xs: 'column', sm: 'row' }}
+                width="100%"
+                style={{ gap: '8px' }}
+              >
                 {QUICK_ACTION_CONFIGS[feeAmount] &&
                   Object.entries<ZoomLevels>(QUICK_ACTION_CONFIGS[feeAmount])
                     ?.sort(([a], [b]) => +a - +b)
                     .map(([quickAction, zoomLevel]) => {
                       return (
-                        <Button
-                          width="100%"
-                          key={`quickActions${quickAction}`}
-                          onClick={() => {
-                            if (+quickAction === activeQuickAction) {
-                              handleRefresh(ZOOM_LEVELS[feeAmount])
-                              return
-                            }
-                            handleRefresh(zoomLevel)
+                        <Flex flex={1}>
+                          <Button
+                            width="100%"
+                            key={`quickActions${quickAction}`}
+                            onClick={() => {
+                              if (+quickAction === activeQuickAction) {
+                                handleRefresh(ZOOM_LEVELS[feeAmount])
+                                return
+                              }
+                              handleRefresh(zoomLevel)
 
-                            setActiveQuickAction(+quickAction)
-                            isQuickButtonUsed.current = true
-                          }}
-                          variant={+quickAction === activeQuickAction ? 'primary' : 'secondary'}
-                          scale="sm"
-                        >
-                          {quickAction}%
-                        </Button>
+                              setActiveQuickAction(+quickAction)
+                              isQuickButtonUsed.current = true
+                            }}
+                            variant={+quickAction === activeQuickAction ? 'primary' : 'secondary'}
+                            scale="sm"
+                          >
+                            {quickAction}%
+                          </Button>
+                        </Flex>
                       )
                     })}
-                <Button
-                  width="200%"
-                  onClick={() => {
-                    if (activeQuickAction === 100) {
-                      handleRefresh()
-                      return
-                    }
-                    setShowCapitalEfficiencyWarning(true)
-                    setActiveQuickAction(100)
-                    isQuickButtonUsed.current = true
-                  }}
-                  variant={activeQuickAction === 100 ? 'primary' : 'secondary'}
-                  scale="sm"
-                >
-                  {t('Full Range')}
-                </Button>
-              </Flex>
+                <Flex flexShrink={0} flex={{ xs: 1, sm: 'auto' }}>
+                  <Button
+                    width="100%"
+                    onClick={() => {
+                      if (activeQuickAction === 100) {
+                        handleRefresh()
+                        return
+                      }
+                      setShowCapitalEfficiencyWarning(true)
+                      setActiveQuickAction(100)
+                      isQuickButtonUsed.current = true
+                    }}
+                    variant={activeQuickAction === 100 ? 'primary' : 'secondary'}
+                    scale="sm"
+                  >
+                    {t('Full Range')}
+                  </Button>
+                </Flex>
+              </AtomBox>
             )}
 
             {outOfRange ? (

@@ -118,6 +118,12 @@ export const SwapShowAcceptChanges = styled(AutoColumn)`
   margin-top: 8px;
 `
 export const StyledFormButtons = styled.div`
+  align-self: flex-end;
+
+  @media (min-width: 768px) {
+    align-self: center;
+  }
+
   button {
     background-color: #504f54;
   }

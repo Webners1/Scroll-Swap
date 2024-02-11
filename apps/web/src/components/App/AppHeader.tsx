@@ -1,4 +1,14 @@
-import { ArrowBackIcon, AutoRow, Box, Button, Flex, IconButton, NotificationDot, Text } from '@pancakeswap/uikit'
+import {
+  ArrowBackIcon,
+  AtomBox,
+  AutoRow,
+  Box,
+  Button,
+  Flex,
+  IconButton,
+  NotificationDot,
+  Text,
+} from '@pancakeswap/uikit'
 import { useExpertMode } from '@pancakeswap/utils/user'
 import GlobalSettings from 'components/Menu/GlobalSettings'
 import Link from 'next/link'
@@ -18,6 +28,7 @@ interface Props {
   filter?: React.ReactNode
   shouldCenter?: boolean
   borderHidden?: boolean
+  hideTabs?: boolean
 }
 
 const AppHeaderContainer = styled(Flex)<{ borderHidden?: boolean }>`
@@ -62,6 +73,7 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
   filter,
   shouldCenter = false,
   borderHidden = false,
+  hideTabs = false,
 }) => {
   const [expertMode] = useExpertMode()
   // ---- TABS -- -- //
@@ -84,23 +96,34 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
             </IconButton>
           ))}
         <Flex pr={backTo && shouldCenter ? '48px' : ''} flexDirection="column" width="100%">
-          <Flex mb="8px" alignItems="center" flexWrap="wrap" justifyContent="space-between" style={{ gap: '16px' }}>
+          <AtomBox
+            display="flex"
+            mb="8px"
+            alignItems="center"
+            flexWrap="wrap"
+            justifyContent={{ xs: 'flex-end', md: 'space-between' }}
+            style={{ gap: '20px' }}
+          >
             {/* <Flex flex={1} justifyContent={shouldCenter ? 'center' : ''}>
               {typeof title === 'string' ? <Heading as="h2">{title}</Heading> : title}
               {helper && <QuestionHelper text={helper} ml="4px" placement="top" />}
             </Flex> */}
-            <StyledTabWrapper>
-              <Link href="/swap">
-                <Button className={activeTab === '/swap' ? 'active' : ''}>Swap</Button>
-              </Link>
-              <Link href="/liquidity">
-                <Button className={activeTab === '/liquidity' ? 'active' : ''}>Liquidity</Button>
-              </Link>
-            </StyledTabWrapper>
+            {!hideTabs ? (
+              <StyledTabWrapper>
+                <Link href="/swap">
+                  <Button className={activeTab === '/swap' ? 'active' : ''}>Swap</Button>
+                </Link>
+                <Link href="/liquidity">
+                  <Button className={activeTab === '/liquidity' ? 'active' : ''}>Liquidity</Button>
+                </Link>
+              </StyledTabWrapper>
+            ) : (
+              <Box> </Box>
+            )}
             <Box>
               {!noConfig && (
-                <Flex alignItems="flex-end">
-                  <IconWrap className="abasdasd">
+                <Flex alignItems="flex-end" flexDirection={hideTabs ? 'row-reverse' : 'row'}>
+                  <IconWrap>
                     <NotificationDot show={expertMode}>
                       <GlobalSettings mode={SettingsMode.SWAP_LIQUIDITY} />
                     </NotificationDot>
@@ -115,7 +138,7 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
               )}
               {noConfig && IconSlot && <Flex alignItems="center">{IconSlot}</Flex>}
             </Box>
-          </Flex>
+          </AtomBox>
           {subtitle && (
             <Flex alignItems="center" justifyContent={shouldCenter ? 'center' : ''}>
               <Text textAlign={shouldCenter ? 'center' : 'inherit'} color="textSubtle" fontSize="14px">

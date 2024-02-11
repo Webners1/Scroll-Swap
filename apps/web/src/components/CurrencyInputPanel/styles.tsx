@@ -25,6 +25,9 @@ export const InputStyled = styled.div`
       max-width: 300px;
     }
   }
+  .coin-label {
+    flex-shrink: 0;
+  }
   label:has(input:focus) {
     box-shadow: none;
   }
