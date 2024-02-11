@@ -11,7 +11,7 @@ import { FormHeader, FormMain, MMTradeDetail, PricingAndSlippage, SwapCommitButt
 import { MMCommitButton } from './containers/MMCommitButton'
 import { useSwapBestTrade } from './hooks'
 import { useCheckInsufficientError } from './hooks/useCheckSufficient'
-import { StyledButtonWrapper, StyledFormWrapper } from './styles'
+import { DetailsContainerStyled, StyledButtonWrapper, StyledFormWrapper } from './styles'
 
 export function V3SwapForm() {
   const { isLoading, trade, refresh, syncing, isStale, error } = useSwapBestTrade()
@@ -49,12 +49,13 @@ export function V3SwapForm() {
       />
 
       {/* <BuyCryptoLink currency={insufficientFundCurrency} /> */}
-
-      {mm.isMMBetter ? (
-        <MMTradeDetail loaded={!mm.mmOrderBookTrade.isLoading} mmTrade={mm.mmTradeInfo} />
-      ) : (
-        <TradeDetails loaded={tradeLoaded} trade={trade} />
-      )}
+      <DetailsContainerStyled>
+        {mm.isMMBetter ? (
+          <MMTradeDetail loaded={!mm.mmOrderBookTrade.isLoading} mmTrade={mm.mmTradeInfo} />
+        ) : (
+          <TradeDetails loaded={tradeLoaded} trade={trade} />
+        )}
+      </DetailsContainerStyled>
       {(shouldShowMMLiquidityError(mm?.mmOrderBookTrade?.inputError) || mm?.mmRFQTrade?.error) && !trade && (
         <Box mt="5px">
           <MMLiquidityWarning />

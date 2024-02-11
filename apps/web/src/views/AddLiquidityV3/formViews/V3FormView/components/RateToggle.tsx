@@ -20,7 +20,7 @@ export default function RateToggle({
 
   return currencyA ? (
     <Flex justifyContent="center" alignItems="center">
-      <Text mr="4px" color="textSubtle">
+      <Text mr="8px" color="#fff">
         {t('View prices in')}
       </Text>
       <RateToggleButton

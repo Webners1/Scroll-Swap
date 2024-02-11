@@ -335,7 +335,7 @@ export function AprCalculator({
             </Flex>
           </AprText>
           <IconButton variant="text" scale="sm" onClick={() => setOpen(true)}>
-            <CalculateIcon color="textSubtle" ml="0.25em" width="24px" />
+            <CalculateIcon color="primary" width="24px" />
           </IconButton>
           {showQuestion ? (
             <QuestionHelper
@@ -354,6 +354,8 @@ export function AprCalculator({
               }
               size="20px"
               placement="top"
+              color="primary"
+              ml="3px"
             />
           ) : null}
         </AprButtonContainer>

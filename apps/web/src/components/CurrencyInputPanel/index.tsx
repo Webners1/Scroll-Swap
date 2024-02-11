@@ -1,6 +1,5 @@
 import { useTranslation } from '@pancakeswap/localization'
 import { Currency, CurrencyAmount, Pair, Percent, Token } from '@pancakeswap/sdk'
-import { WrappedTokenInfo } from '@pancakeswap/token-lists'
 import { ArrowDropDownIcon, Button, Flex, Skeleton, Text, useModal } from '@pancakeswap/uikit'
 import { formatAmount } from '@pancakeswap/utils/formatFractions'
 import { CurrencyLogo, DoubleCurrencyLogo, Swap as SwapUI } from '@pancakeswap/widgets-internal'
@@ -16,7 +15,6 @@ import { useCurrencyBalance } from 'state/wallet/hooks'
 import { useAccount } from 'wagmi'
 import CurrencySearchModal from '../SearchModal/CurrencySearchModal'
 
-import AddToWalletButton from '../AddToWallet/AddToWalletButton'
 import { InputContainerStyled, InputLabelStyled, InputStyled } from './styles'
 
 const InputRow = styled.div<{ selected: boolean }>`
@@ -37,6 +35,7 @@ const CurrencySelectButton = styled(Button).attrs({ variant: 'text', scale: 'sm'
 `
 const CurrencyInfoWrapperStyled = styled.div`
   margin-left: 10px;
+  flex-shrink: 0;
 `
 
 interface CurrencyInputPanelProps {
@@ -161,7 +160,25 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
   const balance = !hideBalance && !!currency ? formatAmount(selectedCurrencyBalance, 6) : undefined
   return (
     <InputContainerStyled>
-      <InputLabelStyled>{labelTopText}</InputLabelStyled>
+      <InputLabelStyled>
+        <p>{labelTopText}</p>
+        {account && !hideBalanceComp && (
+          <Text
+            onClick={!disabled ? onMax : undefined}
+            color="textSubtle"
+            fontSize="12px"
+            ellipsis
+            title={!hideBalance && !!currency ? t('Balance: %balance%', { balance: balance ?? t('Loading') }) : ' -'}
+            style={{ display: 'inline', cursor: 'pointer' }}
+          >
+            {!hideBalance && !!currency
+              ? (balance?.replace('.', '')?.length || 0) > 12
+                ? balance
+                : t('Balance: %balance%', { balance: balance ?? t('Loading') })
+              : ' -'}
+          </Text>
+        )}
+      </InputLabelStyled>
       <InputStyled>
         <SwapUI.CurrencyInputPanel
           id={id}
@@ -172,7 +189,7 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
           onUserInput={handleUserInput}
           loading={inputLoading}
           top={
-            <>
+            <Flex flexDirection="column" flexShrink={0}>
               {title}
               <Flex alignItems="center">
                 {beforeButton}
@@ -222,7 +239,7 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
                   text={tokenAddress}
                   tooltipMessage={t('Token address copied')}
                 /> */}
-                    <AddToWalletButton
+                    {/* <AddToWalletButton
                       variant="text"
                       p="0"
                       height="auto"
@@ -231,29 +248,11 @@ const CurrencyInputPanel = memo(function CurrencyInputPanel({
                       tokenSymbol={token.symbol}
                       tokenDecimals={token.decimals}
                       tokenLogo={token instanceof WrappedTokenInfo ? token.logoURI : undefined}
-                    />
+                    /> */}
                   </Flex>
                 ) : null}
               </Flex>
-              {account && !hideBalanceComp && (
-                <Text
-                  onClick={!disabled ? onMax : undefined}
-                  color="textSubtle"
-                  fontSize="12px"
-                  ellipsis
-                  title={
-                    !hideBalance && !!currency ? t('Balance: %balance%', { balance: balance ?? t('Loading') }) : ' -'
-                  }
-                  style={{ display: 'inline', cursor: 'pointer' }}
-                >
-                  {!hideBalance && !!currency
-                    ? (balance?.replace('.', '')?.length || 0) > 12
-                      ? balance
-                      : t('Balance: %balance%', { balance: balance ?? t('Loading') })
-                    : ' -'}
-                </Text>
-              )}
-            </>
+            </Flex>
           }
           // bottom={
           //   <>

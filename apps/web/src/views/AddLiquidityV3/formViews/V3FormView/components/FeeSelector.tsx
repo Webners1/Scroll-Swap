@@ -1,10 +1,11 @@
+import { ChainId } from '@pancakeswap/chains'
 import { farmsV3ConfigChainMap } from '@pancakeswap/farms/constants/v3'
 import { useTranslation } from '@pancakeswap/localization'
 import { Currency } from '@pancakeswap/sdk'
-import { ChainId } from '@pancakeswap/chains'
 import { AtomBox, AutoColumn, Button, CircleLoader, Text } from '@pancakeswap/uikit'
 import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
 import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { useActiveChainId } from 'hooks/useActiveChainId'
 import { PairState, useV2Pair } from 'hooks/usePairs'
 import { PoolState } from 'hooks/v3/types'
 import { useFeeTierDistribution } from 'hooks/v3/useFeeTierDistribution'
@@ -12,7 +13,6 @@ import { usePools } from 'hooks/v3/usePools'
 import { useEffect, useMemo, useState } from 'react'
 import HideShowSelectorSection from 'views/AddLiquidityV3/components/HideShowSelectorSection'
 import { HandleFeePoolSelectFn, SELECTOR_TYPE } from 'views/AddLiquidityV3/types'
-import { useActiveChainId } from 'hooks/useActiveChainId'
 import { FeeOption } from './FeeOption'
 import { FeeTierPercentageBadge } from './FeeTierPercentageBadge'
 import { FEE_AMOUNT_DETAIL, SelectContainer } from './shared'
@@ -174,7 +174,7 @@ export default function FeeSelector({
       heading={
         feeAmount ? (
           <AutoColumn gap="8px">
-            <Text>
+            <Text color="#fff">
               V3 LP - {FEE_AMOUNT_DETAIL[feeAmount].label}% {t('fee tier')}
             </Text>
             {distributions && (
@@ -221,7 +221,7 @@ export default function FeeSelector({
                 avoid pages keep in v2 when user change the tokens in selection
               */}
               <Button variant="text" onClick={handleSelectV2}>
-                <Text color="textSubtle" bold>
+                <Text color="primary" bold>
                   {t('Add V2 Liquidity')}
                 </Text>
               </Button>

@@ -2,51 +2,40 @@ import { CurrencySelect } from 'components/CurrencySelect'
 import { CommonBasesType } from 'components/SearchModal/types'
 
 import { Currency, NATIVE, WNATIVE } from '@pancakeswap/sdk'
-import {
-  FlexGap,
-  AutoColumn,
-  CardBody,
-  Card,
-  AddIcon,
-  PreTitle,
-  DynamicSection,
-  RefreshIcon,
-  IconButton,
-} from '@pancakeswap/uikit'
+import { AddIcon, AutoColumn, Card, CardBody, DynamicSection, FlexGap, PreTitle } from '@pancakeswap/uikit'
 
 import { FeeAmount } from '@pancakeswap/v3-sdk'
 import { useCallback, useEffect, useMemo } from 'react'
 
-import currencyId from 'utils/currencyId'
-import { useRouter } from 'next/router'
 import { Trans, useTranslation } from '@pancakeswap/localization'
+import { useRouter } from 'next/router'
+import currencyId from 'utils/currencyId'
 
-import Page from 'views/Page'
 import { AppHeader } from 'components/App'
-import { styled } from 'styled-components'
 import { atom, useAtom } from 'jotai'
+import { styled } from 'styled-components'
+import Page from 'views/Page'
 
-import { useCurrency } from 'hooks/Tokens'
-import useStableConfig, { StableConfigContext } from 'views/Swap/hooks/useStableConfig'
-import AddStableLiquidity from 'views/AddLiquidity/AddStableLiquidity'
-import AddLiquidity from 'views/AddLiquidity'
 import { usePreviousValue } from '@pancakeswap/hooks'
+import { useCurrency } from 'hooks/Tokens'
+import AddLiquidity from 'views/AddLiquidity'
+import AddStableLiquidity from 'views/AddLiquidity/AddStableLiquidity'
+import useStableConfig, { StableConfigContext } from 'views/Swap/hooks/useStableConfig'
 
-import noop from 'lodash/noop'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { useAddLiquidityV2FormDispatch } from 'state/mint/reducer'
 import { resetMintState } from 'state/mint/actions'
+import { useAddLiquidityV2FormDispatch } from 'state/mint/reducer'
 import { safeGetAddress } from 'utils'
 import FeeSelector from './formViews/V3FormView/components/FeeSelector'
 
-import V3FormView from './formViews/V3FormView'
-import { HandleFeePoolSelectFn, SELECTOR_TYPE } from './types'
-import { StableV3Selector } from './components/StableV3Selector'
-import StableFormView from './formViews/StableFormView'
-import { V2Selector } from './components/V2Selector'
-import V2FormView from './formViews/V2FormView'
 import { AprCalculator } from './components/AprCalculator'
+import { StableV3Selector } from './components/StableV3Selector'
+import { V2Selector } from './components/V2Selector'
+import StableFormView from './formViews/StableFormView'
+import V2FormView from './formViews/V2FormView'
+import V3FormView from './formViews/V3FormView'
 import { useCurrencyParams } from './hooks/useCurrencyParams'
+import { HandleFeePoolSelectFn, SELECTOR_TYPE } from './types'
 
 export const BodyWrapper = styled(Card)`
   border-radius: 24px;
@@ -296,7 +285,9 @@ export function UniversalAddLiquidity({
       <CardBody>
         <ResponsiveTwoColumns>
           <AutoColumn alignSelf="stretch">
-            <PreTitle mb="8px">{t('Choose Token Pair')}</PreTitle>
+            <PreTitle mb="8px" color="#fff">
+              {t('Choose Token Pair')}
+            </PreTitle>
             <FlexGap gap="4px" width="100%" mb="8px" alignItems="center">
               <CurrencySelect
                 id="add-liquidity-select-tokena"
@@ -306,7 +297,7 @@ export function UniversalAddLiquidity({
                 commonBasesType={CommonBasesType.LIQUIDITY}
                 hideBalance
               />
-              <AddIcon color="textSubtle" />
+              <AddIcon color="#fff" />
               <CurrencySelect
                 id="add-liquidity-select-tokenb"
                 selectedCurrency={quoteCurrency}
@@ -388,10 +379,12 @@ export function AddLiquidityV3Layout({
   showRefreshButton = false,
   handleRefresh,
   children,
+  hideTabs,
 }: {
   showRefreshButton?: boolean
   handleRefresh?: () => void
   children: React.ReactNode
+  hideTabs?: boolean
 }) {
   const { t } = useTranslation()
 
@@ -405,10 +398,11 @@ export function AddLiquidityV3Layout({
 
   return (
     <Page>
-      <BodyWrapper>
+      <BodyWrapper marginTop="-127px">
         <AppHeader
           title={title}
           backTo="/liquidity"
+          hideTabs={hideTabs}
           IconSlot={
             <>
               {selectType === SELECTOR_TYPE.V3 && (
@@ -419,11 +413,11 @@ export function AddLiquidityV3Layout({
                   feeAmount={feeAmount}
                 />
               )}
-              {showRefreshButton && (
+              {/* {showRefreshButton && (
                 <IconButton variant="text" scale="sm">
                   <RefreshIcon onClick={handleRefresh || noop} color="textSubtle" height={24} width={24} />
                 </IconButton>
-              )}
+              )} */}
             </>
           }
         />
