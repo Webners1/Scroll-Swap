@@ -1,5 +1,5 @@
 import { languageList, useTranslation } from '@pancakeswap/localization'
-import { Menu as UikitMenu, footerLinks, useModal } from '@pancakeswap/uikit'
+import { AtomBox, Menu as UikitMenu, footerLinks, useModal } from '@pancakeswap/uikit'
 import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
 import { usePhishingBanner } from '@pancakeswap/utils/user'
 import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
@@ -14,8 +14,6 @@ import { useWebNotifications } from 'hooks/useWebNotifications'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
 import Notifications from 'views/Notifications'
-import GlobalSettings from './GlobalSettings'
-import { SettingsMode } from './GlobalSettings/types'
 import UserMenu from './UserMenu'
 import { useMenuItems } from './hooks/useMenuItems'
 import { getActiveMenuItem, getActiveSubMenuItem } from './utils'
@@ -58,12 +56,11 @@ const Menu = (props) => {
       <UikitMenu
         linkComponent={LinkComponent}
         rightSide={
-          <>
-            <GlobalSettings mode={SettingsMode.GLOBAL} />
+          <AtomBox display="flex" justifyContent="flex-end" pr="24px" pt="24px">
             {enabled && <Notifications />}
             <NetworkSwitcher />
             <UserMenu />
-          </>
+          </AtomBox>
         }
         chainId={chainId}
         banner={showPhishingWarningBanner && typeof window !== 'undefined' && <PhishingWarningBanner />}
