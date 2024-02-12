@@ -56,10 +56,11 @@ const TopBannerContainer = styled.div<{ height: number }>`
 const BodyWrapper = styled(Box)`
   position: relative;
   display: flex;
+  flex-direction: column;
   max-width: 100vw;
   width: 100%;
   min-height: 100vh;
-  padding-top: 100px;
+  padding-top: 70px;
   @media (min-width: 768px) {
     padding-top: initial;
   }
@@ -187,6 +188,23 @@ const BackDrop = styled.div`
   }
 `;
 
+const StyledLink = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const SocialLinkWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 20px;
+  border-top: 1px solid #ffffff30;
+  margin-right: 30px;
+  margin-top: 30px;
+`;
+
 const SwapIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) => (
   <svg
     viewBox="0 0 20 20"
@@ -212,6 +230,23 @@ const LiquidityIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string 
       strokeLinejoin="round"
       strokeWidth="2"
       d="m17.668 10.29l-4.493-6.673c-.421-.625-1.288-.803-1.937-.397a1.376 1.376 0 0 0-.41.397l-4.893 7.26C4.24 13.715 4.9 17.318 7.502 19.423a7.175 7.175 0 0 0 5.493 1.51M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3H17m2 0v1m0-8v1"
+    />
+  </svg>
+);
+
+const TwitterIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    className="sc-bdfBQB hmhIY"
+    color="#fff"
+    viewBox="0 0 24 24"
+    cursor="pointer"
+    opacity="0.6"
+  >
+    <path
+      fill="#fff"
+      d="M12 .3C5.5.3.3 5.5.3 12S5.5 23.7 12 23.7 23.7 18.5 23.7 12 18.5.3 12 .3zm6 8.6v.5c0 4-3.1 8.7-8.7 8.7-1.8 0-3.4-.5-4.7-1.2h.8c1.4 0 2.8-.6 3.8-1.4-1.4 0-2.4-.9-2.9-2.1h.6c.3 0 .5-.2.8-.2-1.4-.3-2.4-1.5-2.4-3.1.5.3.9.5 1.4.5-1-.6-1.6-1.5-1.6-2.6 0-.6.2-1.1.5-1.5C7.1 8.3 9.4 9.6 12 9.7c-.2-.3-.2-.5-.2-.8 0-1.7 1.4-3.1 3.1-3.1.9 0 1.7.3 2.1.9.8-.2 1.4-.5 2-.8-.3.8-.8 1.4-1.4 1.7.6 0 1.2-.2 1.8-.5-.2.9-.8 1.4-1.4 1.8z"
     />
   </svg>
 );
@@ -330,7 +365,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                         {/* eslint-disable jsx-a11y/no-static-element-interactions */}
                         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
                         <span onClick={() => setMobileNavOpen(false)}>
-                          <MenuItem {...{ href: item.href }} isActive={activeLink === item.href}>
+                          <MenuItem {...{ href: item.href }}>
                             <StyledIcon>{item.icon}</StyledIcon> <span>{item.label}</span>
                           </MenuItem>
                         </span>
@@ -338,9 +373,24 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                       </MainLinkStyled>
                     )
                 )}
+                <SocialLinkWrapper>
+                  <MainLinkStyled>
+                    <b className="top-curve" />
+                    {/* eslint-disable jsx-a11y/no-static-element-interactions */}
+                    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+                    <span onClick={() => setMobileNavOpen(false)}>
+                      <StyledLink href="https://twitter.com/lolpadfinance" target="_blank">
+                        <TwitterIcon />
+                        <span>Twitter</span>
+                      </StyledLink>
+                    </span>
+                    <b className="bottom-curve" />
+                  </MainLinkStyled>
+                </SocialLinkWrapper>
               </MainLinkContainerStyled>
             </StyledSidebar>
             <BodyWrapper mt={!subLinks ? `${totalTopMenuHeight + 1}px` : "0"}>
+              {rightSide}
               {/* eslint-disable jsx-a11y/no-static-element-interactions */}
               {mobileNavOpen && <BackDrop onClick={() => setMobileNavOpen(!mobileNavOpen)} />}
               <Inner>{children}</Inner>
