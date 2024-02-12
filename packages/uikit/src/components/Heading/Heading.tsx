@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import Text from "../Text/Text";
-import { tags, scales, HeadingProps } from "./types";
+import { HeadingProps, scales, tags } from "./types";
 
 const style = {
   [scales.MD]: {
@@ -25,6 +25,7 @@ const Heading = styled(Text).attrs({ bold: true })<HeadingProps>`
   font-size: ${({ scale }) => style[scale || scales.MD].fontSize};
   font-weight: 600;
   line-height: 1.1;
+  color: #fff;
 
   ${({ theme }) => theme.mediaQueries.lg} {
     font-size: ${({ scale }) => style[scale || scales.MD].fontSizeLg};

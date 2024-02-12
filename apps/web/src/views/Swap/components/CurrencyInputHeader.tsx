@@ -1,5 +1,15 @@
 import { useTranslation } from '@pancakeswap/localization'
-import { Button, Flex, HistoryIcon, IconButton, NotificationDot, Text, useModal, useTooltip } from '@pancakeswap/uikit'
+import {
+  AtomBox,
+  Button,
+  Flex,
+  HistoryIcon,
+  IconButton,
+  NotificationDot,
+  Text,
+  useModal,
+  useTooltip,
+} from '@pancakeswap/uikit'
 import { useExpertMode } from '@pancakeswap/utils/user'
 import { Swap } from '@pancakeswap/widgets-internal'
 import TransactionsModal from 'components/App/Transactions/TransactionsModal'
@@ -47,9 +57,6 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
     // ---- TABS -- -- //
     const router = useRouter()
     const activeTab = router.query.tab || 'swap'
-    const handleTabChange = (tab: string) => {
-      router.push({ pathname: '/swap', query: { tab } }, undefined, { shallow: true })
-    }
     // ---- TABS -- -- //
     const { tooltip, tooltipVisible, targetRef } = useTooltip(<Text>{t('Check out the top traded tokens')}</Text>, {
       placement: isMobile ? 'top' : 'bottom',
@@ -106,7 +113,14 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
             <Swap.CurrencyInputHeaderSubTitle>{subtitle}</Swap.CurrencyInputHeaderSubTitle>
           </Flex>
         )}
-        <Flex width="100%" justifyContent="space-between" alignItems="center">
+        <AtomBox
+          width="100%"
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          gap={{ xs: '20px', md: '0px' }}
+          flexDirection={{ xs: 'column', md: 'row' }}
+        >
           {/* {SUPPORT_BUY_CRYPTO.includes(chainId) ? (
             <Flex alignItems="center" justifyContent="center" px="4px" mt="5px">
               <TooltipText
@@ -192,7 +206,7 @@ const CurrencyInputHeader: React.FC<React.PropsWithChildren<Props>> = memo(
               duration={CHAIN_REFRESH_TIME[chainId] ? CHAIN_REFRESH_TIME[chainId] / 1000 : undefined}
             />
           </IconButton> */}
-        </Flex>
+        </AtomBox>
       </Flex>
     )
 

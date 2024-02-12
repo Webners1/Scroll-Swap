@@ -18,7 +18,7 @@
     "dev:games": "pnpm turbo run dev --filter=games... --concurrency=20",
     "storybook": "turbo run start --filter=uikit...",
     "build:storybook": "turbo run build:storybook --filter=uikit...",
-    "build": "turbo run build --filter=web...",
+    "build": "set NODE_OPTIONS=--max_old_space_size=4096 && turbo run build --filter=web...",
     "build:blog": "turbo run build --filter=blog...",
     "build:aptos": "turbo run build --filter=aptos-web...",
     "build:bridge": "turbo run build --filter=bridge...",

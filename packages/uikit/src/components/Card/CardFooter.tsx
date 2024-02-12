@@ -7,7 +7,6 @@ export type CardFooterProps = SpaceProps;
 const CardFooter = styled.div.withConfig({
   shouldForwardProp,
 })<CardFooterProps>`
-  border-top: 1px solid ${({ theme }) => theme.colors.cardBorder};
   ${space}
 `;
 

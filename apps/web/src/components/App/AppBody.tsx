@@ -2,7 +2,7 @@ import { Card, CardProps } from '@pancakeswap/uikit'
 import { styled } from 'styled-components'
 
 export const BodyWrapper = styled(Card)`
-  border-radius: 24px;
+  border-radius: 1rem;
   width: 100%;
   z-index: 1;
 `

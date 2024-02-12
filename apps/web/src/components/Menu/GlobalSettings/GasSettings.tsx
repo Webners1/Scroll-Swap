@@ -1,7 +1,7 @@
-import { Flex, Button, Text, QuestionHelper } from '@pancakeswap/uikit'
 import { useTranslation } from '@pancakeswap/localization'
+import { Button, Flex, QuestionHelper, Text } from '@pancakeswap/uikit'
+import { GAS_PRICE, GAS_PRICE_GWEI } from 'state/types'
 import { useGasPriceManager } from 'state/user/hooks'
-import { GAS_PRICE_GWEI, GAS_PRICE } from 'state/types'
 
 const GasSettings = () => {
   const { t } = useTranslation()
@@ -10,16 +10,19 @@ const GasSettings = () => {
   return (
     <Flex flexDirection="column">
       <Flex mb="12px" alignItems="center">
-        <Text>{t('Default Transaction Speed (GWEI)')}</Text>
+        <Text color="#fff">{t('Default Transaction Speed (GWEI)')}</Text>
         <QuestionHelper
+          color="#FFF"
           text={
             <Flex flexDirection="column">
-              <Text>
+              <Text color="#fff">
                 {t(
                   'Adjusts the gas price (transaction fee) for your transaction. Higher GWEI = higher speed = higher fees.',
                 )}
               </Text>
-              <Text mt="8px">{t('Choose “Default” to use the settings from your current blockchain RPC node.')}</Text>
+              <Text color="#fff" mt="8px">
+                {t('Choose “Default” to use the settings from your current blockchain RPC node.')}
+              </Text>
             </Flex>
           }
           placement="top"
@@ -30,6 +33,7 @@ const GasSettings = () => {
         <Button
           mt="4px"
           mr="4px"
+          p="24px"
           scale="sm"
           onClick={() => {
             setGasPrice(GAS_PRICE_GWEI.rpcDefault)
@@ -41,6 +45,7 @@ const GasSettings = () => {
         <Button
           mt="4px"
           mr="4px"
+          p="24px"
           scale="sm"
           onClick={() => {
             setGasPrice(GAS_PRICE_GWEI.default)
@@ -52,6 +57,7 @@ const GasSettings = () => {
         <Button
           mt="4px"
           mr="4px"
+          p="24px"
           scale="sm"
           onClick={() => {
             setGasPrice(GAS_PRICE_GWEI.fast)
@@ -63,6 +69,7 @@ const GasSettings = () => {
         <Button
           mr="4px"
           mt="4px"
+          p="24px"
           scale="sm"
           onClick={() => {
             setGasPrice(GAS_PRICE_GWEI.instant)

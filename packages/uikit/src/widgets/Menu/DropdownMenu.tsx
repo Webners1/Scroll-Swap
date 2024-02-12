@@ -86,8 +86,6 @@ const DropdownMenu: React.FC<DropdownProps> = ({ items, label, active = false })
     setActiveLink(window?.location?.pathname);
   }, [window?.location?.pathname]);
 
-  console.log(activeLink, "linkss");
-
   return (
     <NestedNavStyled>
       <NestedNavLabelStyled onClick={handleOpen}>

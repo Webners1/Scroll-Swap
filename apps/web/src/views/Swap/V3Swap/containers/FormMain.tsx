@@ -15,6 +15,7 @@ import { useCurrencyBalances } from 'state/wallet/hooks'
 import { currencyId } from 'utils/currencyId'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 
+import { styled } from 'styled-components'
 import { useAccount } from 'wagmi'
 import useWarningImport from '../../hooks/useWarningImport'
 import { FormContainer } from '../components'
@@ -29,6 +30,10 @@ interface Props {
   pricingAndSlippage?: ReactNode
   swapCommitButton?: ReactNode
 }
+
+const FooterWrapper = styled.div`
+  padding: 24px 0;
+`
 
 export function FormMain({ pricingAndSlippage, inputAmount, outputAmount, tradeLoading, swapCommitButton }: Props) {
   const { address: account } = useAccount()
@@ -145,8 +150,10 @@ export function FormMain({ pricingAndSlippage, inputAmount, outputAmount, tradeL
       />
       {/* <RiskCheck currency={outputCurrency} /> */}
       <Recipient />
-      {pricingAndSlippage}
-      {swapCommitButton}
+      <FooterWrapper>
+        {pricingAndSlippage}
+        {swapCommitButton}
+      </FooterWrapper>
     </FormContainer>
   )
 }

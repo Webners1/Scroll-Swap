@@ -3,15 +3,14 @@ import { usePopper } from "react-popper";
 import { styled } from "styled-components";
 import { Box, Flex } from "../../../../components/Box";
 import { ChevronDownIcon } from "../../../../components/Svg";
-import { UserMenuProps, variants } from "./types";
 import MenuIcon from "./MenuIcon";
 import { UserMenuItem } from "./styles";
+import { UserMenuProps, variants } from "./types";
 
 export const StyledUserMenu = styled(Flex)`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.tertiary};
   border-radius: 16px;
-  box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   display: inline-flex;
   height: 32px;
@@ -26,26 +25,21 @@ export const StyledUserMenu = styled(Flex)`
 
 export const LabelText = styled.div`
   color: ${({ theme }) => theme.colors.text};
-  display: none;
   font-weight: 600;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    display: block;
-    margin-left: 8px;
-    margin-right: 4px;
-  }
+  display: block;
+  margin-left: 8px;
+  margin-right: 4px;
 `;
 
 const Menu = styled.div<{ $isOpen: boolean }>`
   background-color: ${({ theme }) => theme.card.background};
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
   border-radius: 16px;
-  padding-bottom: 4px;
-  padding-top: 4px;
   pointer-events: auto;
   width: 280px;
   visibility: visible;
   z-index: 1001;
+  overflow: hidden;
 
   ${({ $isOpen }) =>
     !$isOpen &&

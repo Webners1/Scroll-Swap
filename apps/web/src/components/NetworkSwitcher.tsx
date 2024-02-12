@@ -23,6 +23,7 @@ import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
+import { styled } from 'styled-components'
 import { chainNameConverter } from 'utils/chainNameConverter'
 import { chains } from 'utils/wagmi'
 import { useNetwork } from 'wagmi'
@@ -33,6 +34,13 @@ const AptosChain = {
   id: 1,
   name: 'Aptos',
 }
+
+const StyledList = styled.div`
+  background-color: #4b4b4b;
+  overflow-y: auto;
+  height: 400px;
+  border-radius: 16px;
+`
 
 const NetworkSelect = ({ switchNetwork, chainId }) => {
   const { t } = useTranslation()
@@ -58,7 +66,12 @@ const NetworkSelect = ({ switchNetwork, chainId }) => {
             onClick={() => chain.id !== chainId && switchNetwork(chain.id)}
           >
             <ChainLogo chainId={chain.id} />
-            <Text color={chain.id === chainId ? 'secondary' : 'text'} bold={chain.id === chainId} pl="12px">
+            <Text
+              textAlign="left"
+              color={chain.id === chainId ? 'secondary' : 'text'}
+              bold={chain.id === chainId}
+              pl="12px"
+            >
               {chainNameConverter(chain.name)}
             </Text>
           </UserMenuItem>
@@ -158,6 +171,7 @@ const SHORT_SYMBOL = {
   [ChainId.BASE]: 'Base',
   [ChainId.BASE_TESTNET]: 'tBase',
   [ChainId.SCROLL_SEPOLIA]: 'tScroll',
+  [ChainId.SCROLL]: 'scroll',
 } as const satisfies Record<ChainId, string>
 
 export const NetworkSwitcher = () => {
@@ -210,13 +224,15 @@ export const NetworkSwitcher = () => {
           )
         }
       >
-        {() =>
-          isNotMatched ? (
-            <WrongNetworkSelect switchNetwork={switchNetworkAsync} chainId={chainId} />
-          ) : (
-            <NetworkSelect switchNetwork={switchNetworkAsync} chainId={chainId} />
-          )
-        }
+        {() => (
+          <StyledList>
+            {isNotMatched ? (
+              <WrongNetworkSelect switchNetwork={switchNetworkAsync} chainId={chainId} />
+            ) : (
+              <NetworkSelect switchNetwork={switchNetworkAsync} chainId={chainId} />
+            )}
+          </StyledList>
+        )}
       </UserMenu>
     </Box>
   )

@@ -90,7 +90,7 @@ const TabContainer = ({ children, docLink, docText }: PropsWithChildren<{ docLin
       <AtomBox
         display="flex"
         position="relative"
-        background="gradientCardHeader"
+        background="backgroundDark"
         borderRadius="card"
         borderBottomRadius={{
           xs: '0',
@@ -321,10 +321,11 @@ function DesktopModal<T>({
       <AtomBox
         display="flex"
         flexDirection="column"
-        bg="backgroundAlt"
+        bg="backgroundDark"
         py="32px"
         zIndex="modal"
         borderRadius="card"
+        backgroundColor="backgroundDark"
         className={desktopWalletSelectionClass}
       >
         <AtomBox px="48px">
@@ -365,8 +366,16 @@ function DesktopModal<T>({
         justifyContent="center"
         flexDirection="column"
         alignItems="center"
+        backgroundColor="backgroundDark"
       >
-        <AtomBox display="flex" flexDirection="column" alignItems="center" style={{ gap: '24px' }} textAlign="center">
+        <AtomBox
+          backgroundColor="backgroundDark"
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          style={{ gap: '24px' }}
+          textAlign="center"
+        >
           {!selected && <Intro docLink={docLink} docText={docText} />}
           {selected && selected.installed !== false && (
             <>
@@ -461,7 +470,7 @@ const Intro = ({ docLink, docText }: { docLink: string; docText: string }) => {
         {t('Haven’t got a wallet yet?')}
       </Heading>
       <Image src="https://cdn.pancakeswap.com/wallets/wallet_intro.png" width={198} height={178} />
-      <Button as={LinkExternal} color="backgroundAlt" variant="subtle" href={docLink}>
+      <Button as={LinkExternal} color="backgroundAlt" variant="primary" href={docLink}>
         {docText}
       </Button>
     </>

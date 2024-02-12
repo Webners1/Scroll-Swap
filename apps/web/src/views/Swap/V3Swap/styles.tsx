@@ -16,7 +16,17 @@ export const StyledTabWrapper = styled.div`
   align-items: center;
   gap: 10px;
 
+  @media (max-width: 767px) {
+    flex: 1;
+    width: 100%;
+  }
+
+  a {
+    width: 100%;
+  }
+
   button {
+    width: 100%;
     background-color: #4b4b4b;
     box-shadow: none;
     border: 2px solid #f3c00d;
@@ -26,4 +36,11 @@ export const StyledTabWrapper = styled.div`
     background-color: #f3c00d;
     color: #fff;
   }
+`
+
+export const DetailsContainerStyled = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 32px 32px;
 `

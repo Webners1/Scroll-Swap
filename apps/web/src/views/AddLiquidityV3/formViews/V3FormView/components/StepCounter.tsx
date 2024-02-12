@@ -1,11 +1,11 @@
 import { useTranslation } from '@pancakeswap/localization'
-import { AddCircleIcon, AutoColumn, AutoRow, IconButton, RemoveIcon } from '@pancakeswap/uikit'
-import { NumericalInput } from '@pancakeswap/widgets-internal'
+import { Currency, Price, Token } from '@pancakeswap/swap-sdk-core'
+import { AddCircleIcon, AutoColumn, AutoRow, IconButton, RemoveIcon, Text } from '@pancakeswap/uikit'
 import { FeeAmount } from '@pancakeswap/v3-sdk'
+import { NumericalInput } from '@pancakeswap/widgets-internal'
 import { LightGreyCard } from 'components/Card'
-import { ReactNode, useCallback, useEffect, useState } from 'react'
-import { Price, Token, Currency } from '@pancakeswap/swap-sdk-core'
 import { tryParsePrice } from 'hooks/v3/utils'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
 
 interface StepCounterProps {
   value: string
@@ -88,7 +88,7 @@ const StepCounter = ({
   return (
     <LightGreyCard padding="0">
       <AutoColumn py="16px" textAlign="center" gap="8px" width="100%" onFocus={handleOnFocus} onBlur={handleOnBlur}>
-        {title}
+        <Text color="#fff">{title}</Text>
         <AutoRow>
           {!locked && (
             <IconButton
@@ -101,7 +101,6 @@ const StepCounter = ({
               <RemoveIcon color="primary" width={20} height={20} />
             </IconButton>
           )}
-
           <NumericalInput
             value={localValue}
             fontSize="20px"
@@ -123,7 +122,9 @@ const StepCounter = ({
             </IconButton>
           )}
         </AutoRow>
-        {tokenA && tokenB && t('%assetA% per %assetB%', { assetA: tokenB?.symbol, assetB: tokenA?.symbol })}
+        <Text color="#fff">
+          {tokenA && tokenB && t('%assetA% per %assetB%', { assetA: tokenB?.symbol, assetB: tokenA?.symbol })}
+        </Text>
       </AutoColumn>
     </LightGreyCard>
   )

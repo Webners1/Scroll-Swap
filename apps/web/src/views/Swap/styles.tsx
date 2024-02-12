@@ -4,9 +4,13 @@ import { styled } from 'styled-components'
 export const StyledSwapContainer = styled(Flex)<{ $isChartExpanded: boolean }>`
   flex-shrink: 0;
   height: fit-content;
-  padding: 0 16px;
+  padding: 0px;
   width: 100%;
   justify-content: center;
+
+  @media (min-width: 768px) {
+    padding: 0 16px;
+  }
 
   ${({ theme }) => theme.mediaQueries.lg} {
     padding: 0 40px;
