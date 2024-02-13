@@ -1,5 +1,5 @@
-import { styled } from "styled-components";
 import { m as Motion } from "framer-motion";
+import { styled } from "styled-components";
 
 export const Arrow = styled.div`
   &,
@@ -14,7 +14,7 @@ export const Arrow = styled.div`
   &::before {
     content: "";
     transform: rotate(45deg);
-    background: ${({ theme }) => theme.tooltip.background};
+    background: #2c2c2c;
   }
 `;
 
@@ -25,9 +25,9 @@ export const StyledTooltip = styled(Motion.div)`
   border-radius: 16px;
   max-width: 320px;
   z-index: 101;
-  background: ${({ theme }) => theme.tooltip.background};
-  color: ${({ theme }) => theme.tooltip.text};
-  box-shadow: ${({ theme }) => theme.tooltip.boxShadow};
+  background: #2c2c2c;
+  color: #fff;
+  box-shadow: #2c2c2c;
 
   &[data-popper-placement^="top"] > ${Arrow} {
     bottom: -4px;

@@ -15,6 +15,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { css, styled } from 'styled-components'
 import { StyledTabWrapper } from 'views/Swap/V3Swap/styles'
+import { StyledFormButtons } from 'views/Swap/components/styleds'
 import { SettingsMode } from '../Menu/GlobalSettings/types'
 
 interface Props {
@@ -97,12 +98,13 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
           ))}
         <Flex pr={backTo && shouldCenter ? '48px' : ''} flexDirection="column" width="100%">
           <AtomBox
+            width="100%"
             display="flex"
-            mb="8px"
+            justifyContent="space-between"
             alignItems="center"
-            flexWrap="wrap"
-            justifyContent={{ xs: 'flex-end', md: 'space-between' }}
-            style={{ gap: '20px' }}
+            gap={{ xs: '20px', md: '0px' }}
+            flexDirection={{ xs: 'column', md: 'row' }}
+            mb="8px"
           >
             {/* <Flex flex={1} justifyContent={shouldCenter ? 'center' : ''}>
               {typeof title === 'string' ? <Heading as="h2">{title}</Heading> : title}
@@ -120,7 +122,7 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
             ) : (
               <Box> </Box>
             )}
-            <Box>
+            <StyledFormButtons>
               {!noConfig && (
                 <Flex alignItems="flex-end" flexDirection={hideTabs ? 'row-reverse' : 'row'}>
                   <IconWrap>
@@ -137,7 +139,7 @@ const AppHeader: React.FC<React.PropsWithChildren<Props>> = ({
                 </Flex>
               )}
               {noConfig && IconSlot && <Flex alignItems="center">{IconSlot}</Flex>}
-            </Box>
+            </StyledFormButtons>
           </AtomBox>
           {subtitle && (
             <Flex alignItems="center" justifyContent={shouldCenter ? 'center' : ''}>

@@ -398,7 +398,7 @@ export function AddLiquidityV3Layout({
 
   return (
     <Page>
-      <BodyWrapper marginTop="-127px">
+      <BodyWrapper>
         <AppHeader
           title={title}
           backTo="/liquidity"

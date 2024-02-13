@@ -1,12 +1,11 @@
 import React, { PropsWithChildren, useContext, useRef } from "react";
 import { useTheme } from "styled-components";
+import { Box } from "../../components/Box";
 import Heading from "../../components/Heading/Heading";
-import getThemeValue from "../../util/getThemeValue";
-import { ModalBody, ModalHeader, ModalTitle, ModalContainer, ModalCloseButton, ModalBackButton } from "./styles";
-import { ModalProps, ModalWrapperProps } from "./types";
 import { useMatchBreakpoints } from "../../contexts";
 import { ModalV2Context } from "./ModalV2";
-import { Box } from "../../components/Box";
+import { ModalBackButton, ModalBody, ModalCloseButton, ModalContainer, ModalHeader, ModalTitle } from "./styles";
+import { ModalProps, ModalWrapperProps } from "./types";
 
 export const MODAL_SWIPE_TO_CLOSE_VELOCITY = 300;
 
@@ -36,7 +35,7 @@ export const ModalWrapper = ({
       ref={wrapperRef}
       style={{ overflow: "visible" }}
     >
-      <Box overflow="hidden" borderRadius="32px" {...props}>
+      <Box overflow="hidden" borderRadius="12px" {...props}>
         {children}
       </Box>
     </ModalContainer>
@@ -64,11 +63,7 @@ const Modal: React.FC<React.PropsWithChildren<ModalProps>> = ({
   const theme = useTheme();
   return (
     <ModalWrapper minWidth={minWidth} onDismiss={onDismiss} hideCloseButton={hideCloseButton} {...props}>
-      <ModalHeader
-        background={getThemeValue(theme, `colors.${headerBackground}`, headerBackground)}
-        p={headerPadding}
-        headerBorderColor={headerBorderColor}
-      >
+      <ModalHeader p={headerPadding} headerBorderColor={headerBorderColor}>
         <ModalTitle>
           {onBack && <ModalBackButton onBack={onBack} />}
           <Heading>{title}</Heading>

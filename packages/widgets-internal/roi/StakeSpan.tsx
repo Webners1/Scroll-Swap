@@ -1,5 +1,5 @@
 import { useTranslation } from "@pancakeswap/localization";
-import { useMemo, memo } from "react";
+import { memo, useMemo } from "react";
 
 import { ButtonMenuItem } from "@pancakeswap/uikit";
 import { FullWidthButtonMenu } from "./FullWidthButtonMenu";
@@ -47,7 +47,7 @@ export const StakeSpan = memo(function StakeSpan({
   return (
     <FullWidthButtonMenu activeIndex={spanIndex} onItemClick={onSpanChange} scale="sm">
       {SPAN.map((span) => (
-        <ButtonMenuItem key={span.key} variant="tertiary">
+        <ButtonMenuItem key={span.key} variant="secondary">
           {span.text}
         </ButtonMenuItem>
       ))}

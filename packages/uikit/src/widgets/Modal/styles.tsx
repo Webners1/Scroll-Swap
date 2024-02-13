@@ -14,10 +14,6 @@ export const ModalHeader = styled(Flex)<{ background?: string; headerBorderColor
   border-bottom: 1px solid rgb(56, 50, 65);
   display: flex;
   padding: 12px 24px;
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    background: rgb(39, 39, 39);
-  }
 `;
 
 export const ModalTitle = styled(Flex)`

@@ -1,28 +1,28 @@
-import { useRef, useEffect, useState } from "react";
-import { styled } from "styled-components";
 import { useTranslation } from "@pancakeswap/localization";
-import { CalculatorMode, RoiCalculatorDataState } from "./useRoiCalculatorReducer";
+import { useEffect, useRef, useState } from "react";
+import { styled } from "styled-components";
 import { Box, Flex } from "../Box";
-import { Text } from "../Text";
-import { Input } from "../Input";
 import { IconButton } from "../Button";
+import { Input } from "../Input";
 import { CheckmarkIcon, PencilIcon } from "../Svg";
+import { Text } from "../Text";
+import { CalculatorMode, RoiCalculatorDataState } from "./useRoiCalculatorReducer";
 
 export const MILLION = 1000000;
 export const TRILLION = 1000000000000;
 
 export const RoiCardWrapper = styled(Box)`
-  background: linear-gradient(180deg, #53dee9, #7645d9);
+  background: #505050;
   padding: 1px;
   width: 100%;
-  border-radius: ${({ theme }) => theme.radii.default};
+  border-radius: 12px;
 `;
 
 export const RoiCardInner = styled(Box)`
   min-height: 120px;
   padding: 24px;
-  border-radius: ${({ theme }) => theme.radii.default};
-  background: ${({ theme }) => theme.colors.gradientBubblegum};
+  border-radius: 12px;
+  background: #505050;
 `;
 
 export const RoiInputContainer = styled(Box)`
@@ -128,7 +128,7 @@ const RoiCard: React.FC<React.PropsWithChildren<RoiCardProps>> = ({
   return (
     <RoiCardWrapper>
       <RoiCardInner>
-        <Text fontSize="12px" color="secondary" bold textTransform="uppercase">
+        <Text fontSize="12px" color="#fff" bold textTransform="uppercase">
           {t("ROI at current rates")}
         </Text>
         <Flex justifyContent="space-between" mt="4px" height="36px">

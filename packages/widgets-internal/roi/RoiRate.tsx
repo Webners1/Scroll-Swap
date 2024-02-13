@@ -3,11 +3,11 @@ import { memo } from "react";
 
 import { Flex, Text } from "@pancakeswap/uikit";
 import {
+  MILLION,
   RoiCardInner,
   RoiCardWrapper,
-  RoiDollarAmount,
   RoiDisplayContainer,
-  MILLION,
+  RoiDollarAmount,
   TRILLION,
 } from "@pancakeswap/uikit/components/RoiCalculatorModal/RoiCard";
 
@@ -22,7 +22,7 @@ export const RoiRate = memo(function RoiRate({ usdAmount = 0, roiPercent }: Prop
   return (
     <RoiCardWrapper>
       <RoiCardInner>
-        <Text fontSize="12px" color="secondary" bold textTransform="uppercase">
+        <Text fontSize="12px" color="#fff" bold textTransform="uppercase">
           {t("ROI at current rates")}
         </Text>
         <Flex justifyContent="space-between" mt="4px" height="36px">

@@ -46,7 +46,7 @@ const StyledButtonMenu = styled.div.withConfig({
         opacity: 0.5;
 
         & > button:disabled {
-          color: ${variant === variants.PRIMARY ? theme.colors.primary : theme.colors.textSubtle};
+          color: ${variant === variants.PRIMARY ? theme.colors.primary : theme.colors.primary};
         }
     `;
     }

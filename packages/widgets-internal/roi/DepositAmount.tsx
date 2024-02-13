@@ -3,7 +3,7 @@ import { Currency, CurrencyAmount } from "@pancakeswap/sdk";
 import { memo, useCallback } from "react";
 import { styled } from "styled-components";
 
-import { BalanceInput, Text, Flex, Button, Box, QuestionHelper, RowBetween, Card, CardBody } from "@pancakeswap/uikit";
+import { BalanceInput, Box, Button, Card, CardBody, Flex, QuestionHelper, RowBetween, Text } from "@pancakeswap/uikit";
 import { CurrencyLogo } from "../components/CurrencyLogo";
 
 type Props = UsdAmountInputProps & TokenAmountsDisplayProps;
@@ -30,6 +30,10 @@ export const DepositAmountInput = memo(function DepositAmountInput({
 
 const StyledBalanceInput = styled(BalanceInput)`
   padding: 0 16px;
+
+  input {
+    color: #ffffffaa;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -59,26 +63,32 @@ export const DepositUsdAmountInput = memo(function DepositUsdAmountInput({
   return (
     <>
       <Box mb="0.5em" width="100%">
-        <StyledBalanceInput value={value} onUserInput={onChange} unit={<Text color="textSubtle">{t("USD")}</Text>} />
+        <StyledBalanceInput
+          border={0}
+          value={value}
+          onUserInput={onChange}
+          unit={<Text color="textSubtle">{t("USD")}</Text>}
+        />
       </Box>
       <Flex>
         <Flex flex="3" mr="0.25em">
-          <StyledButton variant={value === "100" ? "primary" : "tertiary"} scale="xs" onClick={() => onChange("100")}>
+          <StyledButton variant={value === "100" ? "primary" : "tertiary"} scale="md" onClick={() => onChange("100")}>
             $100
           </StyledButton>
         </Flex>
         <Flex flex="3" mr="0.25em">
-          <StyledButton variant={value === "1000" ? "primary" : "tertiary"} scale="xs" onClick={() => onChange("1000")}>
+          <StyledButton variant={value === "1000" ? "primary" : "tertiary"} scale="md" onClick={() => onChange("1000")}>
             $1,000
           </StyledButton>
         </Flex>
         <Flex flex="4">
-          <StyledButton variant={value === max ? "primary" : "tertiary"} scale="xs" mr="0.25em" onClick={onMax}>
+          <StyledButton variant={value === max ? "primary" : "tertiary"} scale="md" mr="0.25em" onClick={onMax}>
             {maxLabel || t("Max")}
           </StyledButton>
           <QuestionHelper
             text={t("Automatically fill in the maximum token amount according to your balance and position settings.")}
             placement="top"
+            size="20px"
           />
         </Flex>
       </Flex>

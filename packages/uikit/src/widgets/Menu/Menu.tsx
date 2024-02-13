@@ -60,7 +60,7 @@ const BodyWrapper = styled(Box)`
   max-width: 100vw;
   width: 100%;
   min-height: 100vh;
-  padding-top: 70px;
+  padding-top: 30px;
   @media (min-width: 768px) {
     padding-top: initial;
   }
@@ -389,7 +389,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                 </SocialLinkWrapper>
               </MainLinkContainerStyled>
             </StyledSidebar>
-            <BodyWrapper mt={!subLinks ? `${totalTopMenuHeight + 1}px` : "0"}>
+            <BodyWrapper mt="20px">
               {rightSide}
               {/* eslint-disable jsx-a11y/no-static-element-interactions */}
               {mobileNavOpen && <BackDrop onClick={() => setMobileNavOpen(!mobileNavOpen)} />}
