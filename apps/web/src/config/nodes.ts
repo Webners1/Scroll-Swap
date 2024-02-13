@@ -145,6 +145,6 @@ export const PUBLIC_NODES = {
     ...base.rpcUrls.public.http,
   ].filter(Boolean),
   [ChainId.BASE_TESTNET]: baseGoerli.rpcUrls.public.http,
-  [ChainId.SCROLL_SEPOLIA]: scrollSepolia.rpcUrls.public.http,
-  [ChainId.SCROLL]: scrollSepolia.rpcUrls.public.http,
+  [ChainId.SCROLL_SEPOLIA]: [...scrollSepolia.rpcUrls.public.http],
+  [ChainId.SCROLL]: [...scrollSepolia.rpcUrls.public.http],
 } satisfies Record<ChainId, readonly string[]>
