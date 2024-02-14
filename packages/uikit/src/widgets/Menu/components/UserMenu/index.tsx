@@ -9,7 +9,7 @@ import { UserMenuProps, variants } from "./types";
 
 export const StyledUserMenu = styled(Flex)`
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.tertiary};
+  background-color: #4b4b4b;
   border-radius: 16px;
   cursor: pointer;
   display: inline-flex;
@@ -32,7 +32,7 @@ export const LabelText = styled.div`
 `;
 
 const Menu = styled.div<{ $isOpen: boolean }>`
-  background-color: ${({ theme }) => theme.card.background};
+  background-color: #4b4b4b;
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
   border-radius: 16px;
   pointer-events: auto;

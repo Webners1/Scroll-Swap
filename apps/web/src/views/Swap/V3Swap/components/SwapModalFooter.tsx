@@ -1,15 +1,15 @@
 import { useTranslation } from '@pancakeswap/localization'
-import { SmartRouterTrade, SmartRouter } from '@pancakeswap/smart-router/evm'
 import { Currency, CurrencyAmount, Percent, TradeType } from '@pancakeswap/sdk'
-import { BackForwardIcon, Button, QuestionHelper, Text, Link, AutoColumn, Dots, Flex } from '@pancakeswap/uikit'
+import { SmartRouter, SmartRouterTrade } from '@pancakeswap/smart-router/evm'
+import { AutoColumn, BackForwardIcon, Button, Dots, Flex, Link, QuestionHelper, Text } from '@pancakeswap/uikit'
 import { formatAmount } from '@pancakeswap/utils/formatFractions'
 import { AutoRow, RowBetween, RowFixed } from 'components/Layout/Row'
-import { useState, memo, useMemo } from 'react'
+import { CurrencyLogo } from 'components/Logo'
+import { BUYBACK_FEE, LP_HOLDERS_FEE, TOTAL_FEE, TREASURY_FEE } from 'config/constants/info'
+import { memo, useMemo, useState } from 'react'
 import { Field } from 'state/swap/actions'
 import { styled } from 'styled-components'
-import { CurrencyLogo } from 'components/Logo'
 import { warningSeverity } from 'utils/exchange'
-import { BUYBACK_FEE, LP_HOLDERS_FEE, TOTAL_FEE, TREASURY_FEE } from 'config/constants/info'
 import { formatExecutionPrice as mmFormatExecutionPrice } from 'views/Swap/MMLinkPools/utils/exchange'
 
 import FormattedPriceImpact from '../../components/FormattedPriceImpact'
@@ -19,9 +19,8 @@ import { formatExecutionPrice } from '../utils/exchange'
 const SwapModalFooterContainer = styled(AutoColumn)`
   margin-top: 24px;
   padding: 16px;
-  border-radius: ${({ theme }) => theme.radii.default};
-  border: 1px solid ${({ theme }) => theme.colors.cardBorder};
-  background-color: ${({ theme }) => theme.colors.background};
+  border-radius: 12px;
+  background-color: #4b4b4b40;
 `
 
 export const SwapModalFooter = memo(function SwapModalFooter({
@@ -80,7 +79,9 @@ export const SwapModalFooter = memo(function SwapModalFooter({
     <>
       <SwapModalFooterContainer>
         <RowBetween align="center" mb="8px">
-          <Text fontSize="14px">{t('Price')}</Text>
+          <Text fontSize="14px" color="#fff">
+            {t('Price')}
+          </Text>
           <Text
             fontSize="14px"
             style={{
@@ -100,7 +101,7 @@ export const SwapModalFooter = memo(function SwapModalFooter({
 
         <RowBetween mb="8px">
           <RowFixed>
-            <Text fontSize="14px">
+            <Text color="#fff" fontSize="14px">
               {tradeType === TradeType.EXACT_INPUT ? t('Minimum received') : t('Maximum sold')}
             </Text>
             <QuestionHelper
@@ -109,6 +110,7 @@ export const SwapModalFooter = memo(function SwapModalFooter({
               )}
               ml="4px"
               placement="top"
+              color="#fff"
             />
           </RowFixed>
           <RowFixed>
@@ -124,10 +126,13 @@ export const SwapModalFooter = memo(function SwapModalFooter({
         </RowBetween>
         <RowBetween mb="8px">
           <RowFixed>
-            <Text fontSize="14px">{t('Price Impact')}</Text>
+            <Text color="#fff" fontSize="14px">
+              {t('Price Impact')}
+            </Text>
             <QuestionHelper
               ml="4px"
               placement="top"
+              color="#fff"
               text={
                 isMM ? (
                   <>
@@ -154,10 +159,13 @@ export const SwapModalFooter = memo(function SwapModalFooter({
         </RowBetween>
         <RowBetween>
           <RowFixed>
-            <Text fontSize="14px">{t('Trading Fee')}</Text>
+            <Text color="#fff" fontSize="14px">
+              {t('Trading Fee')}
+            </Text>
             <QuestionHelper
               ml="4px"
               placement="top"
+              color="#fff"
               text={
                 isMM ? (
                   <>

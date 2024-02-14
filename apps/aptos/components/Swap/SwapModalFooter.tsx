@@ -1,7 +1,7 @@
-import { Trade, Currency, CurrencyAmount, TradeType } from '@pancakeswap/aptos-swap-sdk'
+import { Currency, CurrencyAmount, Trade, TradeType } from '@pancakeswap/aptos-swap-sdk'
 import { useTranslation } from '@pancakeswap/localization'
 import { AutoColumn, AutoRow, Button, QuestionHelper, RowBetween, RowFixed, Text } from '@pancakeswap/uikit'
-import { Swap as SwapUI, SwapCallbackError } from '@pancakeswap/widgets-internal'
+import { SwapCallbackError, Swap as SwapUI } from '@pancakeswap/widgets-internal'
 
 import { useMemo } from 'react'
 import { Field } from 'state/swap'
@@ -12,9 +12,9 @@ import FormattedPriceImpact from './FormattedPriceImpact'
 const SwapModalFooterContainer = styled(AutoColumn)`
   margin-top: 24px;
   padding: 16px;
-  border-radius: ${({ theme }) => theme.radii.default};
+  border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: #505050;
 `
 
 export default function SwapModalFooter({

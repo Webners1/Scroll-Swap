@@ -1,29 +1,29 @@
+import { useTranslation } from '@pancakeswap/localization'
+import { ChainId, Currency, CurrencyAmount } from '@pancakeswap/sdk'
 import {
+  ArrowForwardIcon,
   Button,
-  Modal,
-  ModalV2,
-  ModalBody,
-  ModalV2Props,
-  Text,
-  Flex,
-  LinkExternal,
   Card,
   CardBody,
-  Spinner,
   CheckmarkCircleIcon,
+  Flex,
+  LinkExternal,
   LogoRoundIcon,
-  ArrowForwardIcon,
+  Modal,
+  ModalBody,
+  ModalV2,
+  ModalV2Props,
+  Spinner,
+  Text,
 } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { formatAmount } from '@pancakeswap/utils/formatFractions'
 import styled from 'styled-components'
 import { SpaceProps } from 'styled-system'
-import { ChainId, Currency, CurrencyAmount } from '@pancakeswap/sdk'
-import { formatAmount } from '@pancakeswap/utils/formatFractions'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
 
+import { BRIDGE_STATE, BridgeState, useBridgeMessageUrl, useBridgeSuccessTxUrl } from '../../../hooks/useBridgeICake'
 import { useChainName } from '../../../hooks/useChainNames'
-import { BridgeState, BRIDGE_STATE, useBridgeMessageUrl, useBridgeSuccessTxUrl } from '../../../hooks/useBridgeICake'
 import { ICakeLogo, IfoIcon } from '../../Icons'
 
 type Props = {

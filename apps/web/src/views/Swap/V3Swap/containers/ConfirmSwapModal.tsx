@@ -240,7 +240,7 @@ export const ConfirmSwapModal = memo<InjectedModalProps & ConfirmSwapModalProps>
       hideTitleAndBackground={confirmModalState !== ConfirmModalState.REVIEWING}
       headerPadding={isShowingLoadingAnimation ? '12px 24px 0px 24px !important' : '12px 24px'}
       bodyPadding={isShowingLoadingAnimation ? '0 24px 24px 24px' : '24px'}
-      bodyTop={isShowingLoadingAnimation ? '-15px' : '0'}
+      bodyTop={isShowingLoadingAnimation ? '24px' : '0'}
       handleDismiss={handleDismiss}
     >
       <Box>{topModal}</Box>

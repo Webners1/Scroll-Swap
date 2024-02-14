@@ -141,6 +141,7 @@ export default function Swap() {
           </Modal>
         </ModalV2>
         <Flex flexDirection="column" width="100%">
+          {/* <LocalLoader fill={false} /> */}
           <StyledSwapContainer $isChartExpanded={isChartExpanded}>
             <StyledInputCurrencyWrapper mt={isChartExpanded ? '24px' : '0'}>
               <AppBody>

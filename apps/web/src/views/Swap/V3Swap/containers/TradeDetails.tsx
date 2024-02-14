@@ -2,14 +2,14 @@ import { TradeType } from '@pancakeswap/sdk'
 import { SmartRouter, SmartRouterTrade } from '@pancakeswap/smart-router/evm'
 import { AutoColumn } from '@pancakeswap/uikit'
 import useLastTruthy from 'hooks/useLast'
-import { useMemo, memo } from 'react'
+import { memo, useMemo } from 'react'
 
 import { AdvancedSwapDetails, TradeSummary } from 'views/Swap/components/AdvancedSwapDetails'
 import { AdvancedDetailsFooter } from 'views/Swap/components/AdvancedSwapDetailsDropdown'
 
 import { MMTradeInfo } from 'views/Swap/MMLinkPools/hooks'
 import { RoutesBreakdown } from '../components'
-import { useSlippageAdjustedAmounts, useIsWrapping } from '../hooks'
+import { useIsWrapping, useSlippageAdjustedAmounts } from '../hooks'
 import { computeTradePriceBreakdown } from '../utils/exchange'
 
 interface Props {

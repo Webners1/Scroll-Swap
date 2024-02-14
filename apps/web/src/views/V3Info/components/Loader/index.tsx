@@ -1,4 +1,4 @@
-import { styled, css, keyframes } from 'styled-components'
+import { css, keyframes, styled } from 'styled-components'
 
 const rotate = keyframes`
   from {
@@ -54,7 +54,7 @@ const Wrapper = styled.div<{ fill: number; height?: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme, fill }) => (fill ? 'black' : theme.colors.background)};
+  background-color: ${({ theme, fill }) => '#3f3f3f'};
   height: 100%;
   width: 100%;
   ${(props) =>
@@ -78,7 +78,7 @@ export const LocalLoader = ({ fill }: { fill: boolean }) => {
   return (
     <Wrapper fill={fill ? 1 : 0}>
       <AnimatedImg>
-        <img src="https://assets.pancakeswap.finance/web/pancake-3d-spinner-v2.gif" alt="loading-icon" />
+        <img src="/images/loading.gif" alt="loading-icon" />
       </AnimatedImg>
     </Wrapper>
   )
