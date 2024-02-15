@@ -9,7 +9,7 @@ export const StyledModal = styled(Modal)`
     padding: 0;
   }
 
-  background-color: #4b4b4b;
+  background-color: #262626;
 
   ${({ theme }) => theme.mediaQueries.md} {
     width: 860px;

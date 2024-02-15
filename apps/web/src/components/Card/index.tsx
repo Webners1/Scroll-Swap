@@ -24,7 +24,7 @@ export const LightCard = styled(Card)`
 `
 
 export const LightGreyCard = styled(Card)`
-  background-color: #505050;
+  background-color: #2e2e2e;
 `
 
 export const CryptoCard = styled(Card)<{ isClicked: boolean; isDisabled: boolean; elementHeight: number }>`

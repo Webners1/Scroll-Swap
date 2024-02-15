@@ -12,7 +12,7 @@ export const MILLION = 1000000;
 export const TRILLION = 1000000000000;
 
 export const RoiCardWrapper = styled(Box)`
-  background: #505050;
+  background: #2e2e2e;
   padding: 1px;
   width: 100%;
   border-radius: 12px;
@@ -22,7 +22,7 @@ export const RoiCardInner = styled(Box)`
   min-height: 120px;
   padding: 24px;
   border-radius: 12px;
-  background: #505050;
+  background: #2e2e2e;
 `;
 
 export const RoiInputContainer = styled(Box)`

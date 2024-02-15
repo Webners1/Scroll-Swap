@@ -14,7 +14,7 @@ const SwapModalFooterContainer = styled(AutoColumn)`
   padding: 16px;
   border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.colors.cardBorder};
-  background-color: #505050;
+  background-color: #2e2e2e;
 `
 
 export default function SwapModalFooter({

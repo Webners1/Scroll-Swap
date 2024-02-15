@@ -23,7 +23,7 @@ import { TwoColumns } from "./TwoColumns";
 import { floatToPercent, toToken0Price } from "./utils";
 
 const Container = styled(Box)`
-  background: #505050;
+  background: #2e2e2e;
   padding: 12px;
   border-radius: 12px;
 `;

@@ -72,7 +72,7 @@ const Inner = styled.div`
   transform: translate3d(0, 0, 0);
   max-width: 100%;
   > div {
-    background: #272727;
+    background: #181818;
   }
 `;
 
@@ -90,7 +90,7 @@ const MainLinkContainerStyled = styled.ul`
 `;
 const MainLinkStyled = styled.li`
   font-size: 16px;
-  padding: 12px 20px 12px 30px;
+  padding: 15px 20px 15px 30px;
   position: relative;
 
   a {
@@ -104,7 +104,7 @@ const MainLinkStyled = styled.li`
     }
   }
   &.active {
-    background-color: rgb(39, 39, 39);
+    background-color: #181818;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
 
@@ -125,7 +125,7 @@ const MainLinkStyled = styled.li`
       right: 0px;
       width: 20px;
       display: block;
-      background: rgb(39, 39, 39);
+      background: #181818;
 
       &::before {
         content: "";
@@ -134,7 +134,7 @@ const MainLinkStyled = styled.li`
         right: 0px;
         height: 100%;
         width: 20px;
-        background: #4b4b4b;
+        background: #262626;
         border-bottom-right-radius: 20px;
       }
     }
@@ -145,7 +145,7 @@ const MainLinkStyled = styled.li`
       right: 0px;
       width: 20px;
       display: block;
-      background: rgb(39, 39, 39);
+      background: #181818;
       &::before {
         content: "";
         position: absolute;
@@ -153,7 +153,7 @@ const MainLinkStyled = styled.li`
         right: 0px;
         height: 100%;
         width: 20px;
-        background: #4b4b4b;
+        background: #262626;
         border-top-right-radius: 20px;
       }
     }
@@ -222,7 +222,7 @@ const SwapIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) =>
 );
 
 const LiquidityIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
     <path
       fill={color}
       stroke={color}
@@ -237,7 +237,7 @@ const LiquidityIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string 
 const TwitterIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="18"
+    width="20"
     className="sc-bdfBQB hmhIY"
     color="#fff"
     viewBox="0 0 24 24"
@@ -247,6 +247,15 @@ const TwitterIcon = () => (
     <path
       fill="#fff"
       d="M12 .3C5.5.3.3 5.5.3 12S5.5 23.7 12 23.7 23.7 18.5 23.7 12 18.5.3 12 .3zm6 8.6v.5c0 4-3.1 8.7-8.7 8.7-1.8 0-3.4-.5-4.7-1.2h.8c1.4 0 2.8-.6 3.8-1.4-1.4 0-2.4-.9-2.9-2.1h.6c.3 0 .5-.2.8-.2-1.4-.3-2.4-1.5-2.4-3.1.5.3.9.5 1.4.5-1-.6-1.6-1.5-1.6-2.6 0-.6.2-1.1.5-1.5C7.1 8.3 9.4 9.6 12 9.7c-.2-.3-.2-.5-.2-.8 0-1.7 1.4-3.1 3.1-3.1.9 0 1.7.3 2.1.9.8-.2 1.4-.5 2-.8-.3.8-.8 1.4-1.4 1.7.6 0 1.2-.2 1.8-.5-.2.9-.8 1.4-1.4 1.8z"
+    />
+  </svg>
+);
+
+const BridgeIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" opacity="0.6" viewBox="0 0 20 20">
+    <path
+      fill="#fff"
+      d="M2.89 11.094c-.82.273-1.406 1.015-1.406 1.914 0 1.094.899 1.992 2.032 1.992a2 2 0 001.992-1.992c0-.781-.469-1.485-1.094-1.797C4.961 8.67 7.266 6.758 10 6.758c1.836 0 3.477.86 4.531 2.187.469-.234.977-.39 1.524-.43-1.29-1.953-3.516-3.28-6.055-3.28-3.516 0-6.445 2.538-7.11 5.859zm15.626 1.914c0 1.094-.899 1.992-2.032 1.992a2 2 0 01-1.992-1.992 2 2 0 011.992-1.992c1.133 0 2.032.898 2.032 1.992zm0 0"
     />
   </svg>
 );
@@ -337,6 +346,11 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
       label: "Liquidity",
       href: "/liquidity",
       icon: <LiquidityIcon />,
+    },
+    {
+      label: "Bridge",
+      href: "/bridge",
+      icon: <BridgeIcon />,
     },
   ];
 

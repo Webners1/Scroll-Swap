@@ -7,7 +7,7 @@ export const AdvancedDetailsFooter = styled.div<{ show: boolean }>`
   width: 100%;
   max-width: 100%;
   border-radius: 20px;
-  background-color: #505050;
+  background-color: #2e2e2e;
   box-shadow: 0px 0px 5px 0px #444;
 
   transform: ${({ show }) => (show ? 'translateY(0%)' : 'translateY(-100%)')};

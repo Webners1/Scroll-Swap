@@ -54,12 +54,12 @@ const IconWrap = styled.div`
   button {
     margin-left: 0px;
     margin-right: 0px;
-    background-color: #504f54;
+    background-color: #2e2e2e;
   }
 `
 const RightIconWrap = styled.div`
   button {
-    background-color: #504f54;
+    background-color: #2e2e2e;
   }
 `
 

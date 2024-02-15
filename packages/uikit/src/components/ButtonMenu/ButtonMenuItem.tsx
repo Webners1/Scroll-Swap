@@ -9,7 +9,7 @@ interface InactiveButtonProps extends BaseButtonProps {
 }
 
 const InactiveButton: PolymorphicComponent<InactiveButtonProps, "button"> = styled(Button)<InactiveButtonProps>`
-  background-color: #4b4b4b;
+  background-color: #262626;
   border-color: transparent;
   /* border: 2px solid #f3c00d; */
   color: ${({ theme, variant }) => (variant === variants.PRIMARY ? theme.colors.primary : theme.colors.textSubtle)};

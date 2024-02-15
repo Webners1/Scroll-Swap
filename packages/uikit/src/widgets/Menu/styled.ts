@@ -4,7 +4,7 @@ export const CustomHeaderWrapperStyled = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  background-color: #272727;
+  background-color: #181818;
   height: auto;
 `;
 
@@ -19,7 +19,7 @@ export const StyledSidebar = styled.div<SidebarProps>`
   top: 0;
   left: 0;
   z-index: 9999;
-  background-color: #4b4b4b;
+  background-color: #262626;
   height: 100%;
   width: ${(p) => (p.mobileNavOpen ? "250px" : "0px")};
   border-radius: 0 20px 20px 0;

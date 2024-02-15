@@ -18,7 +18,7 @@ import { PriceData } from "./types";
 const PriceDisplayContainer = styled(Flex)`
   padding: 0.5em;
   border-radius: 12px;
-  background: #505050;
+  background: #2e2e2e;
 `;
 
 interface Props {

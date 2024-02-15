@@ -137,7 +137,7 @@ const BarChart = ({
             visible: true,
             style: 3,
             width: 1,
-            color: '#505050',
+            color: '#2e2e2e',
             labelBackgroundColor: color,
             labelVisible: false,
           },

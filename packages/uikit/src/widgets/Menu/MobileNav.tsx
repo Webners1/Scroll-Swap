@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 const NavStyled = styled.nav`
-  background-color: #4b4b4b;
+  background-color: #262626;
   width: 100%;
   position: absolute;
   z-index: 10;

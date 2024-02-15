@@ -27,7 +27,7 @@ export const StyledTabWrapper = styled.div`
 
   button {
     width: 100%;
-    background-color: #4b4b4b;
+    background-color: #262626;
     box-shadow: none;
     border: 2px solid #f3c00d;
     color: #f3c00d;

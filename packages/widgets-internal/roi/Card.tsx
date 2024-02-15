@@ -16,5 +16,5 @@ export const Card = styled(Box)<{
 `;
 
 export const LightGreyCard = styled(Card)`
-  background-color: #505050;
+  background-color: #2e2e2e;
 `;

@@ -20,7 +20,7 @@ const SwapModalFooterContainer = styled(AutoColumn)`
   margin-top: 24px;
   padding: 16px;
   border-radius: 12px;
-  background-color: #4b4b4b40;
+  background-color: #26262640;
 `
 
 export const SwapModalFooter = memo(function SwapModalFooter({

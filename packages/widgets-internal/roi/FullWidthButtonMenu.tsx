@@ -4,7 +4,7 @@ import { ButtonMenu } from "@pancakeswap/uikit";
 
 export const FullWidthButtonMenu = styled(ButtonMenu)<{ disabled?: boolean }>`
   width: 100%;
-  background-color: #4b4b4baa;
+  background-color: #262626aa;
 
   & > button {
     width: 100%;

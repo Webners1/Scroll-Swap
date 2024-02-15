@@ -125,6 +125,6 @@ export const StyledFormButtons = styled.div`
   }
 
   button {
-    background-color: #504f54;
+    background-color: #2e2e2e;
   }
 `

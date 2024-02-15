@@ -36,7 +36,7 @@ const AptosChain = {
 }
 
 const StyledList = styled.div`
-  background-color: #4b4b4b;
+  background-color: #262626;
   overflow-y: auto;
   height: 400px;
   border-radius: 16px;

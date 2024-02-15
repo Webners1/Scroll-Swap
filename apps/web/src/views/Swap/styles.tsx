@@ -27,5 +27,5 @@ export const StyledInputCurrencyWrapper = styled(Box)`
 `
 
 export const StyledFormWrapper = styled(Box)`
-  background-color: #4b4b4b;
+  background-color: #262626;
 `
