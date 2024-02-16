@@ -1,12 +1,12 @@
-import { ModalV2 } from '@pancakeswap/uikit'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { CHAIN_IDS } from 'utils/wagmi'
 import { ChainId } from '@pancakeswap/chains'
-import { useMemo } from 'react'
-import { useNetwork } from 'wagmi'
+import { ModalV2 } from '@pancakeswap/uikit'
+import { SUPPORT_ONLY_SCROLL_SEPOLIA } from 'config/constants/supportChains'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { atom, useAtom } from 'jotai'
-import { SUPPORT_ONLY_BSC } from 'config/constants/supportChains'
 import dynamic from 'next/dynamic'
+import { useMemo } from 'react'
+import { CHAIN_IDS } from 'utils/wagmi'
+import { useNetwork } from 'wagmi'
 
 export const hideWrongNetworkModalAtom = atom(false)
 
@@ -22,13 +22,17 @@ const UnsupportedNetworkModal = dynamic(
   { ssr: false },
 )
 
-export const NetworkModal = ({ pageSupportedChains = SUPPORT_ONLY_BSC }: { pageSupportedChains?: number[] }) => {
+export const NetworkModal = ({
+  pageSupportedChains = SUPPORT_ONLY_SCROLL_SEPOLIA,
+}: {
+  pageSupportedChains?: number[]
+}) => {
   const { chainId, chain, isWrongNetwork } = useActiveWeb3React()
   const { chains } = useNetwork()
   const [dismissWrongNetwork, setDismissWrongNetwork] = useAtom(hideWrongNetworkModalAtom)
 
-  const isBNBOnlyPage = useMemo(() => {
-    return pageSupportedChains?.length === 1 && pageSupportedChains[0] === ChainId.BSC
+  const isScrollSepoliaOnlyPage = useMemo(() => {
+    return pageSupportedChains?.length === 1 && pageSupportedChains[0] === ChainId.SCROLL_SEPOLIA
   }, [pageSupportedChains])
 
   const isPageNotSupported = useMemo(
@@ -37,7 +41,7 @@ export const NetworkModal = ({ pageSupportedChains = SUPPORT_ONLY_BSC }: { pageS
   )
   if (pageSupportedChains?.length === 0) return null // open to all chains
 
-  if (isPageNotSupported && isBNBOnlyPage) {
+  if (isPageNotSupported && isScrollSepoliaOnlyPage) {
     return (
       <ModalV2 isOpen closeOnOverlayClick={false}>
         <PageNetworkSupportModal />

@@ -78,7 +78,7 @@ export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupported
             variant="secondary"
             onClick={() =>
               logout().then(() => {
-                switchNetworkLocal(ChainId.BSC)
+                switchNetworkLocal(ChainId.SCROLL_SEPOLIA)
               })
             }
           >
