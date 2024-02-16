@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { styled } from "styled-components";
 import { AtomBox } from "../../components/AtomBox";
 import { Box } from "../../components/Box";
+import { LangSelector } from "../../components/LangSelector";
 import MenuItem from "../../components/MenuItem/MenuItem";
 import { useMatchBreakpoints } from "../../contexts";
 import MobileNav from "./MobileNav";
@@ -92,6 +93,7 @@ const MainLinkStyled = styled.li`
   font-size: 16px;
   padding: 15px 20px 15px 30px;
   position: relative;
+  width: 100%;
 
   a {
     color: rgba(255, 255, 255, 0.6);
@@ -203,6 +205,12 @@ const SocialLinkWrapper = styled.div`
   border-top: 1px solid #ffffff30;
   margin-right: 30px;
   margin-top: 30px;
+`;
+
+const SidebarSettingsWrapper = styled.div`
+  margin: 0px 30px 50px;
+  padding-top: 20px;
+  border-top: 1px solid #ffffff30;
 `;
 
 const SwapIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) => (
@@ -402,9 +410,18 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                   </MainLinkStyled>
                 </SocialLinkWrapper>
               </MainLinkContainerStyled>
+              <SidebarSettingsWrapper>
+                <LangSelector
+                  currentLang={currentLang}
+                  langs={langs}
+                  setLang={setLang}
+                  color="textSubtle"
+                  dropdownPosition="top"
+                />
+              </SidebarSettingsWrapper>
             </StyledSidebar>
-            <BodyWrapper mt="20px">
-              {rightSide}
+            <BodyWrapper>
+              <Box mt="20px">{rightSide}</Box>
               {/* eslint-disable jsx-a11y/no-static-element-interactions */}
               {mobileNavOpen && <BackDrop onClick={() => setMobileNavOpen(!mobileNavOpen)} />}
               <Inner>{children}</Inner>

@@ -1,9 +1,9 @@
 import shouldForwardProp from "@styled-system/should-forward-prop";
-import React, { useEffect, useState } from "react";
 import throttle from "lodash/throttle";
-import { styled, css } from "styled-components";
-import { DropdownProps, PositionProps, Position } from "./types";
+import React, { useEffect, useState } from "react";
+import { css, styled } from "styled-components";
 import { useMatchBreakpoints } from "../../contexts";
+import { DropdownProps, Position, PositionProps } from "./types";
 
 const getLeft = ({ position }: PositionProps) => {
   if (position === "top-right") {
@@ -29,7 +29,7 @@ const DropdownContent = styled.div.withConfig({
   transform: translate(-50%, 0);
   left: ${getLeft};
   bottom: ${getBottom};
-  background-color: ${({ theme }) => theme.nav.background};
+  background-color: #2e2e2e;
   box-shadow: ${({ theme }) => theme.shadows.level1};
   padding: 16px;
   max-height: 0px;
