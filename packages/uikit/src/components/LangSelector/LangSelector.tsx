@@ -1,13 +1,13 @@
 import React from "react";
-import Text from "../Text/Text";
-import Dropdown from "../Dropdown/Dropdown";
-import Button from "../Button/Button";
-import LanguageIcon from "../Svg/Icons/Language";
-import MenuButton from "./MenuButton";
 import { Colors } from "../../theme";
-import { Language } from "./types";
-import { Position } from "../Dropdown/types";
+import Button from "../Button/Button";
 import { Scale } from "../Button/types";
+import Dropdown from "../Dropdown/Dropdown";
+import { Position } from "../Dropdown/types";
+import LanguageIcon from "../Svg/Icons/Language";
+import Text from "../Text/Text";
+import MenuButton from "./MenuButton";
+import { Language } from "./types";
 
 interface Props {
   currentLang: string;

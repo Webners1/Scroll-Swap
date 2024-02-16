@@ -15,6 +15,7 @@ type SidebarProps = {
 export const StyledSidebar = styled.div<SidebarProps>`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   position: absolute;
   top: 0;
   left: 0;
