@@ -43,7 +43,7 @@ export function PageNetworkSupportModal() {
   return (
     <Modal title={title || t('Check your network')} hideCloseButton headerBackground="gradientCardHeader">
       <Grid style={{ gap: '16px' }} maxWidth="360px">
-        <Text bold>{t('It’s a BNB Smart Chain only feature')}</Text>
+        <Text bold>{t('It’s a Scroll Sepolia Chain only feature')}</Text>
 
         {image && (
           <Box mx="auto" my="8px" position="relative" width="100%" minHeight="250px">
@@ -63,7 +63,7 @@ export function PageNetworkSupportModal() {
               isWrongNetwork ? switchNetworkLocal(ChainId.SCROLL_SEPOLIA) : switchNetworkAsync(ChainId.SCROLL_SEPOLIA)
             }
           >
-            {t('Switch to %chain%', { chain: 'BNB Chain' })}
+            {t('Switch to %chain%', { chain: 'Scroll Sepolia' })}
           </Button>
         ) : (
           <Message variant="danger">
