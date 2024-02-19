@@ -6,6 +6,7 @@ import { AtomBox } from "../../components/AtomBox";
 import { Box } from "../../components/Box";
 import { LangSelector } from "../../components/LangSelector";
 import MenuItem from "../../components/MenuItem/MenuItem";
+import { Text } from "../../components/Text";
 import { useMatchBreakpoints } from "../../contexts";
 import MobileNav from "./MobileNav";
 import { MENU_HEIGHT, TOP_BANNER_HEIGHT, TOP_BANNER_HEIGHT_MOBILE } from "./config";
@@ -213,6 +214,13 @@ const SidebarSettingsWrapper = styled.div`
   border-top: 1px solid #ffffff30;
 `;
 
+const FooterStyled = styled.footer`
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const SwapIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) => (
   <svg
     viewBox="0 0 20 20"
@@ -362,6 +370,10 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
     },
   ];
 
+  const date = new Date();
+
+  const footerDate = date.getFullYear();
+
   return (
     <MenuContext.Provider value={providerValue}>
       <AtomBox
@@ -425,6 +437,9 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
               {/* eslint-disable jsx-a11y/no-static-element-interactions */}
               {mobileNavOpen && <BackDrop onClick={() => setMobileNavOpen(!mobileNavOpen)} />}
               <Inner>{children}</Inner>
+              <FooterStyled>
+                <Text color="textSubtle">© {footerDate} LolPad Finance. All rights reserved.</Text>
+              </FooterStyled>
             </BodyWrapper>
           </CustomHeaderWrapperStyled>
         </Wrapper>
