@@ -19,11 +19,12 @@ const getPathList = (t: ContextApi['t']): PathList => {
   return {
     paths: {
       '/': { title: t('Home') },
-      '/swap': { basePath: true, title: t('Exchange'), image: `${ASSET_CDN}/web/og/swap.jpg` },
+      '/swap': { basePath: true, title: t('Swap'), image: `${ASSET_CDN}/web/og/swap.jpg` },
       '/limit-orders': { basePath: true, title: t('Limit Orders'), image: `${ASSET_CDN}/web/og/limit.jpg` },
       '/add': { basePath: true, title: t('Add Liquidity'), image: `${ASSET_CDN}/web/og/liquidity.jpg` },
       '/remove': { basePath: true, title: t('Remove Liquidity'), image: `${ASSET_CDN}/web/og/liquidity.jpg` },
       '/liquidity': { title: t('Liquidity'), image: `${ASSET_CDN}/web/og/liquidity.jpg` },
+      '/bridge': { title: t('Bridge') },
       '/find': { title: t('Import Pool') },
       '/competition': { title: t('Trading Battle') },
       '/prediction': { title: t('Prediction'), image: `${ASSET_CDN}/web/og/prediction.jpg` },

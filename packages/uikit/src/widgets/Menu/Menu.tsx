@@ -413,7 +413,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                     {/* eslint-disable jsx-a11y/no-static-element-interactions */}
                     {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
                     <span onClick={() => setMobileNavOpen(false)}>
-                      <StyledLink href="https://twitter.com/lolpadfinance" target="_blank">
+                      <StyledLink href="https://twitter.com/LolPadfinance" target="_blank">
                         <TwitterIcon />
                         <span>Twitter</span>
                       </StyledLink>

@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="🥞 PancakeSwap - A next evolution DeFi exchange on BNB Smart Chain (BSC)" />
-        <title>Bridge | Lolpad Finance</title>
+        <title>Bridge | LolPad Finance</title>
       </Head>
       <NextThemeProvider>
         <StyledThemeProvider>
