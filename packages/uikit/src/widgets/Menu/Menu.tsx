@@ -63,8 +63,14 @@ const BodyWrapper = styled(Box)`
   width: 100%;
   min-height: 100vh;
   padding-top: 30px;
+  background-color: #181818;
+  background: url("./bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
   @media (min-width: 768px) {
     padding-top: initial;
+    background-size: contain;
   }
 `;
 
@@ -74,7 +80,7 @@ const Inner = styled.div`
   transform: translate3d(0, 0, 0);
   max-width: 100%;
   > div {
-    background: #181818;
+    background: transparent;
   }
 `;
 
