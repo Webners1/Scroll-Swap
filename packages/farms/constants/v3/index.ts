@@ -13,6 +13,7 @@ import { farmsV3 as opBNBFarms } from '../opBNB'
 import { farmsV3 as opBnbTestnetFarms } from '../opBnbTestnet'
 import { farmsV3 as polygonZkEVMFarms } from '../polygonZkEVM'
 import { farmsV3 as polygonZkEVMTestnetFarms } from '../polygonZkEVMTestnet'
+import { farmsV3 as scrollSepoliaFarms } from '../scrollSepolia'
 import { farmsV3 as zkSyncFarms } from '../zkSync'
 import { farmsV3 as zkSyncTestnetFarms } from '../zkSyncTestnet'
 
@@ -30,6 +31,7 @@ export const farmsV3ConfigChainMap: Record<FarmV3SupportedChainId, ComputedFarmC
   [ChainId.BASE]: baseFarms,
   [ChainId.OPBNB_TESTNET]: opBnbTestnetFarms,
   [ChainId.OPBNB]: opBNBFarms,
+  [ChainId.SCROLL_SEPOLIA]: scrollSepoliaFarms,
 }
 
 export type Addresses = {

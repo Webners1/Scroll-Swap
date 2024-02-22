@@ -1,26 +1,26 @@
-import { ERC20Token, Token, WNATIVE } from '@pancakeswap/sdk'
 import { ChainId } from '@pancakeswap/chains'
+import { ERC20Token, Token, WNATIVE } from '@pancakeswap/sdk'
 import {
-  bscTokens,
-  bscTestnetTokens,
   BUSD,
   USDC,
   USDT,
   WBTC_ETH,
-  arbitrumTokens,
   arbitrumGoerliTokens,
-  ethereumTokens,
-  polygonZkEvmTokens,
-  polygonZkEvmTestnetTokens,
-  zksyncTokens,
-  zkSyncTestnetTokens,
-  lineaTestnetTokens,
-  baseTokens,
+  arbitrumTokens,
   baseTestnetTokens,
-  opBnbTokens,
-  opBnbTestnetTokens,
-  scrollSepoliaTokens,
+  baseTokens,
+  bscTestnetTokens,
+  bscTokens,
+  ethereumTokens,
+  lineaTestnetTokens,
   lineaTokens,
+  opBnbTestnetTokens,
+  opBnbTokens,
+  polygonZkEvmTestnetTokens,
+  polygonZkEvmTokens,
+  scrollSepoliaTokens,
+  zkSyncTestnetTokens,
+  zksyncTokens,
 } from '@pancakeswap/tokens'
 
 import { ChainMap, ChainTokenList } from '../types'
@@ -42,7 +42,7 @@ export const SMART_ROUTER_ADDRESSES = {
   [ChainId.OPBNB_TESTNET]: '0xf317eD77Baed624d0EA2384AA88D91B774a9b009',
   [ChainId.BASE]: '0x678Aa4bF4E210cf2166753e054d5b7c31cc7fa86',
   [ChainId.BASE_TESTNET]: '0xDDC44b8507B4Ca992fB60F0ECdF5651A87668509',
-  [ChainId.SCROLL_SEPOLIA]: '0xDDC44b8507B4Ca992fB60F0ECdF5651A87668509',
+  [ChainId.SCROLL_SEPOLIA]: '0x7d744D7e73D11Ea268B286198BFdEA9067B10218',
   [ChainId.SCROLL]: '0xDDC44b8507B4Ca992fB60F0ECdF5651A87668509',
 } as const satisfies Record<ChainId, string>
 

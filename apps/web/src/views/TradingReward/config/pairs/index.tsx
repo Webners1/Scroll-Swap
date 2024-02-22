@@ -9,6 +9,7 @@ import { farmsV3 as lineaFarm } from '@pancakeswap/farms/constants/linea'
 import { farmsV3 as opBNBFarms } from '@pancakeswap/farms/constants/opBNB'
 import { farmsV3 as opBNBTestnetFarms } from '@pancakeswap/farms/constants/opBnbTestnet'
 import { farmsV3 as zkEvmFarm } from '@pancakeswap/farms/constants/polygonZkEVM'
+import { farmsV3 as scrollSepoliaFarm } from '@pancakeswap/farms/constants/scrollSepolia'
 import { farmsV3 as zkSyncFarm } from '@pancakeswap/farms/constants/zkSync'
 import { ComputedFarmConfigV3, FarmV3SupportedChainId } from '@pancakeswap/farms/src'
 import { tradingRewardV3Pair as tradingRewardV3Pair56 } from './56'
@@ -27,4 +28,5 @@ export const tradingRewardPairConfigChainMap: Record<FarmV3SupportedChainId, Com
   [ChainId.BASE]: baseFarm,
   [ChainId.OPBNB_TESTNET]: opBNBTestnetFarms,
   [ChainId.OPBNB]: opBNBFarms,
+  [ChainId.SCROLL_SEPOLIA]: scrollSepoliaFarm,
 }
