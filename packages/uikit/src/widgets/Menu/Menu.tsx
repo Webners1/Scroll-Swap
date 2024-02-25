@@ -64,12 +64,14 @@ const BodyWrapper = styled(Box)`
   min-height: 100vh;
   padding-top: 30px;
   background-color: #181818;
-  background: url("./bg.png");
+  background: url("./bg-grass.png");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: bottom right;
   @media (min-width: 768px) {
     padding-top: initial;
+    margin-left: auto;
+    max-width: calc(100vw - 250px);
     background-size: contain;
   }
 `;
@@ -85,7 +87,7 @@ const Inner = styled.div`
 `;
 
 const MainLinkContainerStyled = styled.ul`
-  padding: 50px 0px 0px 30px;
+  padding: 0px 0px 0px 30px;
   list-style: none;
 
   li:has(a:empty) {
@@ -180,7 +182,7 @@ const StyledIcon = styled.i`
 `;
 
 const BackDrop = styled.div`
-  position: absolute;
+  position: fixed;
   background-color: #000;
   opacity: 0.6;
   top: 0;
@@ -223,8 +225,16 @@ const SidebarSettingsWrapper = styled.div`
 const FooterStyled = styled.footer`
   height: 70px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  margin-top: 40px;
+`;
+
+const StyledLogo = styled.img`
+  width: 220px;
+  height: 220px;
 `;
 
 const SwapIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) => (
@@ -320,6 +330,16 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   }, [window?.location?.pathname]);
 
   useEffect(() => {
+    if (mobileNavOpen) {
+      window.document.body.style.height = "100vh";
+      window.document.body.style.overflow = "hidden";
+    } else {
+      window.document.body.style.height = "fit-content";
+      window.document.body.style.overflow = "auto";
+    }
+  }, [mobileNavOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
       const currentOffset = window.pageYOffset;
       const isBottomOfPage = window.document.body.clientHeight === currentOffset + window.innerHeight;
@@ -394,6 +414,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
             <StyledSidebar mobileNavOpen={mobileNavOpen}>
               {/* Default header here (code below) */}
               <MainLinkContainerStyled>
+                <StyledLogo src="/lol-logo.svg" />
                 {newLinks.map(
                   (item) =>
                     item.href && (
@@ -438,13 +459,16 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                 />
               </SidebarSettingsWrapper>
             </StyledSidebar>
-            <BodyWrapper>
+            <BodyWrapper className="bodyyyyyyyyyy">
               <Box mt="20px">{rightSide}</Box>
               {/* eslint-disable jsx-a11y/no-static-element-interactions */}
-              {mobileNavOpen && <BackDrop onClick={() => setMobileNavOpen(!mobileNavOpen)} />}
+              {mobileNavOpen && (
+                <BackDrop className="droppppppppppp" onClick={() => setMobileNavOpen(!mobileNavOpen)} />
+              )}
               <Inner>{children}</Inner>
               <FooterStyled>
                 <Text color="textSubtle">© {footerDate} LolPad Finance. All rights reserved.</Text>
+                <MenuItem {...{ href: "/terms-of-service" }}>Privacy Terms</MenuItem>
               </FooterStyled>
             </BodyWrapper>
           </CustomHeaderWrapperStyled>

@@ -40,7 +40,7 @@ export const CryptoCard = styled(Card)<{ isClicked: boolean; isDisabled: boolean
 `
 
 export const GreyCard = styled(Card)`
-  background-color: ${({ theme }) => theme.colors.dropdown};
+  background-color: #505050;
 `
 
 export const LightTertiaryCard = styled(Card)<{ active: boolean }>`

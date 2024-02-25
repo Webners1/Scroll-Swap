@@ -30,7 +30,7 @@ export const StyledSidebar = styled.div<SidebarProps>`
 
   @media (min-width: 768px) {
     width: 250px;
-    position: relative;
+    position: fixed;
     box-shadow: none;
   }
 `;

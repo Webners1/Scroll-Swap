@@ -1,4 +1,4 @@
-import { parseEther } from 'viem'
+import { useTranslation } from '@pancakeswap/localization'
 import {
   ButtonMenu,
   ButtonMenuItem,
@@ -7,14 +7,14 @@ import {
   IconButton,
   InjectedModalProps,
   ModalBody,
+  ModalTitle,
   ModalWrapper,
   ModalHeader as UIKitModalHeader,
-  ModalTitle,
 } from '@pancakeswap/uikit'
-import { useAccount, useBalance } from 'wagmi'
-import { useState, useCallback } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
+import { useCallback, useState } from 'react'
 import { styled } from 'styled-components'
+import { parseEther } from 'viem'
+import { useAccount, useBalance } from 'wagmi'
 import WalletInfo from './WalletInfo'
 import WalletTransactions from './WalletTransactions'
 import WalletWrongNetwork from './WalletWrongNetwork'
@@ -31,13 +31,10 @@ interface WalletModalProps extends InjectedModalProps {
 
 export const LOW_NATIVE_BALANCE = parseEther('0.002', 'wei')
 
-const ModalHeader = styled(UIKitModalHeader)`
-  background: ${({ theme }) => theme.colors.gradientBubblegum};
-`
+const ModalHeader = styled(UIKitModalHeader)``
 
 const Tabs = styled.div`
-  background-color: ${({ theme }) => theme.colors.dropdown};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.cardBorder};
+  border-bottom: 1px solid rgb(56, 50, 65);
   padding: 16px 24px;
 `
 
