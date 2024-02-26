@@ -72,10 +72,10 @@ export const useTweetsData = () => {
   return useMemo(() => {
     return [
       {
-        tweet: `🐰💙PancakeSwap Fam, the moment is here!
+        tweet: `🐰💙LolPadSwap Fam, the moment is here!
 🥞Proposal to reduce the max supply of $CAKE from 750M to 450M!
-🌟By reducing our token supply by 300,000,000 $CAKE, we signify PancakeSwap’s successful shift from a high-inflation emissions model to the Ultrasound CAKE era.`,
-        link: 'https://x.com/PancakeSwap/status/1740281555887825335?s=20',
+🌟By reducing our token supply by 300,000,000 $CAKE, we signify LolPadSwap’s successful shift from a high-inflation emissions model to the Ultrasound CAKE era.`,
+        link: 'https://x.com/LolPadSwap/status/1740281555887825335?s=20',
         date: 'Dec 28',
         like: '1.3k',
         impression: '179k',
@@ -118,13 +118,13 @@ export const TwitterCards: React.FC = () => {
       </LogoBox>
       <Flex alignItems="center">
         <Text mt="10px" fontSize={14} bold>
-          PancakeSwap🥞Ev3ryone&#39;s Favourite D3X
+          LolPadSwap🥞Ev3ryone&#39;s Favourite D3X
         </Text>
         <VerifiedIcon ml="3px" mt="9px" color={theme.colors.secondary} />
       </Flex>
       <Flex style={{ gap: 0 }} alignItems="center" justifyContent="center">
         <StyledText fontSize={14} color={theme.colors.textSubtle}>
-          @PancakeSwap
+          @LolPadSwap
         </StyledText>
         <Divider />
         <Text fontSize={14} color={theme.colors.textSubtle}>

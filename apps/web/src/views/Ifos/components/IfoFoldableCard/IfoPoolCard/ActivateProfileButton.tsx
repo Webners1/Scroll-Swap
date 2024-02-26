@@ -65,7 +65,7 @@ export function ActivateProfileButton({ saleFinished }: Props) {
       content={
         <ContentText>
           {saleFinished
-            ? t('Activate PancakeSwap Profile to take part in next IFO.')
+            ? t('Activate LolPadSwap Profile to take part in next IFO.')
             : t('You need to create a profile to participate in the IFO.')}
         </ContentText>
       }

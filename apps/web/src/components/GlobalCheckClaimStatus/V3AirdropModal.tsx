@@ -1,16 +1,16 @@
-import { useEffect, useState, useMemo } from 'react'
-import { AutoRenewIcon, Box, Button, Flex, Modal, Text, useToast, ModalV2 } from '@pancakeswap/uikit'
-import confetti from 'canvas-confetti'
 import { useTranslation } from '@pancakeswap/localization'
-import delay from 'lodash/delay'
-import { styled } from 'styled-components'
-import Dots from 'components/Loader/Dots'
+import { AutoRenewIcon, Box, Button, Flex, Modal, ModalV2, Text, useToast } from '@pancakeswap/uikit'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { useAccount } from 'wagmi'
+import confetti from 'canvas-confetti'
+import Dots from 'components/Loader/Dots'
+import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useV3AirdropContract } from 'hooks/useContract'
-import { ToastDescriptionWithTx } from 'components/Toast'
 import { useShowOnceAirdropModal } from 'hooks/useShowOnceAirdropModal'
+import delay from 'lodash/delay'
+import { useEffect, useMemo, useState } from 'react'
+import { styled } from 'styled-components'
+import { useAccount } from 'wagmi'
 import useAirdropModalStatus from './hooks/useAirdropModalStatus'
 
 const Image = styled.img`
@@ -137,16 +137,16 @@ const V3AirdropModal: React.FC = () => {
   const textDisplay = (): string => {
     if (hasPart1 && hasPart2) {
       return t(
-        'You have received an exclusive v3 Legendary and v3 Early Supporter NFT, as well as a CAKE airdrop for participating in the PancakeSwap v3 Launch campaign. Claim your reward now and enjoy the benefits of being an early adopter!',
+        'You have received an exclusive v3 Legendary and v3 Early Supporter NFT, as well as a CAKE airdrop for participating in the LolPadSwap v3 Launch campaign. Claim your reward now and enjoy the benefits of being an early adopter!',
       )
     }
     if (hasPart1) {
       return t(
-        'You have received an exclusive v3 Legendary NFT and CAKE airdrop for participating in the PancakeSwap v3 Launch campaign. Claim your reward now and enjoy the benefits of being an early adopter!',
+        'You have received an exclusive v3 Legendary NFT and CAKE airdrop for participating in the LolPadSwap v3 Launch campaign. Claim your reward now and enjoy the benefits of being an early adopter!',
       )
     }
     return t(
-      'You have received an exclusive v3 Early Supporter NFT and CAKE airdrop for participating in the PancakeSwap v3 Launch campaign. Claim your reward now and enjoy the benefits of being an early adopter!',
+      'You have received an exclusive v3 Early Supporter NFT and CAKE airdrop for participating in the LolPadSwap v3 Launch campaign. Claim your reward now and enjoy the benefits of being an early adopter!',
     )
   }
 

@@ -77,7 +77,7 @@ export const EthWbethFaq = () => [
           <Trans>our swap page</Trans>.
         </Link>
         <Trans>
-          PancakeSwap is also working to support a conversion contract on our liquid staking page to convert wBETH back
+          LolPadSwap is also working to support a conversion contract on our liquid staking page to convert wBETH back
           to ETH seamlessly.
         </Trans>
       </>

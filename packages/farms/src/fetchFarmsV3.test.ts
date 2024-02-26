@@ -1,6 +1,6 @@
-import { describe, it } from 'vitest'
-import { FeeAmount, Pool } from '@pancakeswap/v3-sdk'
 import { bscTokens } from '@pancakeswap/tokens'
+import { FeeAmount, Pool } from '@pancakeswap/v3-sdk'
+import { describe, it } from 'vitest'
 import { getFarmsPrices } from './fetchFarmsV3'
 import { FarmV3Data } from './types'
 
@@ -101,7 +101,7 @@ describe('fetchFarmsV3', () => {
             "decimals": 18,
             "isNative": false,
             "isToken": true,
-            "name": "PancakeSwap Token",
+            "name": "LolPadSwap Token",
             "projectLink": "https://pancakeswap.finance/",
             "symbol": "CAKE",
           },
@@ -134,7 +134,7 @@ describe('fetchFarmsV3', () => {
             "decimals": 18,
             "isNative": false,
             "isToken": true,
-            "name": "PancakeSwap Token",
+            "name": "LolPadSwap Token",
             "projectLink": "https://pancakeswap.finance/",
             "symbol": "CAKE",
           },

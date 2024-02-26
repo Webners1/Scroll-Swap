@@ -2,7 +2,7 @@ import { defiLlamaChainNames } from '@pancakeswap/chains'
 import { CAKE } from '@pancakeswap/tokens'
 import { getCakePriceFromOracle } from 'hooks/useCakePrice'
 
-// use for fetch usd outside of the liquidity pools on PancakeSwap
+// use for fetch usd outside of the liquidity pools on LolPadSwap
 export const fetchTokenUSDValue = async (chainId: number, tokenAddresses: string[]) => {
   if (!tokenAddresses.length || !defiLlamaChainNames[chainId]) return new Map<string, string>()
 

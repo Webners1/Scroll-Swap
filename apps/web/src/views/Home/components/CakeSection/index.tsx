@@ -1,7 +1,7 @@
 import { useTranslation } from '@pancakeswap/localization'
 import { Button, Flex, Link, OpenNewIcon, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
-import useTheme from 'hooks/useTheme'
 import { ASSET_CDN } from 'config/constants/endpoints'
+import useTheme from 'hooks/useTheme'
 import React, { memo, useCallback, useLayoutEffect, useRef } from 'react'
 import { css, styled } from 'styled-components'
 import { useDrawCanvas } from '../../hooks/useDrawCanvas'
@@ -421,7 +421,7 @@ const CakeSection: React.FC = () => {
           padding="0px 16px"
         >
           {t(
-            'Experience the power of community ownership, global governance, and explore infinite use cases within the PancakeSwap ecosystem',
+            'Experience the power of community ownership, global governance, and explore infinite use cases within the LolPadSwap ecosystem',
           )}
         </Text>
       </Flex>

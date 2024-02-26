@@ -1,21 +1,21 @@
 import {
   Box,
   Flex,
-  Message,
-  Tag,
   LockIcon,
+  Message,
   MessageText,
-  useTooltip,
-  TooltipText,
   Skeleton,
+  Tag,
   Text,
+  TooltipText,
   useMatchBreakpoints,
+  useTooltip,
 } from '@pancakeswap/uikit'
 import { NextLinkFromReactRouter } from '@pancakeswap/widgets-internal'
 
-import { VaultPosition } from 'utils/cakePool'
 import { useTranslation } from '@pancakeswap/localization'
 import { styled } from 'styled-components'
+import { VaultPosition } from 'utils/cakePool'
 import useCakeBenefits from './hooks/useCakeBenefits'
 
 const CakeBenefitsCardWrapper = styled(Box)`
@@ -109,7 +109,7 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
     tooltipVisible: bCakeTooltipVisible,
   } = useTooltip(
     <>
-      <Text>{t(`bCAKE allows you to boost your yield in PancakeSwap Farms by up to 2x.`)}</Text>
+      <Text>{t(`bCAKE allows you to boost your yield in LolPadSwap Farms by up to 2x.`)}</Text>
       <NextLinkFromReactRouter to="/farms" onClick={onDismiss}>
         <Text bold color="primary">
           {t('Learn More')}
@@ -129,7 +129,7 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
   } = useTooltip(
     <>
       <Text>
-        {t(`vCAKE boosts your voting power to %totalScore% in the PancakeSwap voting governance.`, {
+        {t(`vCAKE boosts your voting power to %totalScore% in the LolPadSwap voting governance.`, {
           totalScore: cakeBenefits?.vCake?.totalScore,
         })}
       </Text>

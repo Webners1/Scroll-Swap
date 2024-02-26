@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest'
-import { getFarmsPrices, FarmWithPrices } from './farmPrices'
+import { describe, expect, it } from 'vitest'
+import { FarmWithPrices, getFarmsPrices } from './farmPrices'
 
 describe('getFarmPrices tests', () => {
   it('Should return farm with prices', async () => {
@@ -11,7 +11,7 @@ describe('getFarmPrices tests', () => {
           chainId: 56,
           address: '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
           symbol: 'Cake',
-          name: 'PancakeSwap Token',
+          name: 'LolPadSwap Token',
           decimals: 18,
         },
         quoteToken: {

@@ -1,9 +1,9 @@
+import { getWagmiConnector } from '@binance/w3w-wagmi-connector'
+import { CyberWalletConnector, isCyberWallet } from '@cyberlab/cyber-app-sdk'
 import { ChainId } from '@pancakeswap/chains'
 import { BinanceWalletConnector } from '@pancakeswap/wagmi/connectors/binanceWallet'
 import { BloctoConnector } from '@pancakeswap/wagmi/connectors/blocto'
 import { TrustWalletConnector } from '@pancakeswap/wagmi/connectors/trustWallet'
-import { CyberWalletConnector, isCyberWallet } from '@cyberlab/cyber-app-sdk'
-import { getWagmiConnector } from '@binance/w3w-wagmi-connector'
 import memoize from 'lodash/memoize'
 import { createConfig, createStorage } from 'wagmi'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
@@ -25,7 +25,7 @@ export const injectedConnector = new InjectedConnector({
 export const coinbaseConnector = new CoinbaseWalletConnector({
   chains,
   options: {
-    appName: 'PancakeSwap',
+    appName: 'LolPadSwap',
     appLogoUrl: 'https://pancakeswap.com/logo.png',
   },
 })
@@ -82,7 +82,7 @@ export const cyberWalletConnector = isCyberWallet()
   ? new CyberWalletConnector({
       chains: chains as any,
       options: {
-        name: 'PancakeSwap',
+        name: 'LolPadSwap',
         appId: 'b825cd87-2db3-456d-b108-d61e74d89771',
       },
     })

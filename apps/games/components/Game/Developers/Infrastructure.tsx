@@ -1,11 +1,11 @@
-import { styled } from 'styled-components'
-import { useTranslation, Trans } from '@pancakeswap/localization'
-import { Flex, Text, Heading, Card, PageSection, Box } from '@pancakeswap/uikit'
-import Image from 'next/image'
-import GradientLogo from 'components/Game/GradientLogoSvg'
-import { LIGHT_BG, DARK_BG } from 'components/Game/pageSectionStyles'
+import { Trans, useTranslation } from '@pancakeswap/localization'
+import { Box, Card, Flex, Heading, PageSection, Text } from '@pancakeswap/uikit'
 import { Decorations } from 'components/Game/Developers/Decorations'
+import GradientLogo from 'components/Game/GradientLogoSvg'
+import { DARK_BG, LIGHT_BG } from 'components/Game/pageSectionStyles'
 import { ASSET_CDN } from 'config/constants/endpoints'
+import Image from 'next/image'
+import { styled } from 'styled-components'
 
 const StyledContainer = styled(PageSection)`
   padding: 0px 16px 24px 16px;
@@ -98,7 +98,7 @@ const GameBenefitsList = [
   },
   {
     title: <Trans>Explore Top Blockchains</Trans>,
-    desc: <Trans>PancakeSwap operates on 9 popular blockchains, welcoming developers from diverse ecosystems</Trans>,
+    desc: <Trans>LolPadSwap operates on 9 popular blockchains, welcoming developers from diverse ecosystems</Trans>,
     imgUrl: `${ASSET_CDN}/web/game/developers/bring-your-game-4.png`,
   },
 ]
@@ -137,7 +137,7 @@ export const Infrastructure = () => {
         <Flex pt={['0', '0', '0', '0', '24px']} alignItems="center" flexDirection="column" justifyContent="center">
           <GradientLogo height="36px" width="36px" mb="24px" />
           <Heading maxWidth={['745px']} textAlign="center" scale="xl" mb="32px">
-            {t('Bring Your Game to Life on PancakeSwap')}
+            {t('Bring Your Game to Life on LolPadSwap')}
           </Heading>
           <StyledGameBenefitsListContainer>
             {GameBenefitsList.map((benefit, index) => (

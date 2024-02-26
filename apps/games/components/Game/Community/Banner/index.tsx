@@ -1,17 +1,17 @@
-import { useMemo } from 'react'
-import NextLink from 'next/link'
-import { styled } from 'styled-components'
+import { GameType } from '@pancakeswap/games'
 import { useTheme } from '@pancakeswap/hooks'
 import { useTranslation } from '@pancakeswap/localization'
-import { GameType } from '@pancakeswap/games'
-import { Box, Flex, Text, ChevronLeftIcon, ChevronRightIcon, useMatchBreakpoints } from '@pancakeswap/uikit'
-import 'swiper/css'
-import 'swiper/css/autoplay'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Navigation } from 'swiper/modules'
+import { Box, ChevronLeftIcon, ChevronRightIcon, Flex, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
 import { GameCard } from 'components/Game/Community/Banner/GameCard'
 import { Decorations } from 'components/Game/Decorations'
 import { useGamesConfig } from 'hooks/useGamesConfig'
+import NextLink from 'next/link'
+import { useMemo } from 'react'
+import { styled } from 'styled-components'
+import 'swiper/css'
+import 'swiper/css/autoplay'
+import { Autoplay, Navigation } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import { getGameLink } from 'utils/getGameLink'
 
 const StyledBackground = styled(Box)`
@@ -92,7 +92,7 @@ export const Banner = () => {
           width={['100%', '100%', '100%', '100%', '100%', '100%', '1200px']}
         >
           <Text bold color="secondary" lineHeight="110%" fontSize={['40px']} mb={['8px', '8px', '8px', '8px', '24px']}>
-            {isDesktop ? t('PancakeSwap Gaming Community') : t('Gaming Community')}
+            {isDesktop ? t('LolPadSwap Gaming Community') : t('Gaming Community')}
           </Text>
           <Text bold lineHeight="110%" fontSize={['16px', '16px', '16px', '16px', '24px']}>
             {t('Every Game, Every Chain, One Destination')}
