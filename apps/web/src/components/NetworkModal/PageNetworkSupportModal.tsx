@@ -41,7 +41,12 @@ export function PageNetworkSupportModal() {
   }, [menuItems, pathname])
 
   return (
-    <Modal title={title || t('Check your network')} hideCloseButton headerBackground="gradientCardHeader">
+    <Modal
+      title={title || t('Check your network')}
+      hideCloseButton
+      headerBackground="gradientCardHeader"
+      minHeight="none"
+    >
       <Grid style={{ gap: '16px' }} maxWidth="360px">
         <Text bold>{t('It’s a Scroll Sepolia Chain only feature')}</Text>
 
@@ -50,11 +55,11 @@ export function PageNetworkSupportModal() {
             <Image src={image} alt="feature" fill style={{ objectFit: 'contain' }} unoptimized />
           </Box>
         )}
-        <Text small>
+        {/* <Text small>
           {t(
             'Our Pools, Limit, Trading Competition, Lottery and NFTs features are currently available only on BNB Chain! Come over and join the community in the fun!',
           )}
-        </Text>
+        </Text> */}
         {canSwitch ? (
           <Button
             variant={foundChain && lastValidPath ? 'secondary' : 'primary'}

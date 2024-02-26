@@ -13,6 +13,7 @@ export const ModalWrapper = ({
   children,
   onDismiss,
   hideCloseButton,
+  minHeight,
   ...props
 }: PropsWithChildren<ModalWrapperProps>) => {
   const { isMobile } = useMatchBreakpoints();
@@ -33,7 +34,7 @@ export const ModalWrapper = ({
         if (info.velocity.y > MODAL_SWIPE_TO_CLOSE_VELOCITY && onDismiss) onDismiss();
       }}
       ref={wrapperRef}
-      style={{ overflow: "visible" }}
+      style={{ overflow: "visible", ...(minHeight === "none" ? { minHeight: 0 } : {}) }}
     >
       <Box overflow="hidden" borderRadius="12px" {...props}>
         {children}
