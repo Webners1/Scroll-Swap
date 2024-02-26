@@ -1,25 +1,6 @@
 import { ChainId, chainNames } from '@pancakeswap/chains'
 import memoize from 'lodash/memoize'
-import {
-  Chain,
-  arbitrum,
-  arbitrumGoerli,
-  base,
-  baseGoerli,
-  bscTestnet,
-  bsc as bsc_,
-  goerli,
-  linea,
-  lineaTestnet,
-  mainnet,
-  opBNB,
-  opBNBTestnet,
-  polygonZkEvm,
-  polygonZkEvmTestnet,
-  scrollSepolia,
-  zkSync,
-  zkSyncTestnet,
-} from 'wagmi/chains'
+import { Chain, bsc as bsc_, scrollSepolia as scrollSepolia_ } from 'wagmi/chains'
 
 export const CHAIN_QUERY_NAME = chainNames
 
@@ -50,6 +31,16 @@ const bsc = {
   },
 } satisfies Chain
 
+const scrollSepolia = {
+  ...scrollSepolia_,
+  blockExplorers: {
+    default: {
+      name: 'Scrollscan',
+      url: 'https://sepolia.scrollscan.dev',
+    },
+  },
+} satisfies Chain
+
 /**
  * Controls some L2 specific behavior, e.g. slippage tolerance, special UI behavior.
  * The expectation is that all of these networks have immediate transaction confirmation.
@@ -69,6 +60,4 @@ export const L2_CHAIN_IDS: ChainId[] = [
   ChainId.OPBNB_TESTNET,
 ]
 
-export const CHAINS = [
-  scrollSepolia,
-]
+export const CHAINS = [scrollSepolia]
