@@ -233,8 +233,22 @@ const FooterStyled = styled.footer`
 `;
 
 const StyledLogo = styled.img`
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+`;
+
+const LogoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
   width: 220px;
-  height: 220px;
+  align-items: center;
+  gap: 15px;
+  padding-right: 30px;
+  :nth-child(2) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 
 const SwapIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) => (
@@ -414,7 +428,10 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
             <StyledSidebar mobileNavOpen={mobileNavOpen}>
               {/* Default header here (code below) */}
               <MainLinkContainerStyled>
-                <StyledLogo src="/lol-logo.svg" />
+                <LogoContainer>
+                  <StyledLogo src="/logo-icon.png" />
+                  <StyledLogo src="/lol-logo.png" />
+                </LogoContainer>
                 {newLinks.map(
                   (item) =>
                     item.href && (
@@ -459,16 +476,14 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                 />
               </SidebarSettingsWrapper>
             </StyledSidebar>
-            <BodyWrapper className="bodyyyyyyyyyy">
+            <BodyWrapper>
               <Box mt="20px">{rightSide}</Box>
               {/* eslint-disable jsx-a11y/no-static-element-interactions */}
-              {mobileNavOpen && (
-                <BackDrop className="droppppppppppp" onClick={() => setMobileNavOpen(!mobileNavOpen)} />
-              )}
+              {mobileNavOpen && <BackDrop onClick={() => setMobileNavOpen(!mobileNavOpen)} />}
               <Inner>{children}</Inner>
               <FooterStyled>
                 <Text color="textSubtle">© {footerDate} LolPad Finance. All rights reserved.</Text>
-                <MenuItem {...{ href: "/terms-of-service" }}>Privacy Terms</MenuItem>
+                <MenuItem {...{ href: "/terms-of-service" }}>Terms of Service</MenuItem>
               </FooterStyled>
             </BodyWrapper>
           </CustomHeaderWrapperStyled>

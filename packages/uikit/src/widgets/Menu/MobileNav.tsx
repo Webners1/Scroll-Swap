@@ -3,8 +3,8 @@ import { styled } from "styled-components";
 const NavStyled = styled.nav`
   background-color: #262626;
   width: 100%;
-  position: absolute;
-  z-index: 10;
+  position: fixed;
+  z-index: 150;
   top: 0;
   height: 50px;
   padding: 10px 30px;
