@@ -1,4 +1,5 @@
 import { useIsMounted } from "@pancakeswap/hooks";
+import { useTranslation } from "@pancakeswap/localization";
 import throttle from "lodash/throttle";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { styled } from "styled-components";
@@ -336,6 +337,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   children,
   chainId,
 }) => {
+  const { t } = useTranslation();
   const { isMobile } = useMatchBreakpoints();
   const isMounted = useIsMounted();
   const [showMenu, setShowMenu] = useState(true);
@@ -494,7 +496,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
               <FooterStyled>
                 <Text color="textSubtle">© {footerDate} LolPad Finance. All rights reserved.</Text>
                 <MenuItem {...{ href: "/terms-of-service" }}>
-                  <span className="terms-link">Terms Of Service</span>
+                  <span className="terms-link">{t("Terms Of Service")}</span>
                 </MenuItem>
               </FooterStyled>
             </BodyWrapper>
