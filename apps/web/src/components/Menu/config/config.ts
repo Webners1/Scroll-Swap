@@ -53,7 +53,7 @@ const config: (
 ) => ConfigMenuItemsType[] = (t, isDark, languageCode, chainId) =>
   [
     {
-      label: t('Trade'),
+      label: t('Welcome To LolPad Finance'),
       icon: SwapIcon,
       fillIcon: SwapFillIcon,
       href: '/swap',
