@@ -8,8 +8,8 @@ import useAuth from 'hooks/useAuth'
 // eslint-disable-next-line import/extensions
 import { useActiveHandle } from 'hooks/useEagerConnect.bmp.ts'
 import { useMemo, useState } from 'react'
-import { useConnect } from 'wagmi'
 import { logGTMWalletConnectEvent } from 'utils/customGTMEventTracking'
+import { useConnect } from 'wagmi'
 import Trans from './Trans'
 
 const ConnectWalletButton = ({ children, ...props }: ButtonProps) => {
@@ -48,7 +48,8 @@ const ConnectWalletButton = ({ children, ...props }: ButtonProps) => {
       `}</style>
       <WalletModalV2
         docText={t('Learn How to Connect')}
-        docLink={docLink}
+        // docLink={docLink}
+        docLink="#"
         isOpen={open}
         wallets={wallets}
         login={login}

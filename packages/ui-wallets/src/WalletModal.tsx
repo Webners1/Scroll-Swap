@@ -84,7 +84,7 @@ const TabContainer = ({ children, docLink, docText }: PropsWithChildren<{ docLin
       <AtomBox position="absolute" style={{ top: '-50px' }}>
         <TabMenu activeIndex={index} onItemClick={setIndex} gap="0px" isColorInverse isShowBorderBottom={false}>
           <Tab>{t('Connect Wallet')}</Tab>
-          <Tab>{t('What’s a Web3 Wallet?')}</Tab>
+          {/* <Tab>{t('What’s a Web3 Wallet?')}</Tab> */}
         </TabMenu>
       </AtomBox>
       <AtomBox
@@ -100,11 +100,11 @@ const TabContainer = ({ children, docLink, docText }: PropsWithChildren<{ docLin
         width="100%"
       >
         {index === 0 && children}
-        {index === 1 && (
+        {/* {index === 1 && (
           <Suspense>
             <StepIntro docLink={docLink} docText={docText} />
           </Suspense>
-        )}
+        )} */}
       </AtomBox>
     </AtomBox>
   )
@@ -174,7 +174,14 @@ function MobileModal<T>({
             {t('Haven’t got a crypto wallet yet?')}
           </Text>
         </AtomBox>
-        <Button as="a" href={docLink} variant="subtle" width="100%" external>
+        <Button
+          as="a"
+          // href={docLink}
+          href="#"
+          variant="subtle"
+          width="100%"
+          external
+        >
           {docText}
         </Button>
       </AtomBox>
@@ -376,7 +383,13 @@ function DesktopModal<T>({
           style={{ gap: '24px' }}
           textAlign="center"
         >
-          {!selected && <Intro docLink={docLink} docText={docText} />}
+          {!selected && (
+            <Intro
+              // docLink={docLink}
+              docLink="#"
+              docText={docText}
+            />
+          )}
           {selected && selected.installed !== false && (
             <>
               {typeof selected.icon === 'string' && <Image src={selected.icon} width={108} height={108} />}
@@ -449,11 +462,27 @@ export function WalletModalV2<T = unknown>(props: WalletModalV2Props<T>) {
     <ModalV2 closeOnOverlayClick disableOutsidePointerEvents={false} {...rest}>
       <ModalWrapper onDismiss={props.onDismiss} style={{ overflow: 'visible', border: 'none' }}>
         <AtomBox position="relative">
-          <TabContainer docLink={docLink} docText={docText}>
+          <TabContainer
+            // docLink={docLink}
+            docLink="#"
+            docText={docText}
+          >
             {isMobile ? (
-              <MobileModal connectWallet={connectWallet} wallets={wallets} docLink={docLink} docText={docText} />
+              <MobileModal
+                connectWallet={connectWallet}
+                wallets={wallets}
+                // docLink={docLink}
+                docLink="#"
+                docText={docText}
+              />
             ) : (
-              <DesktopModal connectWallet={connectWallet} wallets={wallets} docLink={docLink} docText={docText} />
+              <DesktopModal
+                connectWallet={connectWallet}
+                wallets={wallets}
+                // docLink={docLink}
+                docLink="#"
+                docText={docText}
+              />
             )}
           </TabContainer>
         </AtomBox>
@@ -470,7 +499,13 @@ const Intro = ({ docLink, docText }: { docLink: string; docText: string }) => {
         {t('Haven’t got a wallet yet?')}
       </Heading>
       <Image src="/connect-wallet-bg.svg" width={198} height={178} />
-      <Button as={LinkExternal} color="backgroundAlt" variant="primary" href={docLink}>
+      <Button
+        as={LinkExternal}
+        color="backgroundAlt"
+        variant="primary"
+        // href={docLink}
+        href="#"
+      >
         {docText}
       </Button>
     </>
