@@ -22,10 +22,12 @@ import Script from 'next/script'
 import { Fragment } from 'react'
 import { PersistGate } from 'redux-persist/integration/react'
 
+import TermsModal from 'components/TermsModal/TermsModal'
 import { useDataDogRUM } from 'hooks/useDataDogRUM'
 import { useLoadExperimentalFeatures } from 'hooks/useExperimentalFeatureEnabled'
 import { persistor, useStore } from 'state'
 import { usePollBlockNumber } from 'state/block/hooks'
+import { useAccount } from 'wagmi'
 import { Blocklist, Updaters } from '..'
 import { SEO } from '../../next-seo.config'
 import Providers from '../Providers'
@@ -144,6 +146,7 @@ type AppPropsWithLayout = AppProps & {
 const ProductionErrorBoundary = process.env.NODE_ENV === 'production' ? SentryErrorBoundary : Fragment
 
 const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+  const { address: account } = useAccount()
   if (Component.pure) {
     return <Component {...pageProps} />
   }
@@ -152,6 +155,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
   const Layout = Component.Layout || Fragment
   const ShowMenu = Component.mp ? Fragment : Menu
   const isShowScrollToTopButton = Component.isShowScrollToTopButton || true
+  const terms = localStorage?.getItem('terms')
 
   return (
     <ProductionErrorBoundary>
@@ -163,6 +167,7 @@ const App = ({ Component, pageProps }: AppPropsWithLayout) => {
       <EasterEgg iterations={2} />
       <ToastListener />
       <FixedSubgraphHealthIndicator />
+      {account && terms !== 'true' && <TermsModal />}
       <NetworkModal pageSupportedChains={Component.chains} />
       <TransactionsDetailModal />
       {isShowScrollToTopButton && <ScrollToTopButtonV2 />}
