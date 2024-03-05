@@ -279,7 +279,7 @@ const SwapIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) =>
 );
 
 const LiquidityIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25">
     <path
       fill={color}
       stroke={color}
@@ -313,6 +313,15 @@ const BridgeIcon = () => (
     <path
       fill="#fff"
       d="M2.89 11.094c-.82.273-1.406 1.015-1.406 1.914 0 1.094.899 1.992 2.032 1.992a2 2 0 001.992-1.992c0-.781-.469-1.485-1.094-1.797C4.961 8.67 7.266 6.758 10 6.758c1.836 0 3.477.86 4.531 2.187.469-.234.977-.39 1.524-.43-1.29-1.953-3.516-3.28-6.055-3.28-3.516 0-6.445 2.538-7.11 5.859zm15.626 1.914c0 1.094-.899 1.992-2.032 1.992a2 2 0 01-1.992-1.992 2 2 0 011.992-1.992c1.133 0 2.032.898 2.032 1.992zm0 0"
+    />
+  </svg>
+);
+
+const TelegramIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" opacity="0.6" color="#fff" viewBox="0 0 50 50" width="20px" height="20px">
+    <path
+      fill="#fff"
+      d="M25,2c12.703,0,23,10.297,23,23S37.703,48,25,48S2,37.703,2,25S12.297,2,25,2z M32.934,34.375 c0.423-1.298,2.405-14.234,2.65-16.783c0.074-0.772-0.17-1.285-0.648-1.514c-0.578-0.278-1.434-0.139-2.427,0.219 c-1.362,0.491-18.774,7.884-19.78,8.312c-0.954,0.405-1.856,0.847-1.856,1.487c0,0.45,0.267,0.703,1.003,0.966 c0.766,0.273,2.695,0.858,3.834,1.172c1.097,0.303,2.346,0.04,3.046-0.395c0.742-0.461,9.305-6.191,9.92-6.693 c0.614-0.502,1.104,0.141,0.602,0.644c-0.502,0.502-6.38,6.207-7.155,6.997c-0.941,0.959-0.273,1.953,0.358,2.351 c0.721,0.454,5.906,3.932,6.687,4.49c0.781,0.558,1.573,0.811,2.298,0.811C32.191,36.439,32.573,35.484,32.934,34.375z"
     />
   </svg>
 );
@@ -396,7 +405,6 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
 
   // Find the home link if provided
   const homeLink = links.find((link) => link.label === "Home");
-
   const subLinksWithoutMobile = useMemo(() => subLinks?.filter((subLink) => !subLink.isMobileOnly), [subLinks]);
   const subLinksMobileOnly = useMemo(() => subLinks?.filter((subLink) => subLink.isMobileOnly), [subLinks]);
   const providerValue = useMemo(() => ({ linkComponent }), [linkComponent]);
@@ -419,6 +427,19 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
       label: "Bridge",
       href: "/bridge",
       icon: <BridgeIcon />,
+    },
+  ];
+
+  const socialLinks = [
+    {
+      label: "Twitter",
+      href: "https://twitter.com",
+      icon: <TwitterIcon />,
+    },
+    {
+      label: "Telegram",
+      href: "https://telegram.com",
+      icon: <TelegramIcon />,
     },
   ];
 
@@ -464,18 +485,20 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                     )
                 )}
                 <SocialLinkWrapper>
-                  <MainLinkStyled>
-                    <b className="top-curve" />
-                    {/* eslint-disable jsx-a11y/no-static-element-interactions */}
-                    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-                    <span onClick={() => setMobileNavOpen(false)}>
-                      <StyledLink href="https://twitter.com/LolPadfinance" target="_blank">
-                        <TwitterIcon />
-                        <span>Twitter</span>
-                      </StyledLink>
-                    </span>
-                    <b className="bottom-curve" />
-                  </MainLinkStyled>
+                  {socialLinks?.map((item) => (
+                    <MainLinkStyled key={`${item.href}${item.label}`}>
+                      <b className="top-curve" />
+                      {/* eslint-disable jsx-a11y/no-static-element-interactions */}
+                      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+                      <span onClick={() => setMobileNavOpen(false)}>
+                        <StyledLink href={item.href} target="_blank">
+                          {item.icon}
+                          <span>{item.label}</span>
+                        </StyledLink>
+                      </span>
+                      <b className="bottom-curve" />
+                    </MainLinkStyled>
+                  ))}
                 </SocialLinkWrapper>
               </MainLinkContainerStyled>
               <SidebarSettingsWrapper>
