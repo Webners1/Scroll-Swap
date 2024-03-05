@@ -1,6 +1,6 @@
 import { atoms } from '@pancakeswap/uikit/css/atoms'
 import { responsiveStyle } from '@pancakeswap/uikit/css/responsiveStyle'
-import { style, keyframes } from '@vanilla-extract/css'
+import { keyframes, style } from '@vanilla-extract/css'
 
 const promotedGradientKf = keyframes({
   '0%': {
@@ -78,4 +78,14 @@ export const walletIconClass = style({
   width: '50px',
   height: '50px',
   borderRadius: '12px',
+})
+
+export const walletImageWrapperClass = style({
+  width: '198px',
+  height: '178px',
+})
+
+export const walletImageClass = style({
+  width: '198px',
+  height: '178px',
 })

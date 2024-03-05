@@ -5,7 +5,6 @@ import {
   Button,
   Heading,
   Image,
-  LinkExternal,
   ModalV2,
   ModalV2Props,
   ModalWrapper,
@@ -24,6 +23,8 @@ import {
   modalWrapperClass,
   promotedGradientClass,
   walletIconClass,
+  walletImageClass,
+  walletImageWrapperClass,
   walletSelectWrapperClass,
 } from './WalletModal.css'
 
@@ -495,11 +496,13 @@ const Intro = ({ docLink, docText }: { docLink: string; docText: string }) => {
   const { t } = useTranslation()
   return (
     <>
-      <Heading as="h1" fontSize="20px" color="secondary">
+      {/* <Heading as="h1" fontSize="20px" color="secondary">
         {t('Haven’t got a wallet yet?')}
-      </Heading>
-      <Image src="/connect-wallet-bg.svg" width={198} height={178} />
-      <Button
+      </Heading> */}
+      <AtomBox className={walletImageWrapperClass}>
+        <img src="/connect-wallet-bg.svg" alt="connect-wallet-bg" className={walletImageClass} />
+      </AtomBox>
+      {/* <Button
         as={LinkExternal}
         color="backgroundAlt"
         variant="primary"
@@ -507,7 +510,7 @@ const Intro = ({ docLink, docText }: { docLink: string; docText: string }) => {
         href="#"
       >
         {docText}
-      </Button>
+      </Button> */}
     </>
   )
 }
