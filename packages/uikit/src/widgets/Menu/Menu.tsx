@@ -230,6 +230,16 @@ const FooterStyled = styled.footer`
   align-items: center;
   overflow: hidden;
   margin-top: 40px;
+
+  .terms-link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const StyledLogo = styled.img`
@@ -483,7 +493,9 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
               <Inner>{children}</Inner>
               <FooterStyled>
                 <Text color="textSubtle">© {footerDate} LolPad Finance. All rights reserved.</Text>
-                <MenuItem {...{ href: "/terms-of-service" }}>Terms of Service</MenuItem>
+                <MenuItem {...{ href: "/terms-of-service" }}>
+                  <span className="terms-link">Terms Of Service</span>
+                </MenuItem>
               </FooterStyled>
             </BodyWrapper>
           </CustomHeaderWrapperStyled>

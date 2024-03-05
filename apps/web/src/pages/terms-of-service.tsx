@@ -102,7 +102,9 @@ const TermsOfService = () => {
 
       <Text as="h3">7. Contact Us</Text>
       <Text as="p" color="white">
-        If you have any questions or concerns about these Terms, please contact us at [contact email].
+        If you have any questions or concerns about these Terms and Conditions, please reach us via our official social
+        handle. Also, keep in mind we're in Beta Version so any type of bug might happen. But our team will look for the
+        bug if any and fix it out and will work for improvement of our service.
       </Text>
 
       <Text as="p" color="white">
