@@ -48,7 +48,7 @@ export const masterChefV3Addresses = {
   [ChainId.BASE]: '0xC6A2Db661D5a5690172d8eB0a7DEA2d3008665A3',
   [ChainId.OPBNB]: '0x05ddEDd07C51739d2aE21F6A9d97a8d69C2C3aaA',
   [ChainId.OPBNB_TESTNET]: '0x236e713bFF45adb30e25D1c29A887aBCb0Ea7E21',
-  [ChainId.SCROLL_SEPOLIA]: '0x1E547BBdC915819A264D80260D3f1C1C9740Fcbf',
+  [ChainId.SCROLL_SEPOLIA]: '0xBfbE5daA12Dd7455CCe8153bA2fbe5dBf6EC9a21',
 } as const satisfies Record<FarmV3SupportedChainId, string>
 
 export const nonBSCVaultAddresses = {

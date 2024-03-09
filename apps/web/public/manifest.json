@@ -1,12 +1,12 @@
 {
   "short_name": "LolPadSwap",
   "name": "LolPadSwap",
-  "description": "Farm CAKE with Pancake LP Tokens",
-  "homepage_url": "https://pancakeswap.finance",
+  "description": "",
+  "homepage_url": "https://scroll-swap-web.vercel.app",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#1FC7D4",
-  "background_color": "#ffffff",
+  "theme_color": "#F3C00D",
+  "background_color": "#181818",
   "orientation": "portrait",
   "icons": [
     {
@@ -19,6 +19,5 @@
       "type": "image/png",
       "sizes": "256x256"
     }
-  ],
-  "iconPath": "/images/cake.svg"
+  ]
 }
