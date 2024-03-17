@@ -44,7 +44,7 @@ export const SMART_ROUTER_ADDRESSES = {
   [ChainId.BASE]: '0x678Aa4bF4E210cf2166753e054d5b7c31cc7fa86',
   [ChainId.BASE_TESTNET]: '0xDDC44b8507B4Ca992fB60F0ECdF5651A87668509',
   [ChainId.SCROLL_SEPOLIA]: '0x8f4cf497409cba0a2B88E3ccb761b7C1292adD01',
-  [ChainId.SCROLL]: '0xe500FAaEFC4efbd918117D7a5A05ec3CD93B6055',
+  [ChainId.SCROLL]: '0xab26866a70ebc2db229395ef278fe2ef946a79bd',
 } as const satisfies Record<ChainId, string>
 
 export const V2_ROUTER_ADDRESS: ChainMap<string> = {
