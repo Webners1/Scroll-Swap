@@ -32,7 +32,7 @@ export const NetworkModal = ({
   const [dismissWrongNetwork, setDismissWrongNetwork] = useAtom(hideWrongNetworkModalAtom)
 
   const isScrollSepoliaOnlyPage = useMemo(() => {
-    return pageSupportedChains?.length === 1 && pageSupportedChains[0] === ChainId.SCROLL_SEPOLIA
+    return pageSupportedChains?.length === 1 && pageSupportedChains[0] === ChainId.SCROLL
   }, [pageSupportedChains])
 
   const isPageNotSupported = useMemo(

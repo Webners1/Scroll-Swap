@@ -1,6 +1,7 @@
 import { ChainId } from '@pancakeswap/chains'
 import { getNodeRealUrl } from 'utils/node/nodeReal'
 import { getGroveUrl } from 'utils/node/pokt'
+import { defineChain } from 'viem'
 import {
   arbitrum,
   arbitrumGoerli,
@@ -16,6 +17,28 @@ import {
   zkSyncTestnet,
 } from 'wagmi/chains'
 
+const scroll = defineChain({
+  id: 534_351,
+  name: 'Scroll Sepolia',
+  network: 'scroll-sepolia',
+  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  rpcUrls: {
+    default: {
+      http: ['https://1rpc.io/scroll'],
+    },
+    public: {
+      http: ['https://scroll.drpc.org'],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'Blockscout',
+      url: 'https://scrollscan.com/',
+    },
+  },
+
+  testnet: false,
+})
 const ARBITRUM_NODES = [
   ...arbitrum.rpcUrls.public.http,
   'https://arbitrum-one.publicnode.com',
@@ -76,7 +99,7 @@ export const SERVER_NODES = {
   ],
   [ChainId.BASE_TESTNET]: baseGoerli.rpcUrls.public.http,
   [ChainId.SCROLL_SEPOLIA]: scrollSepolia.rpcUrls.public.http,
-  [ChainId.SCROLL]: scrollSepolia.rpcUrls.public.http,
+  [ChainId.SCROLL]: scroll.rpcUrls.public.http,
 } satisfies Record<ChainId, readonly string[]>
 
 export const PUBLIC_NODES = {
@@ -146,5 +169,5 @@ export const PUBLIC_NODES = {
   ].filter(Boolean),
   [ChainId.BASE_TESTNET]: baseGoerli.rpcUrls.public.http,
   [ChainId.SCROLL_SEPOLIA]: [...scrollSepolia.rpcUrls.public.http],
-  [ChainId.SCROLL]: [...scrollSepolia.rpcUrls.public.http],
+  [ChainId.SCROLL]: [...scroll.rpcUrls.public.http],
 } satisfies Record<ChainId, readonly string[]>
