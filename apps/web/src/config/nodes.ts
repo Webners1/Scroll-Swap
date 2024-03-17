@@ -18,9 +18,9 @@ import {
 } from 'wagmi/chains'
 
 const scroll = defineChain({
-  id: 534_351,
-  name: 'Scroll Sepolia',
-  network: 'scroll-sepolia',
+  id: 534_352,
+  name: 'Scroll',
+  network: 'scroll',
   nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
   rpcUrls: {
     default: {
