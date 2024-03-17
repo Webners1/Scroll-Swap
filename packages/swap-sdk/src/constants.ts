@@ -64,9 +64,10 @@ export const WETH9 = {
     'Wrapped Ether',
     'https://weth.io'
   ),
+
   [ChainId.SCROLL]: new ERC20Token(
     ChainId.SCROLL,
-    '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
+    '0x5300000000000000000000000000000000000004',
     18,
     'WETH',
     'Wrapped Ether',
