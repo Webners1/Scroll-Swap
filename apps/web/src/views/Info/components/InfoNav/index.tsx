@@ -23,7 +23,7 @@ import { useMultiChainPath, useChainNameByQuery, useChainIdByQuery } from 'state
 import { multiChainId, multiChainPaths, multiChainShortName } from 'state/info/constant'
 import { chains } from 'utils/wagmi'
 import { ChainLogo } from 'components/Logo/ChainLogo'
-import { arbitrum, bsc, mainnet, polygonZkEvm, zkSync, linea, base, opBNB } from 'wagmi/chains'
+import { arbitrum, bsc, mainnet, polygonZkEvm, zkSync, linea, base, opBNB, scroll } from 'wagmi/chains'
 import { ASSET_CDN } from 'config/constants/endpoints'
 
 const NavWrapper = styled(Flex)`
@@ -96,7 +96,7 @@ const InfoNav: React.FC<{ isStableSwap: boolean }> = ({ isStableSwap }) => {
   )
 }
 
-const targetChains = [mainnet, bsc, polygonZkEvm, zkSync, arbitrum, linea, base, opBNB]
+const targetChains = [scroll]
 
 export const NetworkSwitcher: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
   const { t } = useTranslation()
