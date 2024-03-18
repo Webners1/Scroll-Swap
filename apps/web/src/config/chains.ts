@@ -35,7 +35,12 @@ const scroll = defineChain({
       url: 'https://scrollscan.com/',
     },
   },
-  contracts: {},
+  contracts: {
+    multicall3: {
+      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+      blockCreated: 14,
+    },
+  },
   testnet: false,
 })
 const bsc = {
@@ -64,7 +69,6 @@ const scrollSepolia = {
 } satisfies Chain
 const scrolls = {
   ...scroll,
-  contracts: {},
 } satisfies Chain
 
 /**
