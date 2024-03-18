@@ -70,7 +70,7 @@ const SWAP_INFO_BY_CHAIN = {
     v3: V3_SUBGRAPH_URLS[ChainId.SCROLL_SEPOLIA],
   },
   [ChainId.SCROLL]: {
-    v3: V3_SUBGRAPH_URLS[ChainId.SCROLL],
+    v3: undefined,
   },
 } satisfies Record<ChainId, Partial<ProtocolEndpoint>>
 
@@ -79,6 +79,9 @@ export const getTokenBestTvlProtocol = async (tokenAddress: string, chainId: Cha
   if (infos) {
     const [v2, v3, stable] = await Promise.allSettled([
       'v2' in infos ? request(infos.v2, getTVL(tokenAddress.toLowerCase())) : Promise.resolve(),
+
+      //  @ts-ignore
+
       'v3' in infos ? request(infos.v3, getTVL(tokenAddress.toLowerCase(), true)) : Promise.resolve(),
       'stable' in infos ? request(infos.stable, getTVL(tokenAddress.toLowerCase())) : Promise.resolve(),
     ])

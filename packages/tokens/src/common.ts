@@ -240,6 +240,7 @@ export const CAKE = {
 
 export const USDC = {
   [ChainId.BSC]: USDC_BSC,
+  [ChainId.SCROLL]: new ERC20Token(ChainId.SCROLL, '0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4', 6, 'USDC', 'USD Coin'),
   [ChainId.BSC_TESTNET]: USDC_TESTNET,
   [ChainId.ETHEREUM]: USDC_ETH,
   [ChainId.GOERLI]: USDC_GOERLI,
@@ -310,6 +311,13 @@ export const USDT = {
   [ChainId.ARBITRUM_ONE]: new ERC20Token(
     ChainId.ARBITRUM_ONE,
     '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9',
+    6,
+    'USDT',
+    'Tether USD',
+  ),
+  [ChainId.SCROLL]: new ERC20Token(
+    ChainId.SCROLL,
+    '0xf55BEC9cafDbE8730f096Aa55dad6D22d44099Df',
     6,
     'USDT',
     'Tether USD',

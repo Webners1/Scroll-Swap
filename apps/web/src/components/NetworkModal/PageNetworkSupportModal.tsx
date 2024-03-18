@@ -65,7 +65,7 @@ export function PageNetworkSupportModal() {
             variant={foundChain && lastValidPath ? 'secondary' : 'primary'}
             isLoading={isLoading}
             onClick={() =>
-              isWrongNetwork ? switchNetworkLocal(ChainId.SCROLL_SEPOLIA) : switchNetworkAsync(ChainId.SCROLL_SEPOLIA)
+              isWrongNetwork ? switchNetworkLocal(ChainId.SCROLL) : switchNetworkAsync(ChainId.SCROLL_SEPOLIA)
             }
           >
             {t('Switch to %chain%', { chain: 'Scroll Sepolia' })}
