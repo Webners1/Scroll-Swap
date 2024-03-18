@@ -70,7 +70,7 @@ const SWAP_INFO_BY_CHAIN = {
     v3: V3_SUBGRAPH_URLS[ChainId.SCROLL_SEPOLIA],
   },
   [ChainId.SCROLL]: {
-    v3: V3_SUBGRAPH_URLS[ChainId.SCROLL],
+    v3: undefined,
   },
 } satisfies Record<ChainId, Partial<ProtocolEndpoint>>
 
