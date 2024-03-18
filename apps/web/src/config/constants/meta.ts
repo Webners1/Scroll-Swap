@@ -5,11 +5,9 @@ import { PageMeta } from './types'
 
 export const DEFAULT_META: PageMeta = {
   title: 'LolPadSwap',
-  description:
-    'The most popular AMM on BSC by user count! Earn CAKE through yield farming or win it in the Lottery, then stake it in Syrup Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by LolPadSwap), NFTs, and more, on a platform you can trust.',
-  image: `${ASSET_CDN}/web/og/hero.jpg`,
+  description: 'The most popular AMM on Layer2 Chains. Now on Scroll Chain.',
+  image: `https://scroll.lolpad.finance/lol-logo.png'`,
 }
-
 interface PathList {
   paths: { [path: string]: { title: string; basePath?: boolean; description?: string; image?: string } }
   defaultTitleSuffix: string
