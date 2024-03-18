@@ -17,7 +17,7 @@ import {
   zkSyncTestnet,
 } from 'wagmi/chains'
 
-const scroll = defineChain({
+export const scroll = defineChain({
   id: 534_352,
   name: 'Scroll',
   network: 'scroll',

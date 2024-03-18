@@ -1,5 +1,6 @@
 import { ChainId, chainNames } from '@pancakeswap/chains'
 import memoize from 'lodash/memoize'
+import { defineChain } from 'viem'
 import { Chain, bsc as bsc_, scrollSepolia as scrollSepolia_ } from 'wagmi/chains'
 
 export const CHAIN_QUERY_NAME = chainNames
@@ -15,7 +16,28 @@ export const getChainId = memoize((chainName: string) => {
   if (!chainName) return undefined
   return CHAIN_QUERY_NAME_TO_ID[chainName.toLowerCase()] ? +CHAIN_QUERY_NAME_TO_ID[chainName.toLowerCase()] : undefined
 })
+const scroll = defineChain({
+  id: 534_352,
+  name: 'Scroll',
+  network: 'scroll',
+  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  rpcUrls: {
+    default: {
+      http: ['https://1rpc.io/scroll'],
+    },
+    public: {
+      http: ['https://scroll.drpc.org'],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'Blockscout',
+      url: 'https://scrollscan.com/',
+    },
+  },
 
+  testnet: false,
+})
 const bsc = {
   ...bsc_,
   rpcUrls: {
@@ -40,6 +62,9 @@ const scrollSepolia = {
     },
   },
 } satisfies Chain
+const scrolls = {
+  ...scroll,
+} satisfies Chain
 
 /**
  * Controls some L2 specific behavior, e.g. slippage tolerance, special UI behavior.
@@ -60,4 +85,4 @@ export const L2_CHAIN_IDS: ChainId[] = [
   ChainId.OPBNB_TESTNET,
 ]
 
-export const CHAINS = [scrollSepolia]
+export const CHAINS = [scrollSepolia, scrolls]
