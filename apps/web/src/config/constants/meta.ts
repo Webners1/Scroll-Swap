@@ -39,7 +39,7 @@ const getPathList = (t: ContextApi['t']): PathList => {
       '/info': {
         title: `${t('Overview')} - ${t('Info')}`,
         description: 'View statistics for LolPad Finance exchanges.',
-        image: `${ASSET_CDN}/web/og/info.jpg`,
+        image: `https://scroll.lolpad.finance/lol-logo.png`,
       },
       '/info/pairs': {
         title: `${t('Pairs')} - ${t('Info')}`,

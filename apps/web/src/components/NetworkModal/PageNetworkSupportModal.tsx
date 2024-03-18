@@ -48,7 +48,7 @@ export function PageNetworkSupportModal() {
       minHeight="none"
     >
       <Grid style={{ gap: '16px' }} maxWidth="360px">
-        <Text bold>{t('It’s a Scroll Sepolia Chain only feature')}</Text>
+        <Text bold>{t('It’s a Scroll Chain only feature')}</Text>
 
         {image && (
           <Box mx="auto" my="8px" position="relative" width="100%" minHeight="250px">
@@ -64,11 +64,9 @@ export function PageNetworkSupportModal() {
           <Button
             variant={foundChain && lastValidPath ? 'secondary' : 'primary'}
             isLoading={isLoading}
-            onClick={() =>
-              isWrongNetwork ? switchNetworkLocal(ChainId.SCROLL) : switchNetworkAsync(ChainId.SCROLL_SEPOLIA)
-            }
+            onClick={() => (isWrongNetwork ? switchNetworkLocal(ChainId.SCROLL) : switchNetworkAsync(ChainId.SCROLL))}
           >
-            {t('Switch to %chain%', { chain: 'Scroll Sepolia' })}
+            {t('Switch to %chain%', { chain: 'Scroll' })}
           </Button>
         ) : (
           <Message variant="danger">
