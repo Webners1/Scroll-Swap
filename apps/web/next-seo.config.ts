@@ -11,7 +11,7 @@ export const SEO: DefaultSeoProps = {
     site: '@LolPadFinance',
   },
   openGraph: {
-    title: '🥞 LolPad Finance - A next evolution DeFi exchange on BNB Smart Chain (BSC)',
+    title: 'LolPad Finance -LolPadSwap - The most popular DeFi exchange on Scroll',
     description: 'The most popular AMM on Layer2 Chains. Now on Scroll Chain',
     images: [{ url: 'https://scroll.lolpad.finance/lol-logo.png' }],
   },
