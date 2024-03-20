@@ -6,7 +6,7 @@ import { PageMeta } from './types'
 export const DEFAULT_META: PageMeta = {
   title: 'LolPadSwap',
   description: 'The most popular AMM on Layer2 Chains. Now on Scroll Chain.',
-  image: `https://scroll.lolpad.finance/lol-logo.png'`,
+  image: `https://scroll.lolpad.finance/lol-logo.png`,
 }
 interface PathList {
   paths: { [path: string]: { title: string; basePath?: boolean; description?: string; image?: string } }
