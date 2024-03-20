@@ -11,9 +11,8 @@ export const SEO: DefaultSeoProps = {
     site: '@LolPadSwap',
   },
   openGraph: {
-    title: '🥞 LolPadSwap - A next evolution DeFi exchange on BNB Smart Chain (BSC)',
-    description:
-      'The most popular AMM on BSC! Earn CAKE through yield farming or win it in the Lottery, then stake it in Syrup Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by LolPadSwap), NFTs, and more, on a platform you can trust.',
-    images: [{ url: 'https://assets.pancakeswap.finance/web/og/v2/hero.jpg' }],
+    title: 'LolPadSwap - LolPadSwap - The most popular DeFi exchange on Scroll',
+    description: 'LolPadSwap - The most popular DeFi exchange on Scroll',
+    images: [{ url: 'https://scroll.lolpad.finance/lol-logo.png' }],
   },
 }
