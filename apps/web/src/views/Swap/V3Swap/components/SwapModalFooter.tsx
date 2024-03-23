@@ -59,6 +59,7 @@ export const SwapModalFooter = memo(function SwapModalFooter({
 }) {
   const { t } = useTranslation()
   const [showInverted, setShowInverted] = useState<boolean>(false)
+  const [Limit, setLimit] = useState<boolean>(false)
   const severity = warningSeverity(priceImpactWithoutFee)
 
   const totalFeePercent = `${(TOTAL_FEE * 100).toFixed(2)}%`
@@ -72,9 +73,11 @@ export const SwapModalFooter = memo(function SwapModalFooter({
     }
 
     const price = SmartRouter.getExecutionPrice(trade) ?? undefined
+    //  @ts-ignore
+    setLimit(parseInt(outputAmount.toSignificant()) * parseInt(price ? price.toSignificant() : '0') > 20)
+
     return formatExecutionPrice(price, inputAmount, outputAmount, showInverted)
   }, [inputAmount, isMM, outputAmount, trade, showInverted])
-
   return (
     <>
       <SwapModalFooterContainer>
@@ -236,26 +239,32 @@ export const SwapModalFooter = memo(function SwapModalFooter({
         </RowBetween>
       </SwapModalFooterContainer>
 
-      <AutoRow>
-        <Button
-          variant={severity > 2 ? 'danger' : 'primary'}
-          onClick={onConfirm}
-          disabled={isMM ? disabledConfirm || !isRFQReady : disabledConfirm}
-          mt="12px"
-          id="confirm-swap-or-send"
-          width="100%"
-        >
-          {isMM && !isRFQReady ? (
-            <Dots>{t('Checking RFQ with MM')}</Dots>
-          ) : severity > 2 || (tradeType === TradeType.EXACT_OUTPUT && !isEnoughInputBalance) ? (
-            t('Swap Anyway')
-          ) : (
-            t('Confirm Swap')
-          )}
-        </Button>
+      {!Limit ? (
+        <AutoRow>
+          <Button
+            variant={severity > 2 ? 'danger' : 'primary'}
+            onClick={onConfirm}
+            disabled={isMM ? disabledConfirm || !isRFQReady : disabledConfirm}
+            mt="12px"
+            id="confirm-swap-or-send"
+            width="100%"
+          >
+            {isMM && !isRFQReady ? (
+              <Dots>{t('Checking RFQ with MM')}</Dots>
+            ) : severity > 2 || (tradeType === TradeType.EXACT_OUTPUT && !isEnoughInputBalance) ? (
+              t('Swap Anyway')
+            ) : (
+              t('Confirm Swap')
+            )}
+          </Button>
 
-        {swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}
-      </AutoRow>
+          {swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}
+        </AutoRow>
+      ) : (
+        <>
+          <h2>Currently we are In beta mode so no transaction above 20$ is allowed</h2>
+        </>
+      )}
     </>
   )
 })
