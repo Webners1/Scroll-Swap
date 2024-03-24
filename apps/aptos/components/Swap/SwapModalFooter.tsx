@@ -44,7 +44,7 @@ export default function SwapModalFooter({
   // const lpHoldersFeePercent = `${(LP_HOLDERS_FEE * 100).toFixed(2)}%`
   // const treasuryFeePercent = `${(TREASURY_FEE * 100).toFixed(4)}%`
   // const buyBackFeePercent = `${(BUYBACK_FEE * 100).toFixed(4)}%`
-
+  console.log('execute', trade?.executionPrice)
   return (
     <>
       <SwapModalFooterContainer>

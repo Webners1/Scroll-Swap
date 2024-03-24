@@ -291,6 +291,26 @@ const LiquidityIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string 
   </svg>
 );
 
+const GridMasterIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25">
+    <g>
+      {" "}
+      <path
+        fill={color}
+        stroke={color}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M27.984,42.838C45.23,25.729,47.746,11.361,41.939,4.395c0,0,43.898,18.04,18.077,59.882   c-4.42,7.105-15.459,15.498-9.688,32.793C50.327,97.07-4.908,81.605,27.984,42.838z"
+      />
+      <path
+        fill={color}
+        d="M54.645,96.217c-0.944-3.51-5.154-11.154,7.686-26.359c6.861-8.104,11.557-25.906,9.27-30.157   c0,0,21.914,28.944-3.447,46.278C53.117,96.283,54.645,96.217,54.645,96.217z"
+      />
+    </g>
+  </svg>
+);
+
 const TwitterIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -427,6 +447,11 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
       label: "Bridge",
       href: "/bridge",
       icon: <BridgeIcon />,
+    },
+    {
+      label: "Grid Master",
+      href: "/gridmaster",
+      icon: <GridMasterIcon />,
     },
   ];
 
