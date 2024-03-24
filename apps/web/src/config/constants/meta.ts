@@ -23,6 +23,7 @@ const getPathList = (t: ContextApi['t']): PathList => {
       '/remove': { basePath: true, title: t('Remove Liquidity'), image: `https://scroll.lolpad.finance/lol-logo.png` },
       '/liquidity': { title: t('Liquidity'), image: `https://scroll.lolpad.finance/lol-logo.png` },
       '/bridge': { title: t('Bridge') },
+      '/gridmaster': { title: t('Grid Master') },
       '/find': { title: t('Import Pool') },
       '/competition': { title: t('Trading Battle') },
       '/prediction': { title: t('Prediction'), image: `${ASSET_CDN}/web/og/prediction.jpg` },
