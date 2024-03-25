@@ -1,6 +1,6 @@
 import { ChainId } from '@pancakeswap/chains'
 import { ModalV2 } from '@pancakeswap/uikit'
-import { SUPPORT_ONLY_SCROLL_SEPOLIA } from 'config/constants/supportChains'
+import { SUPPORT_ONLY_SCROLL } from 'config/constants/supportChains'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { atom, useAtom } from 'jotai'
 import dynamic from 'next/dynamic'
@@ -22,16 +22,12 @@ const UnsupportedNetworkModal = dynamic(
   { ssr: false },
 )
 
-export const NetworkModal = ({
-  pageSupportedChains = SUPPORT_ONLY_SCROLL_SEPOLIA,
-}: {
-  pageSupportedChains?: number[]
-}) => {
+export const NetworkModal = ({ pageSupportedChains = SUPPORT_ONLY_SCROLL }: { pageSupportedChains?: number[] }) => {
   const { chainId, chain, isWrongNetwork } = useActiveWeb3React()
   const { chains } = useNetwork()
   const [dismissWrongNetwork, setDismissWrongNetwork] = useAtom(hideWrongNetworkModalAtom)
 
-  const isScrollSepoliaOnlyPage = useMemo(() => {
+  const isScrollOnlyPage = useMemo(() => {
     return pageSupportedChains?.length === 1 && pageSupportedChains[0] === ChainId.SCROLL
   }, [pageSupportedChains])
 
@@ -41,7 +37,7 @@ export const NetworkModal = ({
   )
   if (pageSupportedChains?.length === 0) return null // open to all chains
 
-  if (isPageNotSupported && isScrollSepoliaOnlyPage) {
+  if (isPageNotSupported && isScrollOnlyPage) {
     return (
       <ModalV2 isOpen closeOnOverlayClick={false}>
         <PageNetworkSupportModal />
