@@ -1,7 +1,7 @@
 import { Box, Text } from '@pancakeswap/uikit'
-import { XSwapWidget } from '@xyfinance/widget'
+import { XSwapWidget, Config, Theme } from '@xyfinance/widget'
 
-const config = {
+const config: Config = {
   disabledChains: [],
   fromInput: '0.1',
   fromToken: {
@@ -21,7 +21,7 @@ const config = {
   ],
 }
 
-const theme = {
+const theme: Theme = {
   mode: 'dark',
   fontFamily: 'proxima-nova',
   borderRadius: {
