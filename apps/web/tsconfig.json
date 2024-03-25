@@ -4,6 +4,7 @@
     "baseUrl": "./",
     "strictNullChecks": true,
     "noImplicitAny": false,
+    "throwIfNamespace": false,
     "noFallthroughCasesInSwitch": true,
     "downlevelIteration": true,
     "target": "ES2020",

@@ -280,18 +280,11 @@ const SwapIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) =>
 
 const LiquidityIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25">
-    <path
-      fill={color}
-      stroke={color}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="m17.668 10.29l-4.493-6.673c-.421-.625-1.288-.803-1.937-.397a1.376 1.376 0 0 0-.41.397l-4.893 7.26C4.24 13.715 4.9 17.318 7.502 19.423a7.175 7.175 0 0 0 5.493 1.51M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3H17m2 0v1m0-8v1"
-    />
+    <path fill={color} stroke={color} strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
   </svg>
 );
 
-const GridMasterIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) => (
+const GrindMasterIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 25 25">
     <g>
       {" "}
@@ -301,11 +294,7 @@ const GridMasterIcon = ({ color = "rgba(255, 255, 255, 0.6)" }: { color?: string
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
-        d="M27.984,42.838C45.23,25.729,47.746,11.361,41.939,4.395c0,0,43.898,18.04,18.077,59.882   c-4.42,7.105-15.459,15.498-9.688,32.793C50.327,97.07-4.908,81.605,27.984,42.838z"
-      />
-      <path
-        fill={color}
-        d="M54.645,96.217c-0.944-3.51-5.154-11.154,7.686-26.359c6.861-8.104,11.557-25.906,9.27-30.157   c0,0,21.914,28.944-3.447,46.278C53.117,96.283,54.645,96.217,54.645,96.217z"
+        d="M27.984 42.838C45.23 25.729 47.746 11.361 41.939 4.395c0 0 43.898 18.04 18.077 59.882 c-4.42 7.105-15.459 15.498-9.688 32.793C50.327 97.07-4.908 81.605 27.984 42.838z"
       />
     </g>
   </svg>
@@ -449,9 +438,9 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
       icon: <BridgeIcon />,
     },
     {
-      label: "Grid Master",
-      href: "/gridmaster",
-      icon: <GridMasterIcon />,
+      label: "Grind Master",
+      href: "/grindmaster",
+      icon: <GrindMasterIcon />,
     },
   ];
 
