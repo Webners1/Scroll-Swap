@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic'
 import { Box, Text } from '@pancakeswap/uikit'
 import { XSwapWidget, Config, Theme } from '@xyfinance/widget'
 
@@ -20,6 +21,9 @@ const config: Config = {
     },
   ],
 }
+const XSwapWidgetNext = dynamic(() => import('@xyfinance/widget').then((module) => module.XSwapWidget), {
+  ssr: false,
+})
 
 const theme: Theme = {
   mode: 'dark',
@@ -56,7 +60,8 @@ const BridgePage = () => {
           width: '480px',
         }}
       >
-        <XSwapWidget config={config} theme={theme} />
+        {' '}
+        <XSwapWidgetNext config={config} theme={theme} />
       </div>
     </div>
   )
