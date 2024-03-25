@@ -1,6 +1,6 @@
 import { Box, Text } from '@pancakeswap/uikit'
 
-const GridMasterPage = () => {
+const GrindMasterPage = () => {
   return (
     <Box mt="35vh">
       <Text textAlign="center" fontSize={24}>
@@ -10,4 +10,4 @@ const GridMasterPage = () => {
   )
 }
 
-export default GridMasterPage
+export default GrindMasterPage
