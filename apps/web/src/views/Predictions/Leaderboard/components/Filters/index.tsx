@@ -83,10 +83,7 @@ const Filters: React.FC<React.PropsWithChildren<FiltersProps>> = ({
       targetChains?.map((i) => ({
         label: i?.name ?? '',
         value: i?.id?.toString?.() ?? '',
-        imageUrl:
-          chainId === 534352
-            ? 'https://scroll.io/static/media/Scroll_Logomark.673577c8260b63ae56867bc9af6af514.svg'
-            : `${ASSET_CDN}/web/chains/${i.id}.png`,
+        imageUrl: `${ASSET_CDN}/web/chains/${i.id}.png`,
       })) ?? []
     )
   }, [])
