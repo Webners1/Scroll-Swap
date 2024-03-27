@@ -207,7 +207,11 @@ export const NetworkSwitcher = () => {
         mr="8px"
         placement="bottom"
         variant={isLoading ? 'pending' : isWrongNetwork ? 'danger' : 'default'}
-        avatarSrc={`${ASSET_CDN}/web/chains/${chainId}.png`}
+        avatarSrc={
+          chainId === 534352
+            ? 'https://scroll.io/static/media/Scroll_Logomark.673577c8260b63ae56867bc9af6af514.svg'
+            : `${ASSET_CDN}/web/chains/${chainId}.png`
+        }
         disabled={cannotChangeNetwork}
         text={
           isLoading ? (
