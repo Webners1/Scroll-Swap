@@ -97,7 +97,11 @@ export const NetworkSwitcher: React.FC<{ activeIndex: number }> = ({ activeIndex
     <UserMenu
       alignItems="top"
       ml="8px"
-      avatarSrc={`${ASSET_CDN}/web/chains/${multiChainId[chainName]}.png`}
+      avatarSrc={
+        chainId === 534352
+          ? 'https://scroll.io/static/media/Scroll_Logomark.673577c8260b63ae56867bc9af6af514.svg'
+          : `${ASSET_CDN}/web/chains/${multiChainId[chainName]}.png`
+      }
       text={
         foundChain ? (
           <>
