@@ -74,7 +74,13 @@ export const SwapModalFooter = memo(function SwapModalFooter({
 
     const price = SmartRouter.getExecutionPrice(trade) ?? undefined
     //  @ts-ignore
-    setLimit(parseInt(outputAmount.toSignificant()) > 20)
+    console.log('trade', trade?.routes[0].path[0].address)
+    setLimit(
+      //  @ts-ignore
+      (trade?.routes[0].path[0]?.address === '0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4'
+        ? Number(inputAmount.toSignificant())
+        : Number(outputAmount.toSignificant())) > 20,
+    )
 
     return formatExecutionPrice(price, inputAmount, outputAmount, showInverted)
   }, [inputAmount, isMM, outputAmount, trade, showInverted])
