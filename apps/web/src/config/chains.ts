@@ -90,4 +90,5 @@ export const L2_CHAIN_IDS: ChainId[] = [
   ChainId.OPBNB_TESTNET,
 ]
 
-export const CHAINS = [scrolls]
+// export const CHAINS = [scrolls, scrollSepolia]
+export const CHAINS = [scrolls, scrollSepolia]
