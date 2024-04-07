@@ -84,7 +84,7 @@ export const pancakeProtectors: GameType = {
     },
   ],
   socialMedia: {
-    telegram: 'https://t.me/LolPadSwap/2991960',
+    telegram: 'https://t.me/LolPad_Finance',
     discord: 'https://discord.gg/pancakeswap',
   },
 }

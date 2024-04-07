@@ -1,10 +1,11 @@
 import { BigintIsh, Currency, Token } from '@pancakeswap/swap-sdk-core'
-import { computePoolAddress, FeeAmount, Pool, DEPLOYER_ADDRESSES } from '@pancakeswap/v3-sdk'
+import { computePoolAddress, FeeAmount, Pool, DEPLOYER_ADDRESSES, FACTORY_ADDRESSES } from '@pancakeswap/v3-sdk'
 import { useMemo } from 'react'
 import { Address } from 'viem'
 import { useMultipleContractSingleData } from 'state/multicall/hooks'
 import { v3PoolStateABI } from 'config/abi/v3PoolState'
 import { useActiveChainId } from 'hooks/useActiveChainId'
+import { ChainId } from '@pancakeswap/chains'
 import { PoolState } from './types'
 
 // Classes are expensive to instantiate, so this caches the recently instantiated pools.
@@ -96,7 +97,8 @@ export function usePools(
   }, [chainId, poolKeys])
 
   const poolAddresses: (Address | undefined)[] = useMemo(() => {
-    const v3CoreDeployerAddress = chainId && DEPLOYER_ADDRESSES[chainId]
+    const v3CoreDeployerAddress =
+      chainId && (chainId === ChainId.SCROLL ? FACTORY_ADDRESSES[ChainId.SCROLL] : DEPLOYER_ADDRESSES[chainId])
     if (!v3CoreDeployerAddress) return new Array(poolTokens.length)
 
     return poolTokens.map((value) => value && PoolCache.getPoolAddress(v3CoreDeployerAddress, ...value))
