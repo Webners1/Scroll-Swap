@@ -1,7 +1,13 @@
 import { ChainId } from '@pancakeswap/chains'
 import { BigintIsh, Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
 import { deserializeToken } from '@pancakeswap/token-lists'
-import { DEPLOYER_ADDRESSES, FeeAmount, pancakeV3PoolABI, parseProtocolFees } from '@pancakeswap/v3-sdk'
+import {
+  DEPLOYER_ADDRESSES,
+  FACTORY_ADDRESSES,
+  FeeAmount,
+  pancakeV3PoolABI,
+  parseProtocolFees,
+} from '@pancakeswap/v3-sdk'
 import { Abi, Address, ContractFunctionConfig } from 'viem'
 
 import { pancakePairABI } from '../../../abis/IPancakePair'
@@ -108,7 +114,10 @@ export const getStablePoolsOnChain = createOnChainPoolFactory<StablePool, PoolMe
 export const getV3PoolsWithoutTicksOnChain = createOnChainPoolFactory<V3Pool, V3PoolMeta>({
   abi: pancakeV3PoolABI,
   getPossiblePoolMetas: ([currencyA, currencyB]) => {
-    const deployerAddress = DEPLOYER_ADDRESSES[currencyA.chainId as ChainId]
+    const deployerAddress =
+      currencyA.chainId === ChainId.SCROLL
+        ? FACTORY_ADDRESSES[ChainId.SCROLL]
+        : DEPLOYER_ADDRESSES[currencyA.chainId as ChainId]
     if (!deployerAddress) {
       return []
     }
