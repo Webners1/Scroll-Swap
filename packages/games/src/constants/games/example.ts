@@ -80,6 +80,5 @@ export const example: GameType = {
   ],
   socialMedia: {
     telegram: 'https://t.me/LolPad_Finance',
-    discord: 'https://discord.gg/pancakeswap',
   },
 }
