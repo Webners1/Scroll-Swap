@@ -38,10 +38,7 @@ export const Container = styled(Flex)`
 const GrindMasterPage = () => {
   return (
     <Container>
-      <Text as="h1">L0 common</Text>
-      {/* <Text as="h3" color="white">
-        Last modified: Feb 28, 2023
-      </Text> */}
+      <Text as="h1">How to start grinding Layer Zero with $110</Text>
       <Text as="p" color="white">
         1. Buy 130$ of $AVAX and send it to metamask on{' '}
         <Link href="https://chainlist.org/chain/43114" target="_blank">
