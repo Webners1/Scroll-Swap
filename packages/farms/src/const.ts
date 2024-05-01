@@ -19,6 +19,22 @@ export const supportedChainIdV3 = [
   ChainId.SCROLL_SEPOLIA,
   ChainId.SCROLL,
 ] as const
+export const FarmsupportedChainIdV3 = [
+  ChainId.GOERLI,
+  ChainId.BSC,
+  ChainId.BSC_TESTNET,
+  ChainId.ETHEREUM,
+  ChainId.ZKSYNC_TESTNET,
+  ChainId.POLYGON_ZKEVM_TESTNET,
+  ChainId.POLYGON_ZKEVM,
+  ChainId.ZKSYNC,
+  ChainId.ARBITRUM_ONE,
+  ChainId.LINEA,
+  ChainId.BASE,
+  ChainId.OPBNB,
+  ChainId.OPBNB_TESTNET,
+  ChainId.SCROLL_SEPOLIA,
+] as const
 export const supportedChainId = uniq([...supportedChainIdV2, ...supportedChainIdV3])
 export const bCakeSupportedChainId = [ChainId.BSC] as const
 
@@ -28,7 +44,7 @@ export type FarmSupportedChainId = (typeof supportedChainId)[number]
 
 export type FarmV2SupportedChainId = (typeof supportedChainIdV2)[number]
 
-export type FarmV3SupportedChainId = (typeof supportedChainIdV3)[number]
+export type FarmV3SupportedChainId = (typeof FarmsupportedChainIdV3)[number]
 
 export const masterChefAddresses = {
   [ChainId.BSC_TESTNET]: '0xB4A466911556e39210a6bB2FaECBB59E4eB7E43d',
@@ -49,8 +65,7 @@ export const masterChefV3Addresses = {
   [ChainId.BASE]: '0xC6A2Db661D5a5690172d8eB0a7DEA2d3008665A3',
   [ChainId.OPBNB]: '0x05ddEDd07C51739d2aE21F6A9d97a8d69C2C3aaA',
   [ChainId.OPBNB_TESTNET]: '0x236e713bFF45adb30e25D1c29A887aBCb0Ea7E21',
-  [ChainId.SCROLL_SEPOLIA]: '0x9695934958C7e8C4DEa73d0E899139E0E80E3839',
-  [ChainId.SCROLL]: '0x9695934958C7e8C4DEa73d0E899139E0E80E3839',
+  [ChainId.SCROLL_SEPOLIA]: '',
 } as const satisfies Record<FarmV3SupportedChainId, string>
 
 export const nonBSCVaultAddresses = {
