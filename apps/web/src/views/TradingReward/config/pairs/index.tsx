@@ -29,5 +29,4 @@ export const tradingRewardPairConfigChainMap: Record<FarmV3SupportedChainId, Com
   [ChainId.OPBNB_TESTNET]: opBNBTestnetFarms,
   [ChainId.OPBNB]: opBNBFarms,
   [ChainId.SCROLL_SEPOLIA]: scrollSepoliaFarm,
-  [ChainId.SCROLL]: [],
 }

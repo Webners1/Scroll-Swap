@@ -32,7 +32,6 @@ export const farmsV3ConfigChainMap: Record<FarmV3SupportedChainId, ComputedFarmC
   [ChainId.OPBNB_TESTNET]: opBnbTestnetFarms,
   [ChainId.OPBNB]: opBNBFarms,
   [ChainId.SCROLL_SEPOLIA]: scrollSepoliaFarms,
-  [ChainId.SCROLL]: scrollSepoliaFarms,
 }
 
 export type Addresses = {

@@ -249,7 +249,9 @@ export default {
     [ChainId.BSC]: '0x5692DB8177a81A6c6afc8084C2976C9933EC1bAB',
     [ChainId.BSC_TESTNET]: '0x4879fcB447E7F4c7843A6D15dF5526061304dcFb',
   },
+  //  @ts-ignore
   gaugesVoting: GAUGES_ADDRESS,
+  //  @ts-ignore
   gaugesVotingCalc: GAUGES_CALC_ADDRESS,
   revenueSharingVeCake: {
     [ChainId.BSC]: '0xCaF4e48a4Cb930060D0c3409F40Ae7b34d2AbE2D',

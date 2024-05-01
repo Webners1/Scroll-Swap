@@ -237,32 +237,26 @@ export const SwapModalFooter = memo(function SwapModalFooter({
         </RowBetween>
       </SwapModalFooterContainer>
 
-      {true ? (
-        <AutoRow>
-          <Button
-            variant={severity > 2 ? 'danger' : 'primary'}
-            onClick={onConfirm}
-            disabled={isMM ? disabledConfirm || !isRFQReady : disabledConfirm}
-            mt="12px"
-            id="confirm-swap-or-send"
-            width="100%"
-          >
-            {isMM && !isRFQReady ? (
-              <Dots>{t('Checking RFQ with MM')}</Dots>
-            ) : severity > 2 || (tradeType === TradeType.EXACT_OUTPUT && !isEnoughInputBalance) ? (
-              t('Swap Anyway')
-            ) : (
-              t('Confirm Swap')
-            )}
-          </Button>
+      <AutoRow>
+        <Button
+          variant={severity > 2 ? 'danger' : 'primary'}
+          onClick={onConfirm}
+          disabled={isMM ? disabledConfirm || !isRFQReady : disabledConfirm}
+          mt="12px"
+          id="confirm-swap-or-send"
+          width="100%"
+        >
+          {isMM && !isRFQReady ? (
+            <Dots>{t('Checking RFQ with MM')}</Dots>
+          ) : severity > 2 || (tradeType === TradeType.EXACT_OUTPUT && !isEnoughInputBalance) ? (
+            t('Swap Anyway')
+          ) : (
+            t('Confirm Swap')
+          )}
+        </Button>
 
-          {swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}
-        </AutoRow>
-      ) : (
-        <>
-          <h2>Currently we are In beta mode so no transaction above 20$ is allowed</h2>
-        </>
-      )}
+        {swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}
+      </AutoRow>
     </>
   )
 })
