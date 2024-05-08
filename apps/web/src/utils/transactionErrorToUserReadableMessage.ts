@@ -19,7 +19,7 @@ export function transactionErrorToUserReadableMessage(error: any, t: TranslateFu
       error = error.error ?? error.data?.originalError
     }
   }
-
+console.log(error)
   if (reason?.indexOf('execution reverted: ') === 0) reason = reason.substring('execution reverted: '.length)
 
   const formatErrorMessage = (message: string) => [message, `(${reason})`].join(' ')

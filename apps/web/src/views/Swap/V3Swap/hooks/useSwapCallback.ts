@@ -15,8 +15,8 @@ import { SendTransactionResult } from 'wagmi/actions'
 import useSendSwapTransaction from './useSendSwapTransaction'
 import { useSwapCallArguments } from './useSwapCallArguments'
 
-import { useWallchainSwapCallArguments } from './useWallchain'
 import type { TWallchainMasterInput } from './useWallchain'
+import { useWallchainSwapCallArguments } from './useWallchain'
 
 export enum SwapCallbackState {
   INVALID,
@@ -58,7 +58,7 @@ export function useSwapCallback({
   const allowedSlippage = useMemo(() => basisPointsToPercent(allowedSlippageRaw), [allowedSlippageRaw])
   const { recipient: recipientAddress } = useSwapState()
   const recipient = recipientAddress === null ? account : recipientAddress
-
+console.log(trade)
   const swapCalls = useSwapCallArguments(
     trade,
     allowedSlippage,
@@ -74,7 +74,6 @@ export function useSwapCallback({
     onWallchainDrop,
     wallchainMasterInput,
   )
-
   const { callback } = useSendSwapTransaction(
     account,
     chainId,
@@ -82,6 +81,8 @@ export function useSwapCallback({
     // @ts-expect-error uncompatible types side-by-side cause wrong type assertion
     wallchainSwapCalls,
   )
+
+  
 
   return useMemo(() => {
     if (!trade || !account || !chainId || !callback) {
