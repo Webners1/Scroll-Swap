@@ -481,12 +481,12 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   const socialLinks = [
     {
       label: "Twitter",
-      href: "https://twitter.com",
+      href: "https://twitter.com/LolPad_Finance",
       icon: <TwitterIcon />,
     },
     {
       label: "Telegram",
-      href: "https://telegram.com",
+      href: "https://t.me/LolPad_Finance",
       icon: <TelegramIcon />,
     },
   ];
