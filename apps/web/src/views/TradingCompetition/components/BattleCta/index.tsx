@@ -1,16 +1,16 @@
 import { useTranslation } from '@pancakeswap/localization'
 import {
-  Box,
-  Button,
-  Card,
-  CardBody,
-  CheckmarkCircleIcon,
-  Flex,
-  LaurelLeftIcon,
-  LaurelRightIcon,
-  Text,
-  TwitterIcon,
-  useModal,
+    Box,
+    Button,
+    Card,
+    CardBody,
+    CheckmarkCircleIcon,
+    Flex,
+    LaurelLeftIcon,
+    LaurelRightIcon,
+    Text,
+    TwitterIcon,
+    useModal,
 } from '@pancakeswap/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { FINISHED, OVER, REGISTRATION } from 'config/constants/trading-competition/phases'
@@ -210,7 +210,7 @@ const BattleCta: React.FC<React.PropsWithChildren<CompetitionProps>> = ({
                   scale="sm"
                   variant="secondary"
                   onClick={() => {
-                    window.open('https://twitter.com/pancakeswap', '_blank', 'noopener noreferrer')
+                    window.open('https://twitter.com/LolPad_Finance', '_blank', 'noopener noreferrer')
                   }}
                 >
                   <TwitterIcon color="textSubtle" fontSize="12px" mr="5px" />

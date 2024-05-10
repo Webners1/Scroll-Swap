@@ -75,7 +75,7 @@ export const useTweetsData = () => {
         tweet: `🐰💙LolPadSwap Fam, the moment is here!
 🥞Proposal to reduce the max supply of $CAKE from 750M to 450M!
 🌟By reducing our token supply by 300,000,000 $CAKE, we signify LolPadSwap’s successful shift from a high-inflation emissions model to the Ultrasound CAKE era.`,
-        link: 'https://x.com/LolPadSwap/status/1740281555887825335?s=20',
+        link: 'https://twitter.com/LolPad_Finance/status/1740281555887825335?s=20',
         date: 'Dec 28',
         like: '1.3k',
         impression: '179k',
