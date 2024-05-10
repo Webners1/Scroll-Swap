@@ -549,15 +549,6 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
                   ))}
                 </SocialLinkWrapper>
               </MainLinkContainerStyled>
-              <SidebarSettingsWrapper>
-                <LangSelector
-                  currentLang={currentLang}
-                  langs={langs}
-                  setLang={setLang}
-                  color="textSubtle"
-                  dropdownPosition="top"
-                />
-              </SidebarSettingsWrapper>
             </StyledSidebar>
             <BodyWrapper>
               <Box mt="20px">{rightSide}</Box>
